@@ -30,8 +30,8 @@ class Migration_Create_Useradmin extends CI_Migration
 
         //creamos un array con los datos del usuario
         $data_useradmin = array(
-            "email"        =>        "admin",
-            "password"        =>        "plokij"
+            "email"        =>        "admin@email.com",
+            "password"        =>        "password"
         );
         //ingresamos el registro en la base de datos
         $this->db->insert("useradmin", $data_useradmin);
@@ -45,4 +45,6 @@ class Migration_Create_Useradmin extends CI_Migration
  
     }
 }
+
+
 ?>

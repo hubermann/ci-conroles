@@ -17,9 +17,9 @@ class Dashboard extends CI_Controller{
 					redirect('dashboard/login');
 			}
 			$data['title'] = 'Bienvenido';
-			$data['menu'] = 'control/empty';
-			$data['content'] = 'control/control_index';
-			$this->load->view('control/control_layout', $data);
+			$data['menu'] = 'control/pixel-admin/empty';
+			$data['content'] = 'control/pixel-admin/control_index';
+			$this->load->view('control/pixel-admin/control_layout', $data);
 		}
 
 	public function login(){
@@ -48,8 +48,8 @@ class Dashboard extends CI_Controller{
 
 	public function logout(){
 		$this->useradmins_m->logout();
-		$data['content'] = 'control/login';
-		$this->load->view('control/modal_layout', $data);
+		$data['content'] = 'control/pixel-admin/login';
+		$this->load->view('control/pixel-admin/modal_layout', $data);
 	}
 
 

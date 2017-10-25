@@ -11,6 +11,17 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+
+
+
+// CREATE TABLE IF NOT EXISTS `ci_sessions` (
+//     `id` varchar(40) NOT NULL,
+//     `ip_address` varchar(45) NOT NULL,
+//     `timestamp` int(10) unsigned DEFAULT 0 NOT NULL,
+//     `data` blob NOT NULL,
+//     KEY `ci_sessions_timestamp` (`timestamp`)
+// );
+
 /*
 | -------------------------------------------------------------------------
 | URI ROUTING
