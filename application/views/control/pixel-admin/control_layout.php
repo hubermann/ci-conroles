@@ -73,16 +73,19 @@
 						<a href="index.html" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a>
 					</li>
 					<li>
-						<a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Profile</span></a>
+						<a href="<?= base_url('control/usuarios'); ?>" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Usuarios</span></a>
 					</li>
 					<li>
-						<a href="<?= base_url('control/categoria_eventos'); ?>" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i><span class="hide-menu">Categorias Eventos</span></a>
+						<a href="<?= base_url('control/categoria_eventos'); ?>" class="waves-effect"><i class="fa fa-bookmark-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Categorias Eventos</span></a>
 					</li>
 					<li>
-						<a href="fontawesome.html" class="waves-effect"><i class="fa fa-font fa-fw" aria-hidden="true"></i><span class="hide-menu">Icons</span></a>
+						<a href="<?= base_url('control/notas'); ?>" class="waves-effect"><i class="fa fa-font fa-fw" aria-hidden="true"></i><span class="hide-menu">Notas</span></a>
 					</li>
 					<li>
-						<a href="map-google.html" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"></i><span class="hide-menu">Google Map</span></a>
+						<a href="<?= base_url('control/beneficios'); ?>" class="waves-effect"><i class="fa fa-shopping-bag fa-fw" aria-hidden="true"></i><span class="hide-menu">Beneficios</span></a>
+					</li>
+					<li>
+						<a href="<?= base_url('control/lugares'); ?>" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"></i><span class="hide-menu">Lugares</span></a>
 					</li>
 					<li>
 						<a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i><span class="hide-menu">Blank Page</span></a>
@@ -92,7 +95,7 @@
 					</li>
 				</ul>
 				<div class="center p-20">
-					<span class="hide-menu"><a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger btn-block btn-rounded waves-effect waves-light">Upgrade to Pro</a></span>
+					
 				</div>
 			</div>
 		</div>
@@ -105,14 +108,11 @@
 						<h4 class="page-title">Dashboard</h4> </div>
 					<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Upgrade to Pro</a>
 						<ol class="breadcrumb">
-							<li><a href="#">Dashboard</a></li>
+							<li><a href="<?=base_url('control/'); ?>">Dashboard</a></li>
 						</ol>
 					</div>
 					<!-- /.col-lg-12 -->
 				</div>
-				
-				
-
 
 				<!--row -->
 				<div class="row">
@@ -136,8 +136,7 @@
 				    	?>
 				  	</div>
 				</div>
-
-
+				<!-- /.row -->
 
 				<!-- row-->
 				<div class="row">
@@ -164,7 +163,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				
 			</div>
 			<!-- /.container-fluid -->
@@ -208,9 +207,19 @@
 			loaderBg: '#ff6849',
 			icon: 'info',
 			hideAfter: 3500,
-			stack: 6
+			stack: 5
 		})
 	});
+
+	$('.delete').on("click", function (e) {
+	    e.preventDefault();
+	    var choice = confirm($(this).attr('data-confirm'));
+	    if (choice) {
+	        window.location.href = $(this).attr('href');
+	    }
+	});
+
+
 	</script>
 </body>
 

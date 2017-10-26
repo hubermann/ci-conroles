@@ -24,7 +24,7 @@ class Categoria_eventos extends CI_Controller{
 
 	public function index(){
 		//Pagination
-		$per_page = 10;
+		$per_page = 5;
 		$page = $this->uri->segment(3);
 		if(!$page){ $start =0; $page =1; }else{ $start = ($page -1 ) * $per_page; }
 			$data['pagination_links'] = "";
@@ -54,7 +54,7 @@ class Categoria_eventos extends CI_Controller{
 	//detail
 	public function detail(){
 
-	$data['title'] = 'categoria_evento';
+	$data['title'] = 'Categoria eventos';
 	$data['content'] = 'control/categoria_eventos/detail';
 	$data['menu'] = 'control/categoria_eventos/menu_categoria_evento';
 	$data['query'] = $this->categoria_evento->get_record($this->uri->segment(4));
@@ -66,7 +66,7 @@ class Categoria_eventos extends CI_Controller{
 	public function form_new(){
 
 	$this->load->helper('form');
-	$data['title'] = 'Nuevo categoria_evento';
+	$data['title'] = 'Nueva categoria de eventos';
 	$data['content'] = 'control/categoria_eventos/new_categoria_evento';
 	$data['menu'] = 'control/categoria_eventos/menu_categoria_evento';
 	$this->load->view('control/pixel-admin/control_layout', $data);
@@ -183,45 +183,64 @@ class Categoria_eventos extends CI_Controller{
 
 	}
 
-	//delete
-	public function delete()
-	{
 
-		$this->load->helper('form');
-		$this->load->library('form_validation');
+public function destroy()
+{
+	if($this->uri->segment(4)){
+		$this->session->set_flashdata('success', 'Categoria de evento eliminado!');
 
-		$this->form_validation->set_rules('comfirm', 'comfirm', 'required');
-		$this->form_validation->set_message('required','Por favor, confirme para eliminar.');
-
-
-		if ($this->form_validation->run() === FALSE){
-			#validation failed
-			$this->load->helper('form');
-
-			$data['content'] = 'control/categoria_eventos/comfirm_delete';
-			$data['title'] = 'Eliminar categoria_evento';
-			$data['menu'] = 'control/categoria_eventos/menu_categoria_evento';
-			$data['query'] = $this->categoria_evento->get_record($this->input->post('id'));
-			$this->load->view('control/pixel-admin/control_layout', $data);
-		}else{
-			#validation passed
-			$this->session->set_flashdata('success', 'categoria_evento eliminado!');
-
-			$prod = $this->categoria_evento->get_record($this->input->post('id'));
-				$path = 'images-categoria_eventos/'.$prod->filename;
-				if(is_link($path)){
-					unlink($path);
-				}
-
-			$id_item = $this->uri->segment(4);
-			
-
-			$this->categoria_evento->delete_record($id_item);
-			redirect('control/categoria_eventos', 'refresh');
-			
-
+		$prod = $this->categoria_evento->get_record($this->uri->segment(4));
+		$path = (isset($prod->filename)) ? $prod->filename : "";
+		if($path!=""){
+			unlink('images-categoria_eventos/'.$path);
 		}
+
+		$this->categoria_evento->delete_record($this->uri->segment(4));
+	}else{
+		$this->session->set_flashdata('warning', 'Error al eliminar!');
 	}
+	
+	redirect('control/categoria_eventos', 'refresh');
+}
+	//delete
+// public function delete()
+// {
+
+// 	$this->load->helper('form');
+// 	$this->load->library('form_validation');
+
+// 	$this->form_validation->set_rules('comfirm', 'comfirm', 'required');
+// 	$this->form_validation->set_message('required','Por favor, confirme para eliminar.');
+
+
+// 	if ($this->form_validation->run() === FALSE){
+// 		#validation failed
+// 		$this->load->helper('form');
+
+// 		$data['content'] = 'control/categoria_eventos/comfirm_delete';
+// 		$data['title'] = 'Eliminar categoria_evento';
+// 		$data['menu'] = 'control/categoria_eventos/menu_categoria_evento';
+// 		$data['query'] = $this->categoria_evento->get_record($this->input->post('id'));
+// 		$this->load->view('control/pixel-admin/control_layout', $data);
+// 	}else{
+// 		#validation passed
+// 		$this->session->set_flashdata('success', 'Categoria de evento eliminado!');
+
+// 		$prod = $this->categoria_evento->get_record($this->input->post('id'));
+// 			$path = 'images-categoria_eventos/'.$prod->filename;
+// 			if(is_link($path)){
+// 				unlink($path);
+// 			}
+
+// 		$id_item = $this->uri->segment(4);
+		
+
+// 		$this->categoria_evento->delete_record($id_item);
+// 		redirect('control/categoria_eventos', 'refresh');
+		
+
+// 	}
+// }
 
 
 } //end class

@@ -43,14 +43,14 @@ echo form_hidden('id', $query->id);
 			<?php echo form_error('nombre','<p class="error">', '</p>'); ?>
 			</div>
 			</div>
-			<!-- Text input-->
+			<!-- Text input
 			<div class="control-group">
 			<label class="control-label">Slug</label>
 			<div class="controls">
 			<input value="<?php echo $query->slug; ?>" type="text" class="form-control" name="slug" />
 			<?php echo form_error('slug','<p class="error">', '</p>'); ?>
 			</div>
-			</div>
+			</div>-->
 
 <div class="control-group">
 <label class="control-label"></label>

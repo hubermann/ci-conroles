@@ -13,38 +13,38 @@ class Dashboard extends CI_Controller{
 
 	public function index(){
 			//dashboard
-			if(! $this->session->userdata('logged_in')){
-					redirect('dashboard/login');
-			}
-			$data['title'] = 'Bienvenido';
-			$data['menu'] = 'control/pixel-admin/empty';
-			$data['content'] = 'control/pixel-admin/control_index';
-			$this->load->view('control/pixel-admin/control_layout', $data);
+		if(! $this->session->userdata('logged_in')){
+			redirect('dashboard/login');
 		}
+		$data['title'] = 'Bienvenido';
+		$data['menu'] = 'control/pixel-admin/empty';
+		$data['content'] = 'control/pixel-admin/control_index';
+		$this->load->view('control/pixel-admin/control_layout', $data);
+	}
 
 	public function login(){
 		$this->form_validation->set_rules('email', 'Email', 'required|trim');
 		$this->form_validation->set_rules('password', 'Password', 'required|trim');
 
 	    #Paso validacion
-	    if ($this->form_validation->run()){
+		if ($this->form_validation->run()){
 
 		//Coinciden los datos
-		if ($this->useradmins_m->try_login($this->input->post('email'), $this->input->post('password'))){
-			redirect('/control');
-		}
+			if ($this->useradmins_m->try_login($this->input->post('email'), $this->input->post('password'))){
+				redirect('/control');
+			}
 	    //no coinciden datos
-		else{
-			$this->session->set_flashdata('error', 'No se encuentran usuario con esos datos.');
-			redirect('dashboard/login', 'refresh');
+			else{
+				$this->session->set_flashdata('error', 'No se encuentran usuario con esos datos.');
+				redirect('dashboard/login', 'refresh');
+			}
+
 		}
+	//No paso la validacion
+		$data['content'] = 'control/login';
+		$this->load->view('control/modal_layout', $data);
 
 	}
-	//No paso la validacion
-	$data['content'] = 'control/login';
-	$this->load->view('control/modal_layout', $data);
-
-}
 
 	public function logout(){
 		$this->useradmins_m->logout();

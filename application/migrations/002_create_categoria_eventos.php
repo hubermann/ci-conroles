@@ -15,13 +15,13 @@ class Migration_Create_Categoria_eventos extends CI_Migration
  
                 ),
 					"nombre"    		=>        array(
-                    "type"                =>        "TEXT",
-                    "constraint"        	=>        100,
+                    "type"                =>        "VARCHAR",
+                    "constraint"        	=>        255,
                 ),
 	
 					"slug"    		=>        array(
-                    "type"                =>        "TEXT",
-                    "constraint"        	=>        100,
+                    "type"                =>        "VARCHAR",
+                    "constraint"        	=>        255,
                 ),
 	
             )

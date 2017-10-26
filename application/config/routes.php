@@ -6,6 +6,12 @@ $route['control'] = 'dashboard';
 $route['control/logout'] = 'dashboard/logout';
 $route['migrate/(:num)'] = 'migrate/index/$';
 $route['control/categoria_eventos/(:num)'] = 'control/categoria_eventos/index/$';
+$route['control/usuarios/(:num)'] = 'control/usuarios/index/$';
+$route['control/notas/(:num)'] = 'control/notas/index/$';
+$route['control/categoria_notas/(:num)'] = 'control/categoria_notas/index/$';
+$route['control/categoria_notas/destroy/(:num)'] = 'control/categoria_notas/destroy/$';
+$route['control/lugares/(:num)'] = 'control/lugares/index/$';
+$route['control/beneficios/(:num)'] = 'control/beneficios/index/$';
 /* append */
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
