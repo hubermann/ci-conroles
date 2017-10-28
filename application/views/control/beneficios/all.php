@@ -16,62 +16,61 @@
 			</h3>
 			<div class="table-responsive">
 				<table class="table ">
-					
 					<?php 
-						if(count($query)){ 
+					if(count($query)){ 
 
 
-							$head = '<thead>
-												<tr>
-													<th> Nombre </th>
-													<th> Telefono </th>
-													<th> Direccion </th>
-													<th> Link </th>
-													<th> Imagen </th>
-													<th class="text-right">Opciones</th>
-												</tr>
-											</thead>';
-							print($head);
-							$body = "<tbody>";
-							
-							foreach ($query as $row):
+						$head = '<thead>
+						<tr>
+							<th> Nombre </th>
+							<th> Telefono </th>
+							<th> Direccion </th>
+							<th> Link </th>
+							<th> Imagen </th>
+							<th class="text-right">Opciones</th>
+						</tr>
+					</thead>';
+					print($head);
+					$body = "<tbody>";
 
-								$body .= '<tr>';
-								$body .= '<td class="txt-oflo">'.$row->nombre.' </td>';
-								$body .= '<td class="txt-oflo"> '.$row->telefono.' </td>';
-								$body .= '<td class="txt-oflo"> '.$row->direccion.' </td>';
-								$body .= '<td class="txt-oflo"> '.$row->link.' </td>';
-								$body .= '<td class="txt-oflo"> <img src="'.base_url('images-beneficios/'.$row->filename).' " width="200" /></td>';
-								$body .= '<td> 
-														<div class="btn-group pull-right">
-														<a class="btn btn-small" href="'.base_url('control/beneficios/editar/'.$row->id.'').'"><i class="fa fa-edit"></i></a>		
-														<a href="'.base_url('control/beneficios/destroy/'.$row->id.'').'" class="delete btn btn-small" data-confirm="Are you sure to delete this item?"><i class="fa fa-trash-o"></i></a>
-														<!--<a class="btn btn-small" href="'.base_url('control/beneficios/detail/'.$row->id.'').'"><i class="fa fa-chain"></i></a>-->
-														</div>
-													</td>';
-								$body .= '</tr>';
+					foreach ($query as $row):
 
-								endforeach; 
+						$body .= '<tr>';
+					$body .= '<td class="txt-oflo">'.$row->nombre.' </td>';
+					$body .= '<td class="txt-oflo"> '.$row->telefono.' </td>';
+					$body .= '<td class="txt-oflo"> '.$row->direccion.' </td>';
+					$body .= '<td class="txt-oflo"> '.$row->link.' </td>';
+					$body .= '<td class="txt-oflo"> <img src="'.base_url('images-beneficios/'.$row->filename).' " width="200" /></td>';
+					$body .= '<td> 
+					<div class="btn-group pull-right">
+						<a class="btn btn-small" href="'.base_url('control/beneficios/editar/'.$row->id.'').'"><i class="fa fa-edit"></i></a>		
+						<a href="'.base_url('control/beneficios/destroy/'.$row->id.'').'" class="delete btn btn-small" data-confirm="Are you sure to delete this item?"><i class="fa fa-trash-o"></i></a>
+						<!--<a class="btn btn-small" href="'.base_url('control/beneficios/detail/'.$row->id.'').'"><i class="fa fa-chain"></i></a>-->
+					</div>
+				</td>';
+				$body .= '</tr>';
 
-								$body .= '</tbody>';
-								print($body);
+				endforeach; 
 
-						}else{
-							echo 'No hay resultados.';
-						}
-					?>
+				$body .= '</tbody>';
+				print($body);
 
-				</table> 
-			</div>
+			}else{
+				echo 'No hay resultados.';
+			}
+			?>
 
-				<div class="table-responsive">
-					<ul class="pagination pagination-small pagination-centered">
-						<?php echo $pagination_links;  ?>
-					</ul>
-				</div>
-		</div>
-
+		</table> 
 	</div>
+
+	<div class="table-responsive">
+		<ul class="pagination pagination-small pagination-centered">
+			<?php echo $pagination_links;  ?>
+		</ul>
+	</div>
+</div>
+
+</div>
 </div>
 <!-- /.row -->
 

@@ -3,23 +3,23 @@
 class Lugares extends CI_Controller{
 
 
-public function __construct(){
+	public function __construct(){
 
-	parent::__construct();
-	$this->load->model('lugar');$this->load->model('imagenes_lugar');
-	$this->load->helper('url');
-	$this->load->library('session');
+		parent::__construct();
+		$this->load->model('lugar');$this->load->model('imagenes_lugar');
+		$this->load->helper('url');
+		$this->load->library('session');
 
 	//Si no hay session redirige a Login
-	if(! $this->session->userdata('logged_in')){
-	redirect('dashboard');
-	}
+		if(! $this->session->userdata('logged_in')){
+			redirect('dashboard');
+		}
 
-	if( ! ini_get('date.timezone') ){
-	    date_default_timezone_set('GMT');
-	    setlocale(LC_ALL,"es_ES");
-	    setlocale(LC_TIME, 'es_AR');
-	}
+		if( ! ini_get('date.timezone') ){
+			date_default_timezone_set('GMT');
+			setlocale(LC_ALL,"es_ES");
+			setlocale(LC_TIME, 'es_AR');
+		}
 
 	$this->data['thumbnail_sizes'] = array(); //thumbnails sizes 
 
@@ -30,11 +30,11 @@ public function index(){
 	$per_page = 10;
 	$page = $this->uri->segment(3);
 	if(!$page){ $start =0; $page =1; }else{ $start = ($page -1 ) * $per_page; }
-		$data['pagination_links'] = "";
-		$total_pages = ceil($this->lugar->count_rows() / $per_page);
+	$data['pagination_links'] = "";
+	$total_pages = ceil($this->lugar->count_rows() / $per_page);
 
-		if ($total_pages > 1){ 
-			for ($i=1;$i<=$total_pages;$i++){ 
+	if ($total_pages > 1){ 
+		for ($i=1;$i<=$total_pages;$i++){ 
 			if ($page == $i) 
 				//si muestro el índice de la página actual, no coloco enlace 
 				$data['pagination_links'] .=  '<li class="active"><a>'.$i.'</a></li>'; 
@@ -57,21 +57,21 @@ public function index(){
 //detail
 public function detail(){
 
-$data['title'] = 'lugar';
-$data['content'] = 'control/lugares/detail';
-$data['menu'] = 'control/lugares/menu_lugar';
-$data['query'] = $this->lugar->get_record($this->uri->segment(4));
-$this->load->view('control/pixel-admin/control_layout', $data);
+	$data['title'] = 'lugar';
+	$data['content'] = 'control/lugares/detail';
+	$data['menu'] = 'control/lugares/menu_lugar';
+	$data['query'] = $this->lugar->get_record($this->uri->segment(4));
+	$this->load->view('control/pixel-admin/control_layout', $data);
 }
 
 
 //new
 public function form_new(){
-$this->load->helper('form');
-$data['title'] = 'Nuevo lugar';
-$data['content'] = 'control/lugares/new_lugar';
-$data['menu'] = 'control/lugares/menu_lugar';
-$this->load->view('control/pixel-admin/control_layout', $data);
+	$this->load->helper('form');
+	$data['title'] = 'Nuevo lugar';
+	$data['content'] = 'control/lugares/new_lugar';
+	$data['menu'] = 'control/lugares/menu_lugar';
+	$this->load->view('control/pixel-admin/control_layout', $data);
 }
 
 //create
@@ -79,19 +79,13 @@ public function create(){
 
 	$this->load->helper('form');
 	$this->load->library('form_validation');
-$this->form_validation->set_rules('nombre', 'Nombre', 'required');
+	$this->form_validation->set_rules('nombre', 'Nombre', 'required');
+	$this->form_validation->set_rules('direccion', 'Direccion', 'required');
+	$this->form_validation->set_rules('telefono', 'Telefono', 'required');
+	$this->form_validation->set_rules('link', 'Link', 'required');
+	$this->form_validation->set_rules('visible', 'Visible', 'required');
+	$this->form_validation->set_rules('beneficio', 'Beneficio', 'required');
 
-$this->form_validation->set_rules('direccion', 'Direccion', 'required');
-
-$this->form_validation->set_rules('telefono', 'Telefono', 'required');
-
-$this->form_validation->set_rules('link', 'Link', 'required');
-
-$this->form_validation->set_rules('visible', 'Visible', 'required');
-
-$this->form_validation->set_rules('beneficio', 'Beneficio', 'required');
-
-	
 	if ($this->form_validation->run() === FALSE){
 
 		$this->load->helper('form');
@@ -109,12 +103,12 @@ $this->form_validation->set_rules('beneficio', 'Beneficio', 'required');
 
 		
 		$newlugar = array( 'nombre' => $this->input->post('nombre'), 
- 'direccion' => $this->input->post('direccion'), 
- 'telefono' => $this->input->post('telefono'), 
- 'link' => $this->input->post('link'), 
- 'visible' => $this->input->post('visible'), 
- 'beneficio' => $this->input->post('beneficio'), 
-);
+			'direccion' => $this->input->post('direccion'), 
+			'telefono' => $this->input->post('telefono'), 
+			'link' => $this->input->post('link'), 
+			'visible' => $this->input->post('visible'), 
+			'beneficio' => $this->input->post('beneficio'), 
+			);
 		#save
 		$this->lugar->add_record($newlugar);
 		$this->session->set_flashdata('success', 'lugar creado. <a href="lugares/detail/'.$this->db->insert_id().'">Ver</a>');
@@ -140,19 +134,12 @@ public function editar(){
 public function update(){
 	$this->load->helper('form');
 	$this->load->library('form_validation'); 
-$this->form_validation->set_rules('nombre', 'Nombre', 'required');
-
-$this->form_validation->set_rules('direccion', 'Direccion', 'required');
-
-$this->form_validation->set_rules('telefono', 'Telefono', 'required');
-
-$this->form_validation->set_rules('link', 'Link', 'required');
-
-$this->form_validation->set_rules('visible', 'Visible', 'required');
-
-$this->form_validation->set_rules('beneficio', 'Beneficio', 'required');
-
-
+	$this->form_validation->set_rules('nombre', 'Nombre', 'required');
+	$this->form_validation->set_rules('direccion', 'Direccion', 'required');
+	$this->form_validation->set_rules('telefono', 'Telefono', 'required');
+	$this->form_validation->set_rules('link', 'Link', 'required');
+	$this->form_validation->set_rules('visible', 'Visible', 'required');
+	$this->form_validation->set_rules('beneficio', 'Beneficio', 'required');
 	$this->form_validation->set_message('required','El campo %s es requerido.');
 
 	if ($this->form_validation->run() === FALSE){
@@ -172,18 +159,13 @@ $this->form_validation->set_rules('beneficio', 'Beneficio', 'required');
 		}
 
 		$editedlugar = array(  
-'nombre' => $this->input->post('nombre'),
-
-'direccion' => $this->input->post('direccion'),
-
-'telefono' => $this->input->post('telefono'),
-
-'link' => $this->input->post('link'),
-
-'visible' => $this->input->post('visible'),
-
-'beneficio' => $this->input->post('beneficio'),
-);
+			'nombre' => $this->input->post('nombre'),
+			'direccion' => $this->input->post('direccion'),
+			'telefono' => $this->input->post('telefono'),
+			'link' => $this->input->post('link'),
+			'visible' => $this->input->post('visible'),
+			'beneficio' => $this->input->post('beneficio'),
+			);
 		#save
 		$this->session->set_flashdata('success', 'lugar Actualizado!');
 		$this->lugar->update_record($id, $editedlugar);
@@ -193,11 +175,7 @@ $this->form_validation->set_rules('beneficio', 'Beneficio', 'required');
 			redirect('control/lugares', 'refresh');
 		}
 
-
-
 	}
-
-
 
 }
 
@@ -238,10 +216,10 @@ public function delete(){
 		$this->session->set_flashdata('success', 'lugar eliminado!');
 
 		$prod = $this->lugar->get_record($this->input->post('id'));
-			$path = 'images-lugares/'.$prod->filename;
-			if(is_link($path)){
-				unlink($path);
-			}
+		$path = 'images-lugares/'.$prod->filename;
+		if(is_link($path)){
+			unlink($path);
+		}
 
 		$id_item = $this->uri->segment(4);
 		
@@ -253,7 +231,7 @@ public function delete(){
 	}
 }
 
-	public function imagenes(){
+public function imagenes(){
 	$this->load->helper('form');
 	$data['content'] = 'control/lugares/imagenes';
 	$data['title'] = 'Imagenes ';
@@ -265,39 +243,40 @@ public function delete(){
 
 	public function add_imagen(){
 
-	//adjunto
-	if($_FILES['adjunto']['size'] > 0){
+		$file =[];
+			//adjunto
+		if($_FILES['adjunto']['size'] > 0 && $_FILES['adjunto']['name'] != ""){
 
-	$file  = $this->upload_file();
+			$file  = $this->upload_file();
 
-	if ( $file['status'] != 0 ){
-		//guardo
-		$nueva_imagen = array(  
-			'lugar_id' => $this->input->post('id'),
-			'filename' => $file['filename'],
-		);
-		#save
-		$this->session->set_flashdata('success', 'Imagen cargada!');
-		$this->imagenes_lugar->add_record($nueva_imagen);	
+			if ( $file['status'] != 0 ){
+			//guardo
+				$nueva_imagen = array(  
+					'lugar_id' => $this->input->post('id'),
+					'filename' => $file['filename'],
+					);
+			#save
+				$this->session->set_flashdata('success', 'Imagen cargada!');
+				$this->imagenes_lugar->add_record($nueva_imagen);	
+				redirect('control/lugares/imagenes/'.$this->input->post('id'));
+			}
+
+
+		}
+		$this->session->set_flashdata('error', $file['msg']);
 		redirect('control/lugares/imagenes/'.$this->input->post('id'));
 	}
 
+	public function delete_imagen(){
+		$id_imagen = $this->uri->segment(4); 
 
+		$imagen = $this->imagenes_lugar->get_record($id_imagen);
+		$path = 'images-lugares/'.$imagen->filename;
+		unlink($path);
+		
+		$this->imagenes_lugar->delete_record($id_imagen);	
+		#echo "Eliminada : ".$imagen->filename;
 	}
-	$this->session->set_flashdata('error', $file['msg']);
-	redirect('control/lugares/imagenes/'.$this->input->post('id'));
-}
-
-public function delete_imagen(){
-	$id_imagen = $this->uri->segment(4); 
-	 
-	$imagen = $this->imagenes_lugar->get_record($id_imagen);
-	$path = 'images-lugares/'.$imagen->filename;
-	unlink($path);
-	
-	$this->imagenes_lugar->delete_record($id_imagen);	
-	#echo "Eliminada : ".$imagen->filename;
-}
 
 
 
@@ -323,8 +302,8 @@ public function upload_file(){
 	if(!in_array($ext, $file_extensions_allowed)){
 		$exts = implode(', ',$file_extensions_allowed);
 		
-	$file['msg'] .="<p>".$_FILES['adjunto']['name']." <br />Puede subir archivos que tengan alguna de estas extenciones: ".$exts_humano."</p>";
-	$file['status'] = 0 ;
+		$file['msg'] .="<p>".$_FILES['adjunto']['name']." <br />Puede subir archivos que tengan alguna de estas extenciones: ".$exts_humano."</p>";
+		$file['status'] = 0 ;
 	}else{
 		include(APPPATH.'libraries/class.upload.php');
 		$yukle = new upload;
@@ -339,33 +318,31 @@ public function upload_file(){
 		#$thumbname='tn_'.$imagname;
 		$yukle->set_file_name($imagname);
 		
-	
+
 		$yukle->start_copy();
 		
 		
 
 		if($yukle->is_ok()){
 
-                if(count($this->data['thumbnail_sizes'])){
-                    foreach ($this->data['thumbnail_sizes'] as $thumb_size) {
+			if(count($this->data['thumbnail_sizes'])){
+				foreach ($this->data['thumbnail_sizes'] as $thumb_size) {
                         //create thumbnail
                         #$yukle->resize(1000,0);
                         #$$yukle->set_thumbnail_name('tn_'.$thumb_size.'_'.$imagname);
                         #$$result_thumb = $yukle->create_thumbnail();
                         #$$yukle->set_thumbnail_size($thumb_size, 0);
-                    }
-                }
+				}
+			}
 
                 //UPLOAD ok
-                $file['filename'] = $imagname;
-                $file['status'] = 1;
-            }
-            else{
-                $file['status'] = 0 ;
-                $file['msg'] = 'Error al subir archivo';
-            }
-
-
+			$file['filename'] = $imagname;
+			$file['status'] = 1;
+		}
+		else{
+			$file['status'] = 0 ;
+			$file['msg'] = 'Error al subir archivo';
+		}
 		
 		//clean
 		$yukle->set_tmp_name('');
@@ -373,8 +350,8 @@ public function upload_file(){
 		$yukle->set_file_type('');
 		$imagname='';
 	}//fin if(extencion)	
-		
-		
+
+
 	return $file;
 }
 

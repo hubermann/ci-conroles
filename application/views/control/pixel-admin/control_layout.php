@@ -8,7 +8,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
-	<title>Pixel Admin - Responsive Admin Dashboard Template built with Twitter Bootstrap</title>
+	<title>10en8 - Admin Dashboard </title>
 	<!-- Bootstrap Core CSS -->
 	<?php #echo base_url('public_folder/css/normalize.min.css'); ?>
 	<link href="<?php echo base_url('public_folder/pixeladmin-lite/html/bootstrap/dist/css/bootstrap.min.css'); ?>" rel="stylesheet">
@@ -23,14 +23,14 @@
 	<!-- Custom CSS -->
 	<link href="<?php echo base_url('public_folder/pixeladmin-lite/html/css/style.css'); ?>" rel="stylesheet">
 	<!-- color CSS -->
-	
+
 	<link href="<?php echo base_url('public_folder/pixeladmin-lite/html/css/colors/blue-dark.css'); ?>" id="theme" rel="stylesheet">
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+	<![endif]-->
 </head>
 
 <body>
@@ -52,9 +52,23 @@
 					</li>
 				</ul>
 				<ul class="nav navbar-top-links navbar-right pull-right">
-					<li>
-						<a class="profile-pic" href="#"> <img src="<?php echo base_url('public_folder/pixeladmin-lite/plugins/images/users/varun.jpg'); ?>" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b> </a>
-					</li>
+
+					<?php 
+					if( $this->session->userdata('logged_in') )
+					{
+						$usuario = $this->session->userdata('logged_in');
+
+						echo '
+						<li>
+							<a class="profile-pic" href="#"> 
+								<!-- <img src="pixeladmin-lite/plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"> -->
+								'.$usuario['email'].'
+							</a>
+						</li>';
+					}
+
+					?>
+					
 					<li>
 						<a href="<?php echo base_url('control/logout'); ?>"> Cerrar sesion </a>
 					</li>
@@ -73,19 +87,22 @@
 						<a href="index.html" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a>
 					</li>
 					<li>
-						<a href="<?= base_url('control/usuarios'); ?>" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Usuarios</span></a>
+						<a href="<?=base_url('control/usuarios');?>" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Usuarios</span></a>
 					</li>
 					<li>
-						<a href="<?= base_url('control/categoria_eventos'); ?>" class="waves-effect"><i class="fa fa-bookmark-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Categorias Eventos</span></a>
+						<a href="<?=base_url('control/categoria_eventos');?>" class="waves-effect"><i class="fa fa-bookmark-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Categorias Eventos</span></a>
 					</li>
 					<li>
-						<a href="<?= base_url('control/notas'); ?>" class="waves-effect"><i class="fa fa-font fa-fw" aria-hidden="true"></i><span class="hide-menu">Notas</span></a>
+						<a href="<?=base_url('control/notas');?>" class="waves-effect"><i class="fa fa-font fa-fw" aria-hidden="true"></i><span class="hide-menu">Notas</span></a>
 					</li>
 					<li>
-						<a href="<?= base_url('control/beneficios'); ?>" class="waves-effect"><i class="fa fa-shopping-bag fa-fw" aria-hidden="true"></i><span class="hide-menu">Beneficios</span></a>
+						<a href="<?=base_url('control/categoria_notas');?>" class="waves-effect"><i class="fa fa-bookmark-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Categorias Notas</span></a>
 					</li>
 					<li>
-						<a href="<?= base_url('control/lugares'); ?>" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"></i><span class="hide-menu">Lugares</span></a>
+						<a href="<?=base_url('control/beneficios');?>" class="waves-effect"><i class="fa fa-shopping-bag fa-fw" aria-hidden="true"></i><span class="hide-menu">Beneficios</span></a>
+					</li>
+					<li>
+						<a href="<?=base_url('control/lugares');?>" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"></i><span class="hide-menu">Lugares</span></a>
 					</li>
 					<li>
 						<a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i><span class="hide-menu">Blank Page</span></a>
@@ -95,7 +112,7 @@
 					</li>
 				</ul>
 				<div class="center p-20">
-					
+
 				</div>
 			</div>
 		</div>
@@ -103,68 +120,26 @@
 		<!-- Page Content -->
 		<div id="page-wrapper">
 			<div class="container-fluid">
-				<div class="row bg-title">
-					<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-						<h4 class="page-title">Dashboard</h4> </div>
-					<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Upgrade to Pro</a>
-						<ol class="breadcrumb">
-							<li><a href="<?=base_url('control/'); ?>">Dashboard</a></li>
-						</ol>
-					</div>
-					<!-- /.col-lg-12 -->
-				</div>
-
-				<!--row -->
 				<div class="row">
-					<div class="col-sm-12">
-				    	<?php 
-
-					      if($this->session->flashdata('success')): 
-					      echo '<div class="alert alert-success" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>
-					      '.$this->session->flashdata('success').'</div>';
-					      endif;
-
-					      if($this->session->flashdata('warning')): 
-					      echo '<div class="alert alert-warning"  role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>
-					      '.$this->session->flashdata('warning').'</div>';
-					      endif;
-
-					      if($this->session->flashdata('error')): 
-					      echo '<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert">&times;</button>
-					      '.$this->session->flashdata('error').'</div>';
-					      endif;
-				    	?>
-				  	</div>
+					<br>
 				</div>
-				<!-- /.row -->
+				<? #$this->load->view($menu); ?>
 
 				<!-- row-->
 				<div class="row">
+
 					<div class="col-md-12">
-						<?php $this->load->view($content); ?>
+					<!-- <ol class="breadcrumb">
+							<li class="btn btn-master"><a href="<?=base_url('control/');?>">Dashboard</a></li>
+							<li class="btn btn-master"><a href="<?=base_url('control/');?>">Algunos</a></li>
+							<li class="btn btn-master"><a href="<?=base_url('control/');?>">Algunos</a></li>
+						</ol> -->
+						<?php $this->load->view($content);?>
 					</div>
 				</div>
 				<!-- /.row -->
 
-				<!--row -->
-				<div class="row">
-					<div class="col-md-12">
-						<div class="white-box">
-							<h3 class="box-title">Sales Difference</h3>
-							<ul class="list-inline text-right">
-								<li>
-									<h5><i class="fa fa-circle m-r-5" style="color: #dadada;"></i>Site A View</h5>
-								</li>
-								<li>
-									<h5><i class="fa fa-circle m-r-5" style="color: #aec9cb;"></i>Site B View</h5>
-								</li>
-							</ul>
-							<div id="morris-area-chart2" style="height: 370px;"></div>
-						</div>
-					</div>
-				</div>
 
-				
 			</div>
 			<!-- /.container-fluid -->
 			<footer class="footer text-center"> 2017 &copy; Pixel Admin brought to you by wrappixel.com </footer>
@@ -176,14 +151,14 @@
 
 	<script src="<?php echo base_url('public_folder/pixeladmin-lite/plugins/bower_components/jquery/dist/jquery.min.js'); ?>"></script>
 	<!-- Bootstrap Core JavaScript -->
-	
+
 	<script src="<?php echo base_url('public_folder/pixeladmin-lite/html/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
 	<!-- Menu Plugin JavaScript -->
 	<script src="<?php echo base_url('public_folder/pixeladmin-lite/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js'); ?>"></script>
 	<!--slimscroll JavaScript -->
 	<script src="<?php echo base_url('public_folder/pixeladmin-lite/html/js/jquery.slimscroll.js'); ?>"></script>
 	<!--Wave Effects -->
-	
+
 	<script src="<?php echo base_url('public_folder/pixeladmin-lite/html/js/waves.js'); ?>"></script>
 	<!--Counter js -->
 	<script src="<?php echo base_url('public_folder/pixeladmin-lite/plugins/bower_components/waypoints/lib/jquery.waypoints.js'); ?>"></script>
@@ -192,35 +167,74 @@
 	<script src="<?php echo base_url('public_folder/pixeladmin-lite/plugins/bower_components/raphael/raphael-min.js'); ?>"></script>
 	<script src="<?php echo base_url('public_folder/pixeladmin-lite/plugins/bower_components/morrisjs/morris.js'); ?>"></script>
 	<!-- Custom Theme JavaScript -->
-	
+
 	<script src="<?php echo base_url('public_folder/pixeladmin-lite/html/js/custom.min.js'); ?>"></script>
-	
+
 	<script src="<?php echo base_url('public_folder/pixeladmin-lite/html/js/dashboard1.js'); ?>"></script>
-	
+
 	<script src="<?php echo base_url('public_folder/pixeladmin-lite/plugins/bower_components/toast-master/js/jquery.toast.js'); ?>"></script>
+	
+	<?php if ($this->session->flashdata('success')): ?>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$.toast({
+					heading: 'Mensaje',
+					text: '<?= $this->session->flashdata('success') ?>',
+					position: 'top-right',
+					loaderBg: '#ff6849',
+					icon: 'info',
+					hideAfter: 3500,
+					stack: 5
+				})
+			});
+		</script>
+	<?php endif; ?>
+
+	<?php if ($this->session->flashdata('warning')): ?>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$.toast({
+					heading: 'Mensaje',
+					text: '<?= $this->session->flashdata('warning') ?>',
+					position: 'top-right',
+					loaderBg: 'yellow',
+					icon: 'warning',
+					hideAfter: 3500,
+					stack: 5
+				})
+			});
+		</script>
+	<?php endif; ?>
+
+	<?php if ($this->session->flashdata('error')): ?>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$.toast({
+					heading: 'Mensaje',
+					text: '<?= $this->session->flashdata('error') ?>',
+					position: 'top-right',
+					loaderBg: 'red',
+					icon: 'error',
+					hideAfter: 3500,
+					stack: 5
+				})
+			});
+		</script>
+	<?php endif; ?>
+
+
 	<script type="text/javascript">
-	$(document).ready(function() {
-		$.toast({
-			heading: 'Welcome to Pixel admin',
-			text: 'Use the predefined ones, or specify a custom position object.',
-			position: 'top-right',
-			loaderBg: '#ff6849',
-			icon: 'info',
-			hideAfter: 3500,
-			stack: 5
-		})
-	});
-
-	$('.delete').on("click", function (e) {
-	    e.preventDefault();
-	    var choice = confirm($(this).attr('data-confirm'));
-	    if (choice) {
-	        window.location.href = $(this).attr('href');
-	    }
-	});
 
 
-	</script>
+		$('.delete').on("click", function (e) {
+			e.preventDefault();
+			var choice = confirm($(this).attr('data-confirm'));
+			if (choice) {
+				window.location.href = $(this).attr('href');
+			}
+		});
+
+  </script>
 </body>
 
 </html>

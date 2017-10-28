@@ -42,7 +42,7 @@ class Categoria_eventos extends CI_Controller{
 		}
 		//End Pagination
 
-		$data['title'] = 'categoria_eventos';
+		$data['title'] = 'Categorias de eventos';
 		$data['menu'] = 'control/categoria_eventos/menu_categoria_evento';
 		$data['content'] = 'control/categoria_eventos/all';
 		$data['query'] = $this->categoria_evento->get_records($per_page,$start);
@@ -54,7 +54,7 @@ class Categoria_eventos extends CI_Controller{
 	//detail
 	public function detail(){
 
-	$data['title'] = 'Categoria eventos';
+	$data['title'] = 'Categoria de eventos';
 	$data['content'] = 'control/categoria_eventos/detail';
 	$data['menu'] = 'control/categoria_eventos/menu_categoria_evento';
 	$data['query'] = $this->categoria_evento->get_record($this->uri->segment(4));
@@ -84,7 +84,7 @@ class Categoria_eventos extends CI_Controller{
 		if ($this->form_validation->run() === FALSE){
 
 			$this->load->helper('form');
-			$data['title'] = 'Nuevo categoria_eventos';
+			$data['title'] = 'Nueva categoria de eventos';
 			$data['content'] = 'control/categoria_eventos/new_categoria_evento';
 			$data['menu'] = 'control/categoria_eventos/menu_categoria_evento';
 			$this->load->view('control/pixel-admin/control_layout', $data);
@@ -114,7 +114,7 @@ class Categoria_eventos extends CI_Controller{
 	public function editar(){
 
 		$this->load->helper('form');
-		$data['title']= 'Editar categoria_evento';	
+		$data['title']= 'Editar categoria de eventos';	
 		$data['content'] = 'control/categoria_eventos/edit_categoria_evento';
 		$data['menu'] = 'control/categoria_eventos/menu_categoria_evento';
 		$data['query'] = $this->categoria_evento->get_record($this->uri->segment(4));
@@ -134,7 +134,7 @@ class Categoria_eventos extends CI_Controller{
 		if ($this->form_validation->run() === FALSE){
 			
 			$this->load->helper('form');
-			$data['title'] = 'Nuevo categoria_evento';
+			$data['title'] = 'Nueva categoria de eventos';
 			$data['content'] = 'control/categoria_eventos/edit_categoria_evento';
 			$data['menu'] = 'control/categoria_eventos/menu_categoria_evento';
 			$data['query'] = $this->categoria_evento->get_record($this->input->post('id'));
@@ -155,7 +155,7 @@ class Categoria_eventos extends CI_Controller{
 				'slug' => $slug,
 			);
 			#save
-			$this->session->set_flashdata('success', 'categoria_evento Actualizado!');
+			$this->session->set_flashdata('success', 'Categoria de eventos Actualizada!');
 			$this->categoria_evento->update_record($id, $editedcategoria_evento);
 			if($this->input->post('id')!=""){
 				redirect('control/categoria_eventos', 'refresh');
@@ -176,7 +176,7 @@ class Categoria_eventos extends CI_Controller{
 
 		$this->load->helper('form');
 		$data['content'] = 'control/categoria_eventos/comfirm_delete';
-		$data['title'] = 'Eliminar categoria_evento';
+		$data['title'] = 'Eliminar categoria de evento';
 		$data['menu'] = 'control/categoria_eventos/menu_categoria_evento';
 		$data['query'] = $data['query'] = $this->categoria_evento->get_record($this->uri->segment(4));
 		$this->load->view('control/pixel-admin/control_layout', $data);
@@ -187,7 +187,7 @@ class Categoria_eventos extends CI_Controller{
 public function destroy()
 {
 	if($this->uri->segment(4)){
-		$this->session->set_flashdata('success', 'Categoria de evento eliminado!');
+		$this->session->set_flashdata('success', 'Categoria de eventos eliminada!');
 
 		$prod = $this->categoria_evento->get_record($this->uri->segment(4));
 		$path = (isset($prod->filename)) ? $prod->filename : "";

@@ -42,8 +42,8 @@
 								$body .= '<td class="txt-oflo"> '.$row->fecha_hasta.' </td>';
 								$body .= '<td> 
 														<div class="btn-group pull-right">
-														<a class="btn btn-small" href="'.base_url('control/notas/editar/'.$row->id.'').'"><i class="fa fa-edit"></i></a><a class="btn btn-small" href="'.base_url('control/notas/imagenes/'.$row->id.'').'"><i class="fa fa-camera-retro"></i></a>
-														<a class="btn btn-small" href="'.base_url('control/notas/editar/'.$row->id.'').'"><i class="fa fa-edit"></i></a>		
+														<a class="btn btn-small" href="'.base_url('control/notas/editar/'.$row->id.'').'"><i class="fa fa-edit"></i></a>
+														<a class="btn btn-small" href="'.base_url('control/notas/imagenes/'.$row->id.'').'"><i class="fa fa-camera-retro"></i></a>
 														<a href="'.base_url('control/notas/destroy/'.$row->id.'').'" class="delete btn btn-small" data-confirm="Are you sure to delete this item?"><i class="fa fa-trash-o"></i></a>
 														<!--<a class="btn btn-small" href="'.base_url('control/notas/detail/'.$row->id.'').'"><i class="fa fa-chain"></i></a>-->
 														</div>

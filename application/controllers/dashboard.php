@@ -40,7 +40,7 @@ class Dashboard extends CI_Controller{
 			}
 
 		}
-	//No paso la validacion
+		//No paso la validacion
 		$data['content'] = 'control/login';
 		$this->load->view('control/modal_layout', $data);
 

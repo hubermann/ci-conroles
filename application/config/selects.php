@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config['roles_list'] = array( 
 	'1' => 'recruiter', 
 	'2' => 'user_simple', 
-);
+	);
 
 
 $config['niveles_estudio_list'] = array( 
@@ -15,7 +15,7 @@ $config['niveles_estudio_list'] = array(
 	'Universitarios' => 'Universitarios', 
 	'otros' => 'otros', 
 
-);
+	);
 
 
 
@@ -39,46 +39,49 @@ $config['duracion_list'] = array(
 	);
 
 $config['provincias_list'] = array(
-'1' =>'Ciudad Autonoma de Buenos Aires',
-'2' => 'Provincia de Buenos Aires',
-'3' => 'Catamarca',
-'4' => 'Chaco',
-'5' => 'Chubut',
-'6' => 'Córdoba',
-'7' => 'Corrientes',
-'8' => 'Entre Ríos',
-'9' => 'Formosa',
-'10' => 'Jujuy',
-'11' => 'La Pampa',
-'12' => 'La Rioja',
-'13' => 'Mendoza',
-'14' => 'Misiones',
-'15' => 'Neuquén',
-'16' => 'Río Negro',
-'17' => 'Salta',
-'18' => 'San Juan',
-'19' => 'San Luis',
-'20' => 'Santa Cruz',
-'21' => 'Santa Fe',
-'22' => 'Santiago del Estero',
-'23' => 'Tierra del Fuego',
-'24' => 'Tucumán',
-'25' => 'Otro'
-);
+	'1' =>'Ciudad Autonoma de Buenos Aires',
+	'2' => 'Provincia de Buenos Aires',
+	'3' => 'Catamarca',
+	'4' => 'Chaco',
+	'5' => 'Chubut',
+	'6' => 'Córdoba',
+	'7' => 'Corrientes',
+	'8' => 'Entre Ríos',
+	'9' => 'Formosa',
+	'10' => 'Jujuy',
+	'11' => 'La Pampa',
+	'12' => 'La Rioja',
+	'13' => 'Mendoza',
+	'14' => 'Misiones',
+	'15' => 'Neuquén',
+	'16' => 'Río Negro',
+	'17' => 'Salta',
+	'18' => 'San Juan',
+	'19' => 'San Luis',
+	'20' => 'Santa Cruz',
+	'21' => 'Santa Fe',
+	'22' => 'Santiago del Estero',
+	'23' => 'Tierra del Fuego',
+	'24' => 'Tucumán',
+	'25' => 'Otro'
+	);
 
 
 $config['paises_list'] = array(
-'1' =>'Argentina',
-'2' => 'Bolivia',
-'3' => 'Brazil',
-'4' => 'Chile',
-'5' => 'Colombia',
-'6' => 'Ecuador',
-'7' => 'Paraguay',
-'8' => 'Peru',
-'9' => 'Uruguay',
-'10' => 'Venezuela',
-'11' => 'Mexico',
-'12' => 'España',
-'13' => 'Otro'
-);
+	'1' =>'Argentina',
+	'2' => 'Bolivia',
+	'3' => 'Brazil',
+	'4' => 'Chile',
+	'5' => 'Colombia',
+	'6' => 'Ecuador',
+	'7' => 'Paraguay',
+	'8' => 'Peru',
+	'9' => 'Uruguay',
+	'10' => 'Venezuela',
+	'11' => 'Mexico',
+	'12' => 'España',
+	'13' => 'Otro'
+	);
+
+
+
