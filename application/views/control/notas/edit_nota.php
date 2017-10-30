@@ -36,17 +36,25 @@ echo form_hidden('id', $query->id);
 						$fecha_desde = $dia."-".$mes."-".$ano;
 					}
 					?>
-					<select name="dia_fecha_desde" class="form-control">
-						<?= getDias(); ?>
-					</select>
-					<select name="mes_fecha_desde" class="form-control">
-						<?= getMeses(); ?>
-					</select>
-					<select name="ano_fecha_desde" class="form-control">
-						<?= getAnos(); ?>
-					</select>
-
-
+					<table>
+						<tr>
+							<td>
+								<select name="dia_fecha_desde" class="form-control">
+									<?= getDias($dia); ?>
+								</select>
+							</td>
+							<td>
+								<select name="mes_fecha_desde" class="form-control">
+									<?= getMeses($mes); ?>
+								</select>
+							</td>
+							<td>
+								<select name="ano_fecha_desde" class="form-control">
+									<?= getAnos($ano); ?>
+								</select>
+							</td>
+						</tr>
+					</table>
 						<?php echo form_error('fecha_desde','<p class="error">', '</p>'); ?>
 					</div>
 				</div>
@@ -61,16 +69,25 @@ echo form_hidden('id', $query->id);
 						$fecha_hasta = $dia."-".$mes."-".$ano;
 					}
 					?>
-					<select name="dia_fecha_hasta" id="">
-						<?= getDias(); ?>
-					</select>
-					<select name="mes_fecha_hasta" id="">
-						<?= getMeses(); ?>
-					</select>
-					<select name="ano_fecha_hasta" id="">
-						<?= getAnos(); ?>
-					</select>
-						<input value="<?= $fecha_hasta; ?>" type="text" class="form-control" name="fecha_hasta" />
+					<table>
+						<tr>
+							<td>
+								<select name="dia_fecha_hasta" class="form-control">
+									<?= getDias($dia); ?>
+								</select>
+							</td>
+							<td>
+								<select name="mes_fecha_hasta" class="form-control">
+									<?= getMeses($mes); ?>
+								</select>
+							</td>
+							<td>
+								<select name="ano_fecha_hasta" class="form-control">
+									<?= getAnos($ano); ?>
+								</select>
+							</td>
+						</tr>
+					</table>
 						<?php echo form_error('fecha_hasta','<p class="error">', '</p>'); ?>
 					</div>
 				</div>

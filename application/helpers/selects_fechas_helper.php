@@ -2,8 +2,9 @@
 
 
 
-	 function getAnos()
+	 function getAnos($selected="")
 	{	
+		echo $selected;
 		$inicio = date("Y") - 90;
 		$fin = date("Y")  -17;
 		$anos = [];
@@ -12,12 +13,13 @@
 		}
 		$dev ="";
 		foreach ( $anos as $value) {
-			$dev .= '<option value="'.$value.'">'.$value.'</option>';	
+			(intval($selected)===$value) ? $sel = "selected" : $sel="";
+			$dev .= '<option value="'.$value.'" '.$sel.'>'.$value.'</option>';	
 		}
 		return $dev;
 	}
 
-function getMeses()
+function getMeses($selected="")
 	{	
 		$meses = [];
 		for ($i=1; $i <= 12; $i++) { 
@@ -25,12 +27,13 @@ function getMeses()
 		}
 		$dev ="";
 		foreach ( $meses as $value) {
-			$dev .= '<option value="'.$value.'">'.$value.'</option>';	
+			(intval($selected)===$value) ? $sel = "selected" : $sel="";
+			$dev .= '<option value="'.$value.'" '.$sel.'>'.$value.'</option>';	
 		}
 		return $dev;
 	}
 
-function getDias()
+function getDias($selected="")
 	{	
 		$dia = [];
 		for ($i=1; $i <= 31; $i++) { 
@@ -38,7 +41,8 @@ function getDias()
 		}
 		$dev ="";
 		foreach ( $dia as $value) {
-			$dev .= '<option value="'.$value.'">'.$value.'</option>';	
+			(intval($selected)===$value) ? $sel = "selected" : $sel="";
+			$dev .= '<option value="'.$value.'" '.$sel.'>'.$value.'</option>';	
 		}
 		return $dev;
 	}
