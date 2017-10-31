@@ -31,6 +31,60 @@ class Useradmins_m extends CI_Model{
 		return TRUE;
 		
 	}
+
+	function check_role_admin($id){
+		$this->db->where('id' ,$id);
+		$this->db->limit(1);
+		$c = $this->db->get('useradmin');
+
+		return $c->row('role_id');
+
+	}
+
+
+		//all
+	public function get_records($num,$start){
+		$this->db->select()->from('useradmin')->order_by('id','ASC')->limit($num,$start);
+		return $this->db->get()->result();
+
+	}
+
+	public function add_record($data)
+	{ 
+		$this->db->insert('useradmin', $data);
+	}
+
+	public function get_record($id){
+		$this->db->where('id' ,$id);
+		$this->db->limit(1);
+		$c = $this->db->get('useradmin');
+
+		return $c->row(); 
+	}
+
+
+	//total rows
+	public function count_rows(){ 
+		$this->db->select('id')->from('useradmin');
+		$query = $this->db->get();
+		return $query->num_rows();
+	}
+
+
+		//update
+		public function update_record($id, $data){
+
+			$this->db->where('id', $id);
+			$this->db->update('useradmin', $data);
+
+		}
+
+		//destroy
+		public function delete_record($id){
+
+			$this->db->where('id', $id);
+			$this->db->delete('useradmin');
+		}
 	
 	
 		//Cerrar session

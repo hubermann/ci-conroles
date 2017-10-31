@@ -6,7 +6,8 @@ class Usuarios extends CI_Controller{
 public function __construct(){
 
 	parent::__construct();
-	$this->load->model('usuario');$this->load->model('imagenes_usuario');
+	$this->load->model('usuario');
+	$this->load->model('imagenes_usuario');
 	$this->load->helper('url');
 	$this->load->library('session');
 

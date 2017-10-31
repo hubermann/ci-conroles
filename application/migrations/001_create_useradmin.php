@@ -22,6 +22,14 @@ class Migration_Create_Useradmin extends CI_Migration
                     "type"                =>        "VARCHAR",
                     "constraint"        =>        100,
                 ),
+                "salt"    =>        array(
+                    "type"                =>        "VARCHAR",
+                    "constraint"        =>        100,
+                ),
+                "role_id"    =>        array(
+                    "type"                =>        "INTEGER",
+                    "constraint"        =>        2,
+                ),
             )
         );
  
