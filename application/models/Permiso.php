@@ -10,12 +10,16 @@ class Permiso extends CI_Model{
 		$this->load->model('useradmins_m');
 		$this->load->model('modulo');
 	}
+
+
 	//all
-	public function get_records($num,$start){
-		$this->db->select()->from('permisos')
-		->group_by('id','ASC')
-		->limit($num,$start);
-		return $this->db->get();
+	public function get_records($role_id=1){
+    $this->db->select('modulos.*,permisos.*');
+		$this->db->from('modulos');
+		$this->db->join('permisos', 'modulos.id = permisos.modulo_id', 'left'); 
+		$this->db->where('permisos.role_id=',$role_id);
+		$query = $this->db->get();
+		return $query->result();
 
 	}
 

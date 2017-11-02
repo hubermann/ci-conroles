@@ -33,7 +33,9 @@
 								$body .= '<tr>';
 								$body .= '<td class="txt-oflo"> '.$row->nombre.' </td>';
 								$body .= '<td> 
-														<div class="btn-group pull-right">';
+														<div class="btn-group pull-right">
+														<a class="btn btn-small" href="'.base_url('control/permisos/'.$row->id.'').'"><i class="fa fa-chain"></i></a>';
+
 															($row->id == 1) ?: $body .= '<a href="'.base_url('control/roles/destroy/'.$row->id.'').'" class="delete btn btn-small" data-confirm="Are you sure to delete this item?"><i class="fa fa-trash-o"></i></a><a class="btn btn-small" href="'.base_url('control/roles/editar/'.$row->id.'').'"><i class="fa fa-edit"></i></a>';				
 								$body .=  '</div>
 													</td>';

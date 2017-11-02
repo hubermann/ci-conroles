@@ -41,23 +41,22 @@ class Modulo extends CI_Model{
 
 
 		//add new
-		public function add_record($data){ $this->db->insert('modulos', $data);
-				
-
-	}
+		public function add_record($data)
+		{ 
+			$this->db->insert('modulos', $data);
+		}
 
 
 		//update
-		public function update_record($id, $data){
-
+		public function update_record($id, $data)
+		{
 			$this->db->where('id', $id);
 			$this->db->update('modulos', $data);
-
 		}
 
 		//destroy
-		public function delete_record(){
-
+		public function delete_record()
+		{
 			$this->db->where('id', $this->uri->segment(4));
 			$this->db->delete('modulos');
 		}

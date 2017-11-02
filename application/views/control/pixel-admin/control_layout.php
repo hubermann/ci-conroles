@@ -112,7 +112,7 @@
 						<a href="<?=base_url('control/roles');?>" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"></i><span class="hide-menu">Roles</span></a>
 					</li>
 					<li>
-						<a href="<?=base_url('control/useradmins');?>" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"></i><span class="hide-menu">Admins</span></a>
+						<a href="<?=base_url('control/admins');?>" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"></i><span class="hide-menu">Admins</span></a>
 					</li>
 
 					<li>

@@ -11,7 +11,6 @@ class Lugar extends CI_Model{
 	public function get_records($num,$start){
 		$this->db->select()->from('lugares')->order_by('id','ASC')->limit($num,$start);
 		return $this->db->get()->result();
-
 	}
 
 	//detail
@@ -33,10 +32,10 @@ class Lugar extends CI_Model{
 
 
 		//add new
-		public function add_record($data){ $this->db->insert('lugares', $data);
-				
-
-	}
+		public function add_record($data)
+		{ 
+			$this->db->insert('lugares', $data);
+	  }
 
 
 		//update

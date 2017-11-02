@@ -33,10 +33,10 @@ class Usuario extends CI_Model{
 
 
 		//add new
-		public function add_record($data){ $this->db->insert('usuarios', $data);
-				
-
-	}
+		public function add_record($data)
+		{ 
+			$this->db->insert('usuarios', $data);
+		}
 
 
 		//update

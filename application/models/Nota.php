@@ -8,10 +8,10 @@ class Nota extends CI_Model{
 
 	}
 	//all
-	public function get_records($num,$start){
+	public function get_records($num,$start)
+	{
 		$this->db->select()->from('notas')->order_by('id','ASC')->limit($num,$start);
 		return $this->db->get()->result();
-
 	}
 
 	//detail
