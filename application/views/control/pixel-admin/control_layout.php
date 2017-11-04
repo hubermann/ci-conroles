@@ -42,7 +42,7 @@
 		<!-- Navigation -->
 		<nav class="navbar navbar-default navbar-static-top m-b-0">
 			<div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars"></i></a>
-				<div class="top-left-part"><a class="logo" href="index.html"><b><img src="<?php echo base_url('public_folder/pixeladmin-lite/plugins/images/pixeladmin-logo.png'); ?>" alt="home" />
+				<div class="top-left-part"><a class="logo" href="<?= base_url('/control'); ?>"><b><img src="<?php echo base_url('public_folder/pixeladmin-lite/plugins/images/pixeladmin-logo.png'); ?>" alt="home" />
 				</b><span class="hidden-xs"><img src="<?php echo base_url('public_folder/pixeladmin-lite/plugins/images/pixeladmin-text.png'); ?>" alt="home" /></span></a></div>
 				<ul class="nav navbar-top-links navbar-left m-l-20 hidden-xs">
 					<li>
@@ -84,7 +84,7 @@
 
 				<ul class="nav" id="side-menu">
 					<li style="padding: 10px 0 0;">
-						<a href="index.html" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a>
+						<a href="<?= base_url('/control'); ?>" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Dashboard</span></a>
 					</li>
 					<li>
 						<a href="<?=base_url('control/usuarios');?>" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Usuarios</span></a>

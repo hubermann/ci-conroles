@@ -9,6 +9,29 @@ echo form_hidden('nota[id]');
 		<div class="white-box">
 			<legend><?= $title ?></legend>
 				<fieldset>
+
+				<!-- Text input-->
+					<div class="control-group">
+					<label class="control-label">Categoria</label>
+						<div class="controls">
+							
+							<select name="categoria_id" id="categoria_id">
+							<?php  
+							
+							$categorias = $this->categoria_nota->get_records_menu();
+							if($categorias){
+
+								foreach ($categorias as $value) {
+									echo '<option value="'.$value->id.'">'.$value->nombre.'</option>';
+								}
+							}
+							
+							?>
+							</select>
+
+							<?php echo form_error('categoria_id','<p class="error">', '</p>'); ?>
+						</div>
+					</div>
 					<!-- Text input-->
 					<div class="control-group">
 						<label class="control-label">Titulo</label>
@@ -26,21 +49,57 @@ echo form_hidden('nota[id]');
 						</div>
 					</div>
 					<!-- Text input-->
-					<div class="control-group">
-						<label class="control-label">Fecha_desde</label>
-						<div class="controls">
-							<input value="<?php echo set_value('fecha_desde'); ?>" class="form-control" type="text" name="fecha_desde" />
-							<?php echo form_error('fecha_desde','<p class="error">', '</p>'); ?>
-						</div>
+				<div class="control-group">
+					<label class="control-label">Fecha desde</label>
+					<div class="controls">
+					<table>
+						<tr>
+							<td>
+								<select name="dia_fecha_desde" class="form-control">
+									<?= getDias(); ?>
+								</select>
+							</td>
+							<td>
+								<select name="mes_fecha_desde" class="form-control">
+									<?= getMeses(); ?>
+								</select>
+							</td>
+							<td>
+								<select name="ano_fecha_desde" class="form-control">
+									<?= getAnos(); ?>
+								</select>
+							</td>
+						</tr>
+					</table>
+						<?php echo form_error('fecha_desde','<p class="error">', '</p>'); ?>
 					</div>
-					<!-- Text input-->
-					<div class="control-group">
-						<label class="control-label">Fecha_hasta</label>
-						<div class="controls">
-							<input value="<?php echo set_value('fecha_hasta'); ?>" class="form-control" type="text" name="fecha_hasta" />
-							<?php echo form_error('fecha_hasta','<p class="error">', '</p>'); ?>
-						</div>
+				</div>
+				<!-- Text input-->
+				<div class="control-group">
+					<label class="control-label">Fecha hasta</label>
+					<div class="controls">
+					<table>
+						<tr>
+							<td>
+								<select name="dia_fecha_hasta" class="form-control">
+									<?= getDias(); ?>
+								</select>
+							</td>
+							<td>
+								<select name="mes_fecha_hasta" class="form-control">
+									<?= getMeses(); ?>
+								</select>
+							</td>
+							<td>
+								<select name="ano_fecha_hasta" class="form-control">
+									<?= getAnos(); ?>
+								</select>
+							</td>
+						</tr>
+					</table>
+						<?php echo form_error('fecha_hasta','<p class="error">', '</p>'); ?>
 					</div>
+				</div>
 
 					<!-- Text input-->
 					<div class="control-group">

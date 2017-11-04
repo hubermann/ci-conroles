@@ -71,17 +71,30 @@ echo form_hidden('id', $query->id);
 			<div class="control-group">
 			<label class="control-label">Visible</label>
 			<div class="controls">
-			<input value="<?php echo $query->visible; ?>" type="text" class="form-control" name="visible" />
-			<?php echo form_error('visible','<p class="error">', '</p>'); ?>
+			<select name="visible" id="visible">
+				<option value="1" <?= ($query->visible != 1) ?: "selected";  ?>>Si</option>
+				<option value="0" <?= ($query->visible != 0) ?: "selected"; ?>>No</option>
+			</select>
 			</div>
 			</div>
-			<!-- Text input-->
+				<!-- Text input-->
 			<div class="control-group">
 			<label class="control-label">Beneficio</label>
-			<div class="controls">
-			<input value="<?php echo $query->beneficio; ?>" type="text" class="form-control" name="beneficio" />
-			<?php echo form_error('beneficio','<p class="error">', '</p>'); ?>
-			</div>
+				<div class="controls">
+					<select class="form-control"	name="beneficio_id" id="beneficio_id">
+					<?php 
+					$beneficios = $this->beneficio->get_records_menu();
+					if($beneficios){
+						foreach ($beneficios->result() as $value) {
+							$selected = ($query->beneficio_id == $value->id) ? "selected" : "";
+							echo '<option value="'.$value->id.'" '.$selected.'>'.$value->nombre.'</option>';
+						}
+					}
+					?>
+					</select>
+
+					<?php echo form_error('beneficios_id','<p class="error">', '</p>'); ?>
+				</div>
 			</div>
 
 <div class="control-group">

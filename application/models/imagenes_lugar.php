@@ -19,7 +19,7 @@ class Imagenes_lugar extends CI_Model{
 	function view_all($id){
 		
 		$this->db->where('lugar_id', $id);
-		return  $this->db->get('imagenes_lugares');
+		return  $this->db->get('imagenes_lugares')->result();
 		
 		
 		}

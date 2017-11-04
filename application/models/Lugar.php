@@ -9,7 +9,7 @@ class Lugar extends CI_Model{
 	}
 	//all
 	public function get_records($num,$start){
-		$this->db->select()->from('lugares')->order_by('id','ASC')->limit($num,$start);
+		$this->db->select()->from('lugares')->order_by('id','desc')->limit($num,$start);
 		return $this->db->get()->result();
 	}
 

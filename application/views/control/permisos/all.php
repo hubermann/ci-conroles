@@ -2,7 +2,7 @@
 <div class="row">
 	<div class="col-sm-12">
 		<div class="white-box">
-			<h3 class="box-title"><?php echo $title; ?>
+			<h3 class="box-title">Permisos
 				<div class="col-md-2 col-sm-4 col-xs-12 pull-right text-right">
 					<!-- <select class="form-control pull-right row b-none">
 						<option>March 2016</option>
@@ -11,7 +11,7 @@
 						<option>June 2016</option>
 						<option>July 2016</option>
 					</select> -->
-					<a class="btn btn-primary btn-block btn-rounded waves-effect waves-light" href="<?php echo base_url('control/lugares/form_new'); ?>">Agregar +</a>
+					
 				</div>
 			</h3>
 			<div class="table-responsive">

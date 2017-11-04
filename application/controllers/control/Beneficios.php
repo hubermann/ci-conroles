@@ -114,14 +114,14 @@ $this->form_validation->set_rules('link', 'Link', 'required');
 			$file['filename'] = '';
 		}
 		$newbeneficio = array( 'nombre' => $this->input->post('nombre'), 
- 'telefono' => $this->input->post('telefono'), 
- 'direccion' => $this->input->post('direccion'), 
- 'link' => $this->input->post('link'), 
-'filename' => $file['filename'], 
-);
+			'telefono' => $this->input->post('telefono'), 
+			'direccion' => $this->input->post('direccion'), 
+			'link' => $this->input->post('link'), 
+			'filename' => $file['filename'], 
+			);
 		#save
 		$this->beneficio->add_record($newbeneficio);
-		$this->session->set_flashdata('success', 'beneficio creado. <a href="beneficios/detail/'.$this->db->insert_id().'">Ver</a>');
+		$this->session->set_flashdata('success', 'beneficio creado.');
 		redirect('control/beneficios', 'refresh');
 
 	}
@@ -144,14 +144,10 @@ public function editar(){
 public function update(){
 	$this->load->helper('form');
 	$this->load->library('form_validation'); 
-$this->form_validation->set_rules('nombre', 'Nombre', 'required');
-
-$this->form_validation->set_rules('telefono', 'Telefono', 'required');
-
-$this->form_validation->set_rules('direccion', 'Direccion', 'required');
-
-$this->form_validation->set_rules('link', 'Link', 'required');
-
+	$this->form_validation->set_rules('nombre', 'Nombre', 'required');
+	$this->form_validation->set_rules('telefono', 'Telefono', 'required');
+	$this->form_validation->set_rules('direccion', 'Direccion', 'required');
+	$this->form_validation->set_rules('link', 'Link', 'required');
 
 	$this->form_validation->set_message('required','El campo %s es requerido.');
 
@@ -192,14 +188,11 @@ $this->form_validation->set_rules('link', 'Link', 'required');
 		}
 
 		$editedbeneficio = array(  
-'nombre' => $this->input->post('nombre'),
-
-'telefono' => $this->input->post('telefono'),
-
-'direccion' => $this->input->post('direccion'),
-
-'link' => $this->input->post('link'),
-);
+		'nombre' => $this->input->post('nombre'),
+		'telefono' => $this->input->post('telefono'),
+		'direccion' => $this->input->post('direccion'),
+		'link' => $this->input->post('link'),
+		);
 		#save
 		$this->session->set_flashdata('success', 'beneficio Actualizado!');
 		$this->beneficio->update_record($id, $editedbeneficio);
@@ -218,16 +211,21 @@ $this->form_validation->set_rules('link', 'Link', 'required');
 }
 
 
-//delete comfirm		
-public function delete_comfirm(){
-	$this->load->helper('form');
-	$data['content'] = 'control/beneficios/comfirm_delete';
-	$data['title'] = 'Eliminar beneficio';
-	$data['menu'] = 'control/beneficios/menu_beneficio';
-	$data['query'] = $data['query'] = $this->beneficio->get_record($this->uri->segment(4));
-	$this->load->view('control/pixel-admin/control_layout', $data);
+public function destroy()
+{
+	if($this->uri->segment(4)){
+		$this->session->set_flashdata('success', 'Beneficio eliminado!');
 
+		$prod = $this->beneficio->get_record($this->uri->segment(4));
+		$path = (isset($prod->filename)) ? $prod->filename : "";
+		if($path!=""){ unlink('images-beneficios/'.$path); }
 
+		$this->beneficio->delete_record($this->uri->segment(4));
+	}else{
+		$this->session->set_flashdata('warning', 'Error al eliminar!');
+	}
+	
+	redirect('control/beneficios', 'refresh');
 }
 
 //delete

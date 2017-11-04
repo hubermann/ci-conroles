@@ -2,6 +2,7 @@
 $attributes = array('class' => 'form-horizontal', 'id' => 'edit_nota');
 echo form_open_multipart(base_url('control/notas/update/'),$attributes);
 echo form_hidden('id', $query->id); 
+
 ?>
 <!--row -->
 <div class="row">
@@ -9,6 +10,30 @@ echo form_hidden('id', $query->id);
 		<div class="white-box">
 			<legend><?= $title ?></legend>
 			<fieldset>
+				<!-- Text input-->
+					<div class="control-group">
+					<label class="control-label">Categoria</label>
+						<div class="controls">
+							
+							<select name="categoria_id" id="categoria_id">
+							<?php  
+							
+							$categorias = $this->categoria_nota->get_records_menu();
+							if($categorias){
+
+								foreach ($categorias as $value) {
+									
+									if($query->categoria_id==$value){$selected = "selected";}else{ $selected = "";}
+									echo '<option value="'.$value->id.'" '.$selected.'>'.$value->nombre.'</option>';
+								}
+							}
+							
+							?>
+							</select>
+
+							<?php echo form_error('categoria_id','<p class="error">', '</p>'); ?>
+						</div>
+					</div>
 				<!-- Text input-->
 				<div class="control-group">
 					<label class="control-label">Titulo</label>

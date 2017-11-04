@@ -35,12 +35,14 @@
 
 					foreach ($query as $row):
 
-						$body .= '<tr>';
+					$imagen = (strlen($row->filename) > 0) ? '<img src="'.base_url('images-beneficios/'.$row->filename).' " width="200" />' : "[no-image]";
+					
+					$body .= '<tr>';
 					$body .= '<td class="txt-oflo">'.$row->nombre.' </td>';
 					$body .= '<td class="txt-oflo"> '.$row->telefono.' </td>';
 					$body .= '<td class="txt-oflo"> '.$row->direccion.' </td>';
 					$body .= '<td class="txt-oflo"> '.$row->link.' </td>';
-					$body .= '<td class="txt-oflo"> <img src="'.base_url('images-beneficios/'.$row->filename).' " width="200" /></td>';
+					$body .= '<td class="txt-oflo"> '.$imagen.'</td>';
 					$body .= '<td> 
 					<div class="btn-group pull-right">
 						<a class="btn btn-small" href="'.base_url('control/beneficios/editar/'.$row->id.'').'"><i class="fa fa-edit"></i></a>		

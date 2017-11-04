@@ -10,7 +10,10 @@ class Nota extends CI_Model{
 	//all
 	public function get_records($num,$start)
 	{
-		$this->db->select()->from('notas')->order_by('id','ASC')->limit($num,$start);
+		$this->db->select("notas.*,categoria_notas.id as categoria_id,categoria_notas.nombre as categoria_nombre");
+	  $this->db->from("notas");
+	  $this->db->join("categoria_notas", "categoria_notas.id = notas.categoria_id",'left');
+		$this->db->order_by('notas.id','ASC')->limit($num,$start);
 		return $this->db->get()->result();
 	}
 

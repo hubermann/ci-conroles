@@ -28,7 +28,6 @@
 													<th> Teléfono </th>
 													<th> Link</th>
 													<th> Visible </th>
-													<th> Beneficio </th>
 													<th class="text-right">Opciones</th>
 												</tr>
 											</thead>';
@@ -36,20 +35,19 @@
 							$body = "<tbody>";
 							
 							foreach ($query as $row):
-
+								$visible = ($row->visible == 1) ? "Si": "No" ;
 								$body .= '<tr>';
 								$body .= '<td class="txt-oflo"> '.$row->nombre.' </td>';
 								$body .= '<td class="txt-oflo"> '.$row->direccion.' </td>';
 								$body .= '<td class="txt-oflo"> '.$row->telefono.' </td>';
 								$body .= '<td class="txt-oflo"> '.$row->link.' </td>';
-								$body .= '<td class="txt-oflo"> '.$row->visible.' </td>';
-								$body .= '<td class="txt-oflo"> '.$row->beneficio.' </td>';
+								$body .= '<td class="txt-oflo"> '. $visible.' </td>';
 								$body .= '<td> 
 														<div class="btn-group pull-right">
 														<a class="btn btn-small" href="'.base_url('control/lugares/detail/'.$row->id.'').'"><i class="fa fa-chain"></i></a>
 														<a class="btn btn-small" href="'.base_url('control/lugares/editar/'.$row->id.'').'"><i class="fa fa-edit"></i></a>
 														<a class="btn btn-small" href="'.base_url('control/lugares/imagenes/'.$row->id.'').'"><i class="fa fa-camera-retro"></i></a>	
-														<a href="'.base_url('control/lugares/destroy/'.$row->id.'').'" class="delete btn btn-small" data-confirm="Are you sure to delete this item?"><i class="fa fa-trash-o"></i></a>					
+														<a href="'.base_url('control/lugares/destroy/'.$row->id.'').'" class="delete btn btn-small" data-confirm="Are you sure to delete this item?"><i class="fa fa-trash-o"></i></a>				
 														</div>
 													</td>';
 								$body .= '</tr>';

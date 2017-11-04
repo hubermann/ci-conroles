@@ -14,6 +14,12 @@ class Categoria_nota extends CI_Model{
 
 	}
 
+	public function get_records_menu(){
+		$this->db->select()->from('categoria_notas')->order_by('id','ASC');
+		return $this->db->get()->result();
+
+	}
+
 	//detail
 	public function get_record($id){
 		$this->db->where('id' ,$id);
@@ -33,10 +39,10 @@ class Categoria_nota extends CI_Model{
 
 
 		//add new
-		public function add_record($data){ $this->db->insert('categoria_notas', $data);
-				
-
-	}
+		public function add_record($data)
+		{ 
+			$this->db->insert('categoria_notas', $data);
+		}
 
 
 		//update

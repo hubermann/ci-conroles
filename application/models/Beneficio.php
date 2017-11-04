@@ -9,8 +9,15 @@ class Beneficio extends CI_Model{
 	}
 	//all
 	public function get_records($num,$start){
-		$this->db->select()->from('beneficios')->order_by('id','ASC')->limit($num,$start);
+		$this->db->select()->from('beneficios')->order_by('id','DESC')->limit($num,$start);
 		return $this->db->get()->result();
+
+	}
+
+		//all
+	public function get_records_menu(){
+		$this->db->select()->from('beneficios')->order_by('id','ASC');
+		return $this->db->get();
 
 	}
 

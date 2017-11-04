@@ -6,7 +6,9 @@ class Notas extends CI_Controller{
 	public function __construct(){
 
 		parent::__construct();
-		$this->load->model('nota');$this->load->model('imagenes_nota');
+		$this->load->model('nota');
+		$this->load->model('imagenes_nota');
+		$this->load->model('categoria_nota');
 		$this->load->helper('url','text','selects_fechas');
 		$this->load->helper('text');
 		$this->load->library('session');
@@ -82,8 +84,6 @@ public function create(){
 	$this->load->library('form_validation');
 	$this->form_validation->set_rules('titulo', 'Titulo', 'required');
 	$this->form_validation->set_rules('descripcion', 'Descripcion', 'required');
-	$this->form_validation->set_rules('fecha_desde', 'Fecha_desde', 'required');
-	$this->form_validation->set_rules('fecha_hasta', 'Fecha_hasta', 'required');
 	
 	if ($this->form_validation->run() === FALSE){
 
@@ -100,13 +100,18 @@ public function create(){
 			$slug = url_title($this->input->post('titulo'), 'dash', TRUE);
 		}
 
-		list($dia,$mes,$ano) = explode("-", $this->input->post('fecha_desde'));
-		$fecha_desde = $ano."-".$mes."-".$dia;
+		// list($dia,$mes,$ano) = explode("-", $this->input->post('fecha_desde'));
+		// $fecha_desde = $ano."-".$mes."-".$dia;
 
-		list($dia,$mes,$ano) = explode("-", $this->input->post('fecha_hasta'));
-		$fecha_hasta = $ano."-".$mes."-".$dia;
-		
-		$newnota = array( 'titulo' => $this->input->post('titulo'), 
+		// list($dia,$mes,$ano) = explode("-", $this->input->post('fecha_hasta'));
+		// $fecha_hasta = $ano."-".$mes."-".$dia;
+
+		$fecha_desde = $this->input->post('ano_fecha_desde').'-'.$this->input->post('mes_fecha_desde').'-'.$this->input->post('dia_fecha_desde'); 
+		$fecha_hasta = $this->input->post('ano_fecha_hasta').'-'.$this->input->post('mes_fecha_hasta').'-'.$this->input->post('dia_fecha_hasta'); 
+
+		$newnota = array( 
+			'categoria_id' => $this->input->post('categoria_id'),
+			'titulo' => $this->input->post('titulo'), 
 			'descripcion' => $this->input->post('descripcion'), 
 			'fecha_desde' => $fecha_desde, 
 			'fecha_hasta' => $fecha_hasta, 
@@ -117,8 +122,6 @@ public function create(){
 		redirect('control/notas', 'refresh');
 
 	}
-
-
 
 }
 
@@ -137,14 +140,7 @@ public function update(){
 	$this->load->helper('form');
 	$this->load->library('form_validation'); 
 	$this->form_validation->set_rules('titulo', 'Titulo', 'required');
-
 	$this->form_validation->set_rules('descripcion', 'Descripcion', 'required');
-
-	$this->form_validation->set_rules('fecha_desde', 'Fecha_desde', 'required');
-
-	$this->form_validation->set_rules('fecha_hasta', 'Fecha_hasta', 'required');
-
-
 	$this->form_validation->set_message('required','El campo %s es requerido.');
 
 	if ($this->form_validation->run() === FALSE){
@@ -163,21 +159,14 @@ public function update(){
 			$slug = url_title($this->input->post('titulo'), 'dash', TRUE);
 		}
 
-
-		list($dia,$mes,$ano) = explode("-", $this->input->post('fecha_desde'));
-		$fecha_desde = $ano."-".$mes."-".$dia;
-
-		list($dia,$mes,$ano) = explode("-", $this->input->post('fecha_hasta'));
-		$fecha_hasta = $ano."-".$mes."-".$dia;
-
+		$fecha_desde = $this->input->post('ano_fecha_desde').'-'.$this->input->post('mes_fecha_desde').'-'.$this->input->post('dia_fecha_desde'); 
+		$fecha_hasta = $this->input->post('ano_fecha_hasta').'-'.$this->input->post('mes_fecha_hasta').'-'.$this->input->post('dia_fecha_hasta'); 
 
 		$editednota = array(  
+			'categoria_id' => $this->input->post('categoria_id'),
 			'titulo' => $this->input->post('titulo'),
-
 			'descripcion' => $this->input->post('descripcion'),
-
 			'fecha_desde' => $fecha_desde,
-
 			'fecha_hasta' => $fecha_hasta,
 			);
 		#save
@@ -189,74 +178,38 @@ public function update(){
 			redirect('control/notas', 'refresh');
 		}
 
-
-
 	}
 
-
-
 }
 
+	//destroy
+	public function destroy()
+	{
+		if($this->uri->segment(4)){
+			$this->session->set_flashdata('success', 'Nota eliminada!');
 
-//delete comfirm		
-public function delete_comfirm(){
-	$this->load->helper('form');
-	$data['content'] = 'control/notas/comfirm_delete';
-	$data['title'] = 'Eliminar nota';
-	$data['menu'] = 'control/notas/menu_nota';
-	$data['query'] = $data['query'] = $this->nota->get_record($this->uri->segment(4));
-	$this->load->view('control/pixel-admin/control_layout', $data);
+			$prod = $this->nota->get_record($this->uri->segment(4));
+			$path = (isset($prod->filename)) ? $prod->filename : "";
+			if($path!=""){
+				unlink('images-notas/'.$path);
+			}
 
-
-}
-
-//delete
-public function delete(){
-
-	$this->load->helper('form');
-	$this->load->library('form_validation');
-
-	$this->form_validation->set_rules('comfirm', 'comfirm', 'required');
-	$this->form_validation->set_message('required','Por favor, confirme para eliminar.');
-
-
-	if ($this->form_validation->run() === FALSE){
-		#validation failed
-		$this->load->helper('form');
-
-		$data['content'] = 'control/notas/comfirm_delete';
-		$data['title'] = 'Eliminar nota';
-		$data['menu'] = 'control/notas/menu_nota';
-		$data['query'] = $this->nota->get_record($this->input->post('id'));
-		$this->load->view('control/pixel-admin/control_layout', $data);
-	}else{
-		#validation passed
-		$this->session->set_flashdata('success', 'nota eliminado!');
-
-		$prod = $this->nota->get_record($this->input->post('id'));
-		$path = 'images-notas/'.$prod->filename;
-		if(is_link($path)){
-			unlink($path);
+			$this->nota->delete_record($this->uri->segment(4));
+		}else{
+			$this->session->set_flashdata('warning', 'Error al eliminar!');
 		}
-
-		$id_item = $this->uri->segment(4);
 		
-
-		$this->nota->delete_record($id_item);
 		redirect('control/notas', 'refresh');
-		
-
 	}
-}
 
-public function imagenes(){
-	$this->load->helper('form');
-	$data['content'] = 'control/notas/imagenes';
-	$data['title'] = 'Imagenes ';
-	$data['menu'] = 'control/notas/menu_nota';
-	$data['query_imagenes'] = $this->imagenes_nota->imagenes_nota($this->uri->segment(4));
-	$this->load->view('control/pixel-admin/control_layout', $data);
-}
+	public function imagenes(){
+		$this->load->helper('form');
+		$data['content'] = 'control/notas/imagenes';
+		$data['title'] = 'Imagenes ';
+		$data['menu'] = 'control/notas/menu_nota';
+		$data['query_imagenes'] = $this->imagenes_nota->imagenes_nota($this->uri->segment(4));
+		$this->load->view('control/pixel-admin/control_layout', $data);
+	}
 
 
 public function add_imagen(){

@@ -10,30 +10,7 @@ echo form_hidden('lugar[id]');
 <div class="well well-large well-transparent">
 
 
-<!-- Text input-->
-<!--
-<div class="control-group">
-<label class="control-label">Categoria</label>
-	<div class="controls">
-		
-		<select name="categoria_id" id="categoria_id">
-		<?php  
-		/*
-		$categorias = $this->Categoria->get_records_menu();
-		if($categorias){
 
-			foreach ($categorias->result() as $value) {
-				echo '<option value="'.$value->id.'">'.$value->nombre.'</option>';
-			}
-		}
-		*/
-		?>
-		</select>
-
-		<?php echo form_error('categoria_id','<p class="error">', '</p>'); ?>
-	</div>
-</div>
--->
 			<!-- Text input-->
 			<div class="control-group">
 			<label class="control-label">Nombre</label>
@@ -70,18 +47,42 @@ echo form_hidden('lugar[id]');
 			<div class="control-group">
 			<label class="control-label">Visible</label>
 			<div class="controls">
-			<input value="<?php echo set_value('visible'); ?>" class="form-control" type="text" name="visible" />
-			<?php echo form_error('visible','<p class="error">', '</p>'); ?>
+			<select name="visible" id="visible">
+				<option value="1">Si</option>
+				<option value="0">No</option>
+			</select>
 			</div>
 			</div>
-			<!-- Text input-->
+			<!-- Text input
 			<div class="control-group">
 			<label class="control-label">Beneficio</label>
 			<div class="controls">
 			<input value="<?php echo set_value('beneficio'); ?>" class="form-control" type="text" name="beneficio" />
 			<?php echo form_error('beneficio','<p class="error">', '</p>'); ?>
 			</div>
+			</div>-->
+
+			<!-- Text input-->
+			<div class="control-group">
+			<label class="control-label">Beneficio</label>
+				<div class="controls">
+					
+					<select class="form-control"	name="beneficio_id" id="beneficio_id">
+					<?php 
+					$beneficios = $this->beneficio->get_records_menu();
+					if($beneficios){
+
+						foreach ($beneficios->result() as $value) {
+							echo '<option value="'.$value->id.'">'.$value->nombre.'</option>';
+						}
+					}
+					?>
+					</select>
+
+					<?php echo form_error('beneficios_id','<p class="error">', '</p>'); ?>
+				</div>
 			</div>
+
 
 <div class="control-group">
 <label class="control-label"></label>
