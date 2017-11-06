@@ -15,6 +15,8 @@ $route['control/beneficios/(:num)'] = 'control/beneficios/index/$';
 $route['control/roles/(:num)'] = 'control/roles/index/$';
 $route['control/admins/(:num)'] = 'control/admins/index/$';
 $route['control/permisos/(:num)'] = 'control/permisos/detail/$';
+$route['control/citas/(:num)'] = 'control/citas/index/$';
+$route['control/registros/(:num)'] = 'control/registros/index/$';
 /* append */
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
