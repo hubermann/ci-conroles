@@ -9,7 +9,7 @@
 		<div class="white-box">
 			<h3 class="box-title"><?php echo $title; ?>
 				<div class="col-md-2 col-sm-4 col-xs-12 pull-right text-right">
-					<a class="btn btn-primary btn-block btn-rounded waves-effect waves-light" href="<?php echo base_url('control/roles/form_new'); ?>">Agregar +</a>
+					<a class="btn btn-primary btn-block btn-rounded waves-effect waves-light" href="<?php echo base_url('control/usuarios/form_new'); ?>">Agregar +</a>
 				</div>
 			</h3>
 			<?php 
@@ -91,10 +91,11 @@
 											$body .= '<td>'.$row->busco.' </td>';
 											$body .= '<td>'.$row->hijos.' </td>';
 											$body .= '</tr><tr>';
-
+											$fuma = ($row->fuma==1) ? "Fuma:Si": "Fuma:no";
+											$toma = ($row->toma==1) ? "Toma:Si": "Toma:no";
 											$body .= '<td>'.$row->conocio.' </td>';
-											$body .= '<td>'.$row->fuma.' </td>';
-											$body .= '<td>'.$row->toma.' </td>';
+											$body .= '<td>'.$fuma.' </td>';
+											$body .= '<td>'.$toma.' </td>';
 
 											$body .= '</tr><tr>';
 

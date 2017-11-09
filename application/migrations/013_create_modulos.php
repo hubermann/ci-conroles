@@ -15,8 +15,8 @@ class Migration_Create_Modulos extends CI_Migration
  
                 ),
 					"nombre"    		=>        array(
-                    "type"                =>        "INTEGER",
-                    "constraint"        	=>        1,
+                    "type"                =>        "VARCHAR",
+                    "constraint"        	=>        40,
                 ),
 
 	

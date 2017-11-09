@@ -15,48 +15,46 @@ class Migration_Create_Registros extends CI_Migration
  
                 ),
 					"usuario_id"    		=>        array(
-                    "type"                =>        "TEXT",
-                    "constraint"        	=>        100,
+                    "type"                =>        "INT",
+                    "constraint"        	=>        11,
                 ),
 	
 					"evento_id"    		=>        array(
-                    "type"                =>        "TEXT",
-                    "constraint"        	=>        100,
+                    "type"                =>        "INT",
+                    "constraint"        	=>        11,
                 ),
 	
 					"pago"    		=>        array(
-                    "type"                =>        "TEXT",
-                    "constraint"        	=>        100,
+                    "type"                =>        "INT",
+                    "constraint"        	=>        1,
                 ),
 	
 					"neto"    		=>        array(
-                    "type"                =>        "TEXT",
-                    "constraint"        	=>        100,
+                    "type"                =>        "INT",
+                    "constraint"        	=>        10,
                 ),
 	
 					"comision"    		=>        array(
-                    "type"                =>        "TEXT",
-                    "constraint"        	=>        100,
+                    "type"                =>        "INT",
+                    "constraint"        	=>        10,
                 ),
 	
 					"asistio"    		=>        array(
-                    "type"                =>        "TEXT",
-                    "constraint"        	=>        100,
+                    "type"                =>        "INT",
+                    "constraint"        	=>        1,
                 ),
 	
 					"confirmado"    		=>        array(
-                    "type"                =>        "TEXT",
-                    "constraint"        	=>        100,
+                    "type"                =>        "INT",
+                    "constraint"        	=>        1,
                 ),
 	
 					"created_at"    		=>        array(
-                    "type"                =>        "TEXT",
-                    "constraint"        	=>        100,
+                    "type"                =>        "DATETIME"
                 ),
 	
 					"updated_at"    		=>        array(
-                    "type"                =>        "TEXT",
-                    "constraint"        	=>        100,
+                    "type"                =>        "DATETIME",
                 ),
 	
             )

@@ -15,23 +15,23 @@ class Migration_Create_Citas extends CI_Migration
  
                 ),
 					"evento_id"    		=>        array(
-                    "type"                =>        "TEXT",
-                    "constraint"        	=>        100,
+                    "type"                =>        "INT",
+                    "constraint"        	=>        11,
                 ),
 	
 					"usuario_id"    		=>        array(
-                    "type"                =>        "TEXT",
-                    "constraint"        	=>        100,
+                    "type"                =>        "INT",
+                    "constraint"        	=>        11,
                 ),
 	
 					"cita"    		=>        array(
-                    "type"                =>        "TEXT",
-                    "constraint"        	=>        100,
+                    "type"                =>        "INT",
+                    "constraint"        	=>        11,
                 ),
 	
 					"clasificacion_id"    		=>        array(
-                    "type"                =>        "TEXT",
-                    "constraint"        	=>        100,
+                    "type"                =>        "INT",
+                    "constraint"        	=>        11,
                 ),
 	
             )

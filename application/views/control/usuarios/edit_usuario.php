@@ -191,16 +191,18 @@ echo form_hidden('id', $query->id);
 			<div class="control-group">
 			<label class="control-label">Fuma</label>
 			<div class="controls">
-			<input value="<?php echo $query->fuma; ?>" type="text" class="form-control" name="fuma" />
-			<?php echo form_error('fuma','<p class="error">', '</p>'); ?>
+			<?php $options_fuma = [0=> "No", 1=>"Si"]; 
+			echo  form_dropdown('fuma', $options_fuma, $query->fuma);
+			?>
 			</div>
 			</div>
 			<!-- Text input-->
 			<div class="control-group">
 			<label class="control-label">Toma</label>
 			<div class="controls">
-			<input value="<?php echo $query->toma; ?>" type="text" class="form-control" name="toma" />
-			<?php echo form_error('toma','<p class="error">', '</p>'); ?>
+			<?php $options_toma = [0=> "No", 1=>"Si"]; 
+			echo form_dropdown('toma', $options_toma, $query->toma);
+			?>
 			</div>
 			</div>
 			<!-- Text input-->
@@ -223,8 +225,9 @@ echo form_hidden('id', $query->id);
 			<div class="control-group">
 			<label class="control-label">Estado_civil</label>
 			<div class="controls">
-			<input value="<?php echo $query->estado_civil; ?>" type="text" class="form-control" name="estado_civil" />
-			<?php echo form_error('estado_civil','<p class="error">', '</p>'); ?>
+			<?php $options_estado_civil = [0=> "Soltero", 1=>"Casado", 2=>"Separado", 3=>"Viudo"]; 
+			echo form_dropdown('estado_civil', $options_estado_civil,$query->estado_civil);
+			?>
 			</div>
 			</div>
 			<!-- Text input-->
@@ -239,16 +242,41 @@ echo form_hidden('id', $query->id);
 			<div class="control-group">
 			<label class="control-label">Provincia</label>
 			<div class="controls">
-			<input value="<?php echo $query->provincia; ?>" type="text" class="form-control" name="provincia" />
-			<?php echo form_error('provincia','<p class="error">', '</p>'); ?>
+			<?php $options_provincia = [ 1 => 'Buenos Aires',
+			2 => 'Capital Federal', 
+			3 =>'Catamarca',
+			4 =>'Chaco',
+			5 =>'Chubut',
+			6 =>'Córdoba',
+			7 =>'Corrientes',
+			8 =>'Entre Ríos',
+			9 =>'Formosa',
+			10 =>'Jujuy',
+			11 =>'La Pampa',
+			12 =>'La Rioja',
+			13 =>'Mendoza',
+			14 =>'Misiones',
+			15 =>'Neuquén',
+			16 =>'Río Negro',
+			17 =>'Salta',
+			18 =>'San Juan',
+			19 =>'San Luis',
+			20 =>'Santa Cruz',
+			21 =>'Santa Fe',
+			22 =>'Santiago del Estero',
+			23=>'Tierra del Fuego',
+			24 =>'Tucumán'];
+			echo form_dropdown('provincia', $options_provincia);
+			?>
 			</div>
 			</div>
 			<!-- Text input-->
 			<div class="control-group">
 			<label class="control-label">Zodiaco</label>
 			<div class="controls">
-			<input value="<?php echo $query->zodiaco; ?>" type="text" class="form-control" name="zodiaco" />
-			<?php echo form_error('zodiaco','<p class="error">', '</p>'); ?>
+			<?php $options_zodiaco = ["Aries","Tauro","Géminis","Cáncer","Leo","Virgo","Libra","Escorpio","Sagitario","Capricornio","Acuario","Piscis"]; 
+			echo form_dropdown('zodiaco', $options_zodiaco,$query->zodiaco);
+			?>
 			</div>
 			</div>
 			<!-- Text input-->
@@ -351,8 +379,9 @@ echo form_hidden('id', $query->id);
 			<div class="control-group">
 			<label class="control-label">Activo</label>
 			<div class="controls">
-			<input value="<?php echo $query->activo; ?>" type="text" class="form-control" name="activo" />
-			<?php echo form_error('activo','<p class="error">', '</p>'); ?>
+			<?php $options_activo = [0=> "No", 1=>"Si"]; 
+			echo  form_dropdown('activo', $options_activo, $query->activo);
+			?>
 			</div>
 			</div>
 			<!-- Text input-->

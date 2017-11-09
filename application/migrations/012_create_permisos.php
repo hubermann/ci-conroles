@@ -14,27 +14,35 @@ class Migration_Create_Permisos extends CI_Migration
                     "auto_increment"    =>        TRUE,
  
                 ),
-					"status"    		=>        array(
-                    "type"                =>        "INTEGER",
-                    "constraint"        	=>        1,
-                ),
 	
 					"role_id"    		=>        array(
                     "type"                =>        "INTEGER",
                     "constraint"        	=>        2,
                 ),
 	
-					"modulo"    		=>        array(
-                    "type"                =>        "VARCHAR",
-                    "constraint"        	=>        100,
+					"modulo_id"    		=>        array(
+                    "type"                =>        "INTEGER",
+                    "constraint"        	=>        11,
                 ),
 	
-					"url"    		=>        array(
-                    "type"                =>        "VARCHAR",
-                    "constraint"        	=>        100,
+					"view"    		=>        array(
+                    "type"                =>        "INTEGER",
+                    "constraint"        	=>        1,
+                ),
+
+	
+					"build"    		=>        array(
+                    "type"                =>        "INTEGER",
+                    "constraint"        	=>        1,
+                ),
+
+	
+					"modify"    		=>        array(
+                    "type"                =>        "INTEGER",
+                    "constraint"        	=>        1,
                 ),
 	
-					"permiso"    		=>        array(
+					"destroy"    		=>        array(
                     "type"                =>        "INTEGER",
                     "constraint"        	=>        1,
                 ),
