@@ -18,6 +18,12 @@ class Migration_Create_Notas extends CI_Migration
                     "type"                =>        "VARCHAR",
                     "constraint"        	=>        255,
                 ),
+
+
+					"categoria_id"    		=>        array(
+                    "type"                =>        "INT",
+                    "constraint"        	=>        11,
+                ),
 	
 					"descripcion"    		=>        array(
                     "type"                =>        "TEXT"

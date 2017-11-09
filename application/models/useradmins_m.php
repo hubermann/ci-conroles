@@ -44,8 +44,13 @@ class Useradmins_m extends CI_Model{
 
 		//all
 	public function get_records($num,$start){
-		$this->db->select()->from('useradmin')->order_by('id','ASC')->limit($num,$start);
-		return $this->db->get()->result();
+		$this->db->select('useradmin.*,roles.*');
+		$this->db->from('useradmin');
+		$this->db->join('roles', 'useradmin.role_id = roles.id', 'left');
+		$query = $this->db->get();
+		return $query->result();
+
+
 
 	}
 

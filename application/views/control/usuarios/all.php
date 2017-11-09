@@ -1,7 +1,7 @@
 
 <style>
-	.border-abajo{border-bottom: 1px solid #c2c2c2;}
-	.infobg{background: #ccc;}
+	.border-abajo{border-bottom: 1px solid #f2f2f2;}
+	.infobg{background: #f1f1f1;}
 </style>
 <!--row -->
 <div class="row">

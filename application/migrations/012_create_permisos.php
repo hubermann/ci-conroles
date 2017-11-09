@@ -52,7 +52,22 @@ class Migration_Create_Permisos extends CI_Migration
  
         $this->dbforge->add_key('id', TRUE); //ID como primary_key
         $this->dbforge->create_table('permisos');//crea la tabla
+
+        //creamos role
+        $data_permisos = array(
+            "role_id"        =>        1,
+            "modulo_id"        =>        1,
+            "view"        =>        1,
+            "build"        =>        1,
+            "modify"        =>        1,
+            "destroy"        =>        1
+        );
+        //ingresamos el registro en la base de datos
+        $this->db->insert("permisos", $data_permisos);
+
+
     }
+
  
     public function down()
     {

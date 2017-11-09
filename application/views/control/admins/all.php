@@ -1,46 +1,72 @@
 
-<h2><?php echo $title; ?></h2>
 
-<?php 
-if(count($query)){
-	echo '<table class="table table-striped">';
-	foreach ($query as $row):
-
-		/* $nombre_categoria = $this->categoria->traer_nombre($row->categoria_id); */
-
-echo '<tr>';
-echo '<td>'.$row->role_id.' </td>';
-echo '<td>'.$row->password.' </td>';
-echo '<td>'.$row->salt.' </td>';
-echo '<td>'.$row->email.' </td>';
-
-		echo '</td>';
-
-		echo '<td> 
-		<div class="btn-group">
-		<a class="btn btn-small" href="'.base_url('control/admins/delete_comfirm/'.$row->id.'').'"><i class="fa fa-trash-o"></i></a>
-		<a class="btn btn-small" href="'.base_url('control/admins/editar/'.$row->id.'').'"><i class="fa fa-edit"></i></a><a class="btn btn-small" href="'.base_url('control/admins/imagenes/'.$row->id.'').'"><i class="fa fa-camera-retro"></i></a>		
-		<!--<a class="btn btn-small" href="'.base_url('control/admins/detail/'.$row->id.'').'"><i class="fa fa-chain"></i></a>-->
-		</div>
-		</td>';
+<!--row -->
+<div class="row">
+	<div class="col-sm-12">
+		<div class="white-box">
+			<h3 class="box-title"><?php echo $title; ?>
+				<div class="col-md-2 col-sm-4 col-xs-12 pull-right text-right">
+					<!-- <select class="form-control pull-right row b-none">
+						<option>March 2016</option>
+						<option>April 2016</option>
+						<option>May 2016</option>
+						<option>June 2016</option>
+						<option>July 2016</option>
+					</select> -->
+					<a class="btn btn-primary btn-block btn-rounded waves-effect waves-light" href="<?php echo base_url('control/admins/form_new'); ?>">Agregar +</a>
+				</div>
+			</h3>
+			<div class="table-responsive">
+				<table class="table ">
+					<?php 
+					if(count($query)){ 
 
 
-		echo '</tr>';
+						$head = '<thead>
+						<tr>
+							<th> Role </th>
+							<th> Email </th>
+							<th class="text-right">Opciones</th>
+						</tr>
+					</thead>';
+					print($head);
+					$body = "<tbody>";
 
-	endforeach; 
-	echo '</table>';
-}else{
-	echo 'No hay resultados.';
-}
-?>
-<div>
-<ul class="pagination pagination-small pagination-centered">
-<?php echo $pagination_links;  ?>
-</ul>
+					foreach ($query as $row):
+
+					$body .= '<tr>';
+					$body .= '<td class="txt-oflo">'.$row->nombre.' </td>';
+					$body .= '<td class="txt-oflo"> '.$row->email.' </td>';
+
+					$body .= '<td> 
+					<div class="btn-group pull-right">
+						<a class="btn btn-small" href="'.base_url('control/admins/editar/'.$row->id.'').'"><i class="fa fa-edit"></i></a>		
+						<a href="'.base_url('control/admins/destroy/'.$row->id.'').'" class="delete btn btn-small" data-confirm="Are you sure to delete this item?"><i class="fa fa-trash-o"></i></a>
+
+					</div>
+				</td>';
+				$body .= '</tr>';
+
+				endforeach; 
+
+				$body .= '</tbody>';
+				print($body);
+
+			}else{
+				echo 'No hay resultados.';
+			}
+			?>
+
+		</table> 
+	</div>
+
+	<div class="table-responsive">
+		<ul class="pagination pagination-small pagination-centered">
+			<?php echo $pagination_links;  ?>
+		</ul>
+	</div>
 </div>
 
-list($nac_ano, $nac_mes, $nac_day) =  explode("-", $usuario->nacimiento);
-    	$fecha_nacimiento = $nac_day.'-'.$nac_mes.'-'.$nac_ano;
-
-
-
+</div>
+</div>
+<!-- /.row -->

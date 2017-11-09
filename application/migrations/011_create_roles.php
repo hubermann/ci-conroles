@@ -14,10 +14,6 @@ class Migration_Create_Roles extends CI_Migration
                     "auto_increment"    =>        TRUE,
  
                 ),
-					"status"    		=>        array(
-                    "type"                =>        "INTEGER",
-                    "constraint"        	=>        1,
-                ),
 	
 					"nombre"    		=>        array(
                     "type"                =>        "VARCHAR",
@@ -29,6 +25,11 @@ class Migration_Create_Roles extends CI_Migration
  
         $this->dbforge->add_key('id', TRUE); //ID como primary_key
         $this->dbforge->create_table('roles');//crea la tabla
+        //creamos role
+        $data_roles = array(
+            "nombre"        =>        "Superadmin"
+        );
+        $this->db->insert("roles", $data_roles);
     }
  
     public function down()
