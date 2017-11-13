@@ -1,40 +1,80 @@
 
-<h2><?php echo $title; ?></h2>
 
-<?php 
-if(count($query)){
-	echo '<table class="table table-striped">';
-	foreach ($query as $row):
 
-		/* $nombre_categoria = $this->categoria->traer_nombre($row->categoria_id); */
+<!--row -->
+<div class="row">
+	<div class="col-sm-12">
+		<div class="white-box">
+			<h3 class="box-title"><?php echo $title; ?>
+				<div class="col-md-2 col-sm-4 col-xs-12 pull-right text-right">
+					<!-- <select class="form-control pull-right row b-none">
+						<option>March 2016</option>
+						<option>April 2016</option>
+						<option>May 2016</option>
+						<option>June 2016</option>
+						<option>July 2016</option>
+					</select> -->
+					<a class="btn btn-primary btn-block btn-rounded waves-effect waves-light" href="<?php echo base_url('control/citas/form_new'); ?>">Agregar +</a>
+				</div>
+			</h3>
+			<div class="table-responsive">
+				<table class="table ">
+					
+					<?php 
+						if(count($query)){ 
+							 
 
-		echo '<tr>';
-echo '<td>'.$row->evento_id.' </td>';
-echo '<td>'.$row->usuario_id.' </td>';
-echo '<td>'.$row->cita.' </td>';
-echo '<td>'.$row->clasificacion_id.' </td>';
+							$head = '<thead>
+												<tr>
 
-		echo '</td>';
+													<th>Titulo</th>
+													<th>Categoria</th>
+													<th> Descripcion </th>
+													<th> Fecha desde </th>
+													<th class="text-right">Opciones</th>
+												</tr>
+											</thead>';
+							print($head);
+							$body = "<tbody>";
+							
+							foreach ($query as $row):
 
-		echo '<td> 
-		<div class="btn-group">
-		<a class="btn btn-small" href="'.base_url('control/citas/delete_comfirm/'.$row->id.'').'"><i class="fa fa-trash-o"></i></a>
-		<a class="btn btn-small" href="'.base_url('control/citas/editar/'.$row->id.'').'"><i class="fa fa-edit"></i></a>		
-		<!--<a class="btn btn-small" href="'.base_url('control/citas/detail/'.$row->id.'').'"><i class="fa fa-chain"></i></a>-->
+								$body .= '<tr>';
+								$body .= '<td class="txt-oflo">'.$row->evento_id.' </td>';
+								$body .= '<td class="txt-oflo">'.$row->usuario_id.' </td>';
+								$body .= '<td class="txt-oflo"> '.$cita.' </td>';
+								$body .= '<td class="txt-oflo"> '.$row->clasificacion_id.'  </td>';
+								
+								$body .= '<td> 
+														<div class="btn-group pull-right">
+														<a class="btn btn-small" href="'.base_url('control/citas/editar/'.$row->id.'').'"><i class="fa fa-edit"></i></a>
+														<a class="btn btn-small" href="'.base_url('control/citas/imagenes/'.$row->id.'').'"><i class="fa fa-camera-retro"></i></a>
+														<a href="'.base_url('control/citas/destroy/'.$row->id.'').'" class="delete btn btn-small" data-confirm="Are you sure to delete this item?">'.$row->id.'<i class="fa fa-trash-o"></i></a>	
+														</div>
+													</td>';
+								$body .= '</tr>';
+
+								endforeach; 
+
+								$body .= '</tbody>';
+								print($body);
+
+						}else{
+							echo 'No hay resultados.';
+						}
+					?>
+
+				</table> 
+			</div>
+
+				<div class="table-responsive">
+					<ul class="pagination pagination-small pagination-centered">
+						<?php echo $pagination_links;  ?>
+					</ul>
+				</div>
 		</div>
-		</td>';
 
-
-		echo '</tr>';
-
-	endforeach; 
-	echo '</table>';
-}else{
-	echo 'No hay resultados.';
-}
-?>
-<div>
-<ul class="pagination pagination-small pagination-centered">
-<?php echo $pagination_links;  ?>
-</ul>
+	</div>
 </div>
+<!-- /.row -->
+

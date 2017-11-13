@@ -10,45 +10,45 @@ echo form_hidden('cita[id]');
 <div class="well well-large well-transparent">
 
 
-<!-- Text input-->
-<!--
-<div class="control-group">
-<label class="control-label">Categoria</label>
-	<div class="controls">
-		
-		<select name="categoria_id" id="categoria_id">
-		<?php  
-		/*
-		$categorias = $this->Categoria->get_records_menu();
-		if($categorias){
-
-			foreach ($categorias->result() as $value) {
-				echo '<option value="'.$value->id.'">'.$value->nombre.'</option>';
-			}
-		}
-		*/
-		?>
-		</select>
-
-		<?php echo form_error('categoria_id','<p class="error">', '</p>'); ?>
-	</div>
-</div>
--->
 			<!-- Text input-->
 			<div class="control-group">
-			<label class="control-label">Evento_id</label>
-			<div class="controls">
-			<input value="<?php echo set_value('evento_id'); ?>" class="form-control" type="text" name="evento_id" />
-			<?php echo form_error('evento_id','<p class="error">', '</p>'); ?>
-			</div>
+			<label class="control-label">Evento</label>
+				<div class="controls">
+					
+					<select name="evento_id" id="evento_id">
+					<?php  
+					$eventos = $this->evento->get_records_menu();
+					if($eventos){
+
+						foreach ($eventos as $value) {
+							echo '<option value="'.$value->id.'">'.$value->nombre.' </option>';
+						}
+					}
+					?>
+					</select>
+
+					<?php echo form_error('usuario_id','<p class="error">', '</p>'); ?>
+				</div>
 			</div>
 			<!-- Text input-->
 			<div class="control-group">
-			<label class="control-label">Usuario_id</label>
-			<div class="controls">
-			<input value="<?php echo set_value('usuario_id'); ?>" class="form-control" type="text" name="usuario_id" />
-			<?php echo form_error('usuario_id','<p class="error">', '</p>'); ?>
-			</div>
+			<label class="control-label">Usuario</label>
+				<div class="controls">
+					
+					<select name="usuario_id" id="usuario_id">
+					<?php  
+					$usuarios = $this->usuario->get_records_menu();
+					if($usuarios){
+
+						foreach ($usuarios as $value) {
+							echo '<option value="'.$value->id.'">'.$value->apellido.' '.$value->nombre.' ('.$value->edad.')</option>';
+						}
+					}
+					?>
+					</select>
+
+					<?php echo form_error('usuario_id','<p class="error">', '</p>'); ?>
+				</div>
 			</div>
 			<!-- Text input-->
 			<div class="control-group">
@@ -79,5 +79,8 @@ echo form_hidden('cita[id]');
 </fieldset>
 
 <?php echo form_close(); ?>
+
+
+
 
 </div>

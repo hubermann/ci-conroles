@@ -17,6 +17,8 @@ $route['control/admins/(:num)'] = 'control/admins/index/$';
 $route['control/permisos/(:num)'] = 'control/permisos/detail/$';
 $route['control/citas/(:num)'] = 'control/citas/index/$';
 $route['control/registros/(:num)'] = 'control/registros/index/$';
+$route['control/eventos/(:num)'] = 'control/eventos/index/$';
+$route['control/categoria_eventos/(:num)'] = 'control/categoria_eventos/index/$';
 /* append */
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';

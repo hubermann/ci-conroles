@@ -39,7 +39,7 @@ class Migration_Create_Lugares extends CI_Migration
                     "constraint"        	=>        1,
                 ),
 	
-					"beneficio"    		=>        array(
+					"beneficio_id"    		=>        array(
                     "type"                =>        "INTEGER",
                     "constraint"        	=>        11,
                 ),

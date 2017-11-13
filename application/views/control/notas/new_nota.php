@@ -15,19 +15,23 @@ echo form_hidden('nota[id]');
 					<label class="control-label">Categoria</label>
 						<div class="controls">
 							
-							<select name="categoria_id" id="categoria_id">
+							
 							<?php  
 							
 							$categorias = $this->categoria_nota->get_records_menu();
-							if($categorias){
 
+							if($categorias){
+								echo '<select name="categoria_id" id="categoria_id">';
 								foreach ($categorias as $value) {
 									echo '<option value="'.$value->id.'">'.$value->nombre.'</option>';
 								}
+								echo '</select>';
+							}else{
+								echo '<h4>Necesita <a href="'.base_url('control/categoria_notas/form_new').'">crear</a> al menos una categoria. </h4>';
 							}
 							
 							?>
-							</select>
+							
 
 							<?php echo form_error('categoria_id','<p class="error">', '</p>'); ?>
 						</div>

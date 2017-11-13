@@ -9,15 +9,15 @@ if(count($query)){
 		/* $nombre_categoria = $this->categoria->traer_nombre($row->categoria_id); */
 
 		echo '<tr>';
-echo '<td>'.$row->usuario_id.' </td>';
-echo '<td>'.$row->evento_id.' </td>';
-echo '<td>'.$row->pago.' </td>';
-echo '<td>'.$row->neto.' </td>';
-echo '<td>'.$row->comision.' </td>';
-echo '<td>'.$row->asistio.' </td>';
-echo '<td>'.$row->confirmado.' </td>';
-echo '<td>'.$row->created_at.' </td>';
-echo '<td>'.$row->updated_at.' </td>';
+		echo '<td>'.$row->usuario_id.' </td>';
+		echo '<td>'.$row->evento_id.' </td>';
+		echo '<td>'.$row->pago.' </td>';
+		echo '<td>'.$row->neto.' </td>';
+		echo '<td>'.$row->comision.' </td>';
+		echo '<td>'.$row->asistio.' </td>';
+		echo '<td>'.$row->confirmado.' </td>';
+		echo '<td>'.$row->created_at.' </td>';
+		echo '<td>'.$row->updated_at.' </td>';
 
 		echo '</td>';
 

@@ -34,6 +34,15 @@ class Migration_Create_Citas extends CI_Migration
                     "constraint"        	=>        11,
                 ),
 	
+					"created_at"    		=>        array(
+                    "type"                =>        "TIMESTAMP",
+                ),
+
+	
+					"updated_at"    		=>        array(
+                    "type"                =>        "DATETIME",
+                ),
+	
             )
         );
  

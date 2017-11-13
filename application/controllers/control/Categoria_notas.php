@@ -93,8 +93,7 @@ $this->form_validation->set_rules('nombre', 'Nombre', 'required');
 	}else{
 		$this->load->helper('url');
 		$slug = url_title($this->input->post('nombre'), 'dash', TRUE);
-		
-
+	
 		
 		$newcategoria_nota = array( 'nombre' => $this->input->post('nombre'), 
 		 'slug' => $slug, 

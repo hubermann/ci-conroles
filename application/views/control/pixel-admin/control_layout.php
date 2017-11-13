@@ -25,7 +25,9 @@
 	<!-- color CSS -->
 
 	<link href="<?php echo base_url('public_folder/pixeladmin-lite/html/css/colors/blue-dark.css'); ?>" id="theme" rel="stylesheet">
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -92,6 +94,11 @@
 					<li>
 						<a href="<?=base_url('control/categoria_eventos');?>" class="waves-effect"><i class="fa fa-bookmark-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Categorias Eventos</span></a>
 					</li>
+
+					<li>
+						<a href="<?=base_url('control/eventos');?>" class="waves-effect"><i class="fa fa-bookmark-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Eventos</span></a>
+					</li>
+
 					<li>
 						<a href="<?=base_url('control/notas');?>" class="waves-effect"><i class="fa fa-font fa-fw" aria-hidden="true"></i><span class="hide-menu">Notas</span></a>
 					</li>
@@ -103,6 +110,9 @@
 					</li>
 					<li>
 						<a href="<?=base_url('control/lugares');?>" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"></i><span class="hide-menu">Lugares</span></a>
+					</li>
+					<li>
+						<a href="<?=base_url('control/citas');?>" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"></i><span class="hide-menu">Citas</span></a>
 					</li>
 
 					<!--<li>
@@ -246,6 +256,10 @@
 		});
 
   </script>
+
+
+
+
 </body>
 
 </html>
