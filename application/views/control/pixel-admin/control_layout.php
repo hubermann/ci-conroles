@@ -24,7 +24,7 @@
 	<link href="<?php echo base_url('public_folder/pixeladmin-lite/html/css/style.css'); ?>" rel="stylesheet">
 	<!-- color CSS -->
 
-	<link href="<?php echo base_url('public_folder/pixeladmin-lite/html/css/colors/blue-dark.css'); ?>" id="theme" rel="stylesheet">
+	<link href="<?php echo base_url('public_folder/pixeladmin-lite/html/css/colors/orange-dark.css'); ?>" id="theme" rel="stylesheet">
 
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -44,7 +44,8 @@
 		<!-- Navigation -->
 		<nav class="navbar navbar-default navbar-static-top m-b-0">
 			<div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars"></i></a>
-				<div class="top-left-part"><a class="logo" href="<?= base_url('/control'); ?>"><b><img src="<?php echo base_url('public_folder/pixeladmin-lite/plugins/images/pixeladmin-logo.png'); ?>" alt="home" />
+				<div class="top-left-part">
+				<a class="logo" href="<?= base_url('/control'); ?>"><b><img src="<?php echo base_url('public_folder/pixeladmin-lite/plugins/images/pixeladmin-logo.png'); ?>" alt="home" />
 				</b><span class="hidden-xs"><img src="<?php echo base_url('public_folder/pixeladmin-lite/plugins/images/pixeladmin-text.png'); ?>" alt="home" /></span></a></div>
 				<ul class="nav navbar-top-links navbar-left m-l-20 hidden-xs">
 					<li>
@@ -163,7 +164,7 @@
 
 			</div>
 			<!-- /.container-fluid -->
-			<footer class="footer text-center"> 2017 &copy; Pixel Admin brought to you by wrappixel.com </footer>
+			<footer class="footer text-center"> 2017 &copy; 10en8.com </footer>
 		</div>
 		<!-- /#page-wrapper -->
 	</div>

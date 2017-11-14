@@ -424,66 +424,76 @@ echo form_hidden('usuario[id]');
 		?>
 	</div>
 </div>
-<!-- Text input-->
-<div class="control-group">
-	<label class="control-label">Estatura</label>
-	<div class="controls">
-		<input value="<?php echo set_value('estatura'); ?>" class="form-control" type="text" name="estatura" />
-		<?php echo form_error('estatura','<p class="error">', '</p>'); ?>
-	</div>
-</div>
-<!-- Text input-->
-<div class="control-group">
-	<label class="control-label">Peso</label>
-	<div class="controls">
-		<input value="<?php echo set_value('peso'); ?>" class="form-control" type="text" name="peso" />
-		<?php echo form_error('peso','<p class="error">', '</p>'); ?>
-	</div>
-</div>
-<!-- Text input-->
-<div class="control-group">
-	<label class="control-label">Contextura_fisica</label>
-	<div class="controls">
-		<input value="<?php echo set_value('contextura_fisica'); ?>" class="form-control" type="text" name="contextura_fisica" />
-		<?php echo form_error('contextura_fisica','<p class="error">', '</p>'); ?>
-	</div>
-</div>
-<!-- Text input-->
-<div class="control-group">
-	<label class="control-label">Color_pelo</label>
-	<div class="controls">
-		<input value="<?php echo set_value('color_pelo'); ?>" class="form-control" type="text" name="color_pelo" />
-		<?php echo form_error('color_pelo','<p class="error">', '</p>'); ?>
-	</div>
-</div>
-<!-- Text input-->
-<div class="control-group">
-	<label class="control-label">Color_ojos</label>
-	<div class="controls">
-		<input value="<?php echo set_value('color_ojos'); ?>" class="form-control" type="text" name="color_ojos" />
-		<?php echo form_error('color_ojos','<p class="error">', '</p>'); ?>
-	</div>
-</div>
-<!-- Text input-->
-<div class="control-group">
-	<label class="control-label">Convivencia</label>
-	<div class="controls">
-		<input value="<?php echo set_value('convivencia'); ?>" class="form-control" type="text" name="convivencia" />
-		<?php echo form_error('convivencia','<p class="error">', '</p>'); ?>
-	</div>
-</div>
 
 
-
+<div class="row">
+	<div class="col-md-2">
+		<!-- Text input-->
+		<div class="control-group">
+			<label class="control-label">Estatura</label>
+			<div class="controls">
+				<input value="<?php echo set_value('estatura'); ?>" class="form-control" type="text" name="estatura" />
+				<?php echo form_error('estatura','<p class="error">', '</p>'); ?>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-2">
+		<!-- Text input-->
+		<div class="control-group">
+			<label class="control-label">Peso</label>
+			<div class="controls">
+				<input value="<?php echo set_value('peso'); ?>" class="form-control" type="text" name="peso" />
+				<?php echo form_error('peso','<p class="error">', '</p>'); ?>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-2">
+		<!-- Text input-->
+		<div class="control-group">
+			<label class="control-label">Contextura_fisica</label>
+			<div class="controls">
+				<input value="<?php echo set_value('contextura_fisica'); ?>" class="form-control" type="text" name="contextura_fisica" />
+				<?php echo form_error('contextura_fisica','<p class="error">', '</p>'); ?>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-2">
+		<!-- Text input-->
+		<div class="control-group">
+			<label class="control-label">Color_pelo</label>
+			<div class="controls">
+				<input value="<?php echo set_value('color_pelo'); ?>" class="form-control" type="text" name="color_pelo" />
+				<?php echo form_error('color_pelo','<p class="error">', '</p>'); ?>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-2">
+		<!-- Text input-->
+		<div class="control-group">
+			<label class="control-label">Color_ojos</label>
+			<div class="controls">
+				<input value="<?php echo set_value('color_ojos'); ?>" class="form-control" type="text" name="color_ojos" />
+				<?php echo form_error('color_ojos','<p class="error">', '</p>'); ?>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-2">
+		<!-- Text input-->
+		<div class="control-group">
+			<label class="control-label">Convivencia</label>
+			<div class="controls">
+				<input value="<?php echo set_value('convivencia'); ?>" class="form-control" type="text" name="convivencia" />
+				<?php echo form_error('convivencia','<p class="error">', '</p>'); ?>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 
 
 <!-- redes -->
 <div class="row">
-<div class="col-md-12">
-	<h6>Redes sociales</h6>
-</div>
 	<div class="col-md-2">
 		<!-- Text input-->
 		<div class="control-group">
