@@ -13,6 +13,11 @@ class Lugar extends CI_Model{
 		return $this->db->get()->result();
 	}
 
+	public function get_records_menu(){
+		$this->db->select('id, nombre')->from('lugares')->order_by('nombre','ASC');
+		return $this->db->get()->result();
+	}
+
 	//detail
 	public function get_record($id){
 		$this->db->where('id' ,$id);

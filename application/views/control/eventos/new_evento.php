@@ -10,46 +10,51 @@ echo form_hidden('evento[id]');
 <div class="well well-large well-transparent">
 
 
-<!-- Text input-->
-<!--
-<div class="control-group">
-<label class="control-label">Categoria</label>
-	<div class="controls">
-		
-		<select name="categoria_id" id="categoria_id">
-		<?php  
-		/*
-		$categorias = $this->Categoria->get_records_menu();
-		if($categorias){
-
-			foreach ($categorias->result() as $value) {
-				echo '<option value="'.$value->id.'">'.$value->nombre.'</option>';
-			}
-		}
-		*/
-		?>
-		</select>
-
-		<?php echo form_error('categoria_id','<p class="error">', '</p>'); ?>
-	</div>
-</div>
--->
 			<!-- Text input-->
+
 			<div class="control-group">
-			<label class="control-label">Categoria_id</label>
-			<div class="controls">
-			<input value="<?php echo set_value('categoria_id'); ?>" class="form-control" type="text" name="categoria_id" />
-			<?php echo form_error('categoria_id','<p class="error">', '</p>'); ?>
+			<label class="control-label">Categoria</label>
+				<div class="controls">
+					
+					<select name="categoria_id" id="categoria_id"  class="form-control">
+					<?php  
+				
+					$categorias = $this->categoria_evento->get_records_menu();
+					if($categorias){
+
+						foreach ($categorias as $value) {
+							echo '<option value="'.$value->id.'">'.$value->nombre.'</option>';
+						}
+					}
+					
+					?>
+					</select>
+
+					<?php echo form_error('categoria_id','<p class="error">', '</p>'); ?>
+				</div>
 			</div>
-			</div>
+
 			<!-- Text input-->
-			<div class="control-group">
+			<!-- <div class="control-group">
 			<label class="control-label">Fecha</label>
 			<div class="controls">
 			<input value="<?php echo set_value('fecha'); ?>" class="form-control" type="text" name="fecha" />
 			<?php echo form_error('fecha','<p class="error">', '</p>'); ?>
 			</div>
-			</div>
+			</div> -->
+
+			<div class="row">
+        
+            <div class="form-group">
+            <div class='col-sm-3'>
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
 			<!-- Text input-->
 			<div class="control-group">
 			<label class="control-label">Hora</label>
@@ -62,7 +67,20 @@ echo form_hidden('evento[id]');
 			<div class="control-group">
 			<label class="control-label">Lugar</label>
 			<div class="controls">
-			<input value="<?php echo set_value('lugar'); ?>" class="form-control" type="text" name="lugar" />
+			<select name="lugar" id="lugar"  class="form-control">
+			<?php  
+				
+					$lugares = $this->lugar->get_records_menu();
+					if($lugares){
+
+						foreach ($lugares as $value) {
+							echo '<option value="'.$value->id.'">'.$value->nombre.'</option>';
+						}
+					}
+					
+					?>
+					</select>
+
 			<?php echo form_error('lugar','<p class="error">', '</p>'); ?>
 			</div>
 			</div>
@@ -162,22 +180,7 @@ echo form_hidden('evento[id]');
 			<?php echo form_error('duracion_session','<p class="error">', '</p>'); ?>
 			</div>
 			</div>
-			<!-- Text input-->
-			<div class="control-group">
-			<label class="control-label">Created_at</label>
-			<div class="controls">
-			<input value="<?php echo set_value('created_at'); ?>" class="form-control" type="text" name="created_at" />
-			<?php echo form_error('created_at','<p class="error">', '</p>'); ?>
-			</div>
-			</div>
-			<!-- Text input-->
-			<div class="control-group">
-			<label class="control-label">Updated_at</label>
-			<div class="controls">
-			<input value="<?php echo set_value('updated_at'); ?>" class="form-control" type="text" name="updated_at" />
-			<?php echo form_error('updated_at','<p class="error">', '</p>'); ?>
-			</div>
-			</div>
+
 
 <div class="control-group">
 <label class="control-label"></label>

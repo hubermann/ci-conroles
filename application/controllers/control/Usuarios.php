@@ -423,8 +423,9 @@ public function imagenes(){
 
 public function add_imagen(){
 
-	//adjunto
-	if($_FILES['adjunto']['size'] > 0){
+	$file =[];
+			//adjunto
+		if($_FILES['adjunto']['size'] > 0 && $_FILES['adjunto']['name'] != ""){
 
 		$file  = $this->upload_file();
 
@@ -439,10 +440,9 @@ public function add_imagen(){
 			$this->imagenes_usuario->add_record($nueva_imagen);	
 			redirect('control/usuarios/imagenes/'.$this->input->post('id'));
 		}
-
+		$this->session->set_flashdata('error', $file['msg']);
 
 	}
-	$this->session->set_flashdata('error', $file['msg']);
 	redirect('control/usuarios/imagenes/'.$this->input->post('id'));
 }
 

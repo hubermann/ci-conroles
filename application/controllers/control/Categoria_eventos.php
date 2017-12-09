@@ -139,10 +139,9 @@ public function update(){
 	}else{		
 		$id=  $this->input->post('id');
 
-		if($this->input->post('slug')){
-			$this->load->helper('url');
-			$slug = url_title($this->input->post('nombre'), 'dash', TRUE);
-		}
+		
+		$slug = url_title($this->input->post('nombre'), 'dash', TRUE);
+		
 
 		$editedcategoria_evento = array(  
 			'nombre' => $this->input->post('nombre'),

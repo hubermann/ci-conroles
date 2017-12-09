@@ -7,6 +7,8 @@ public function __construct(){
 
 	parent::__construct();
 	$this->load->model('evento');
+	$this->load->model('lugar');
+	$this->load->model('categoria_evento');
 	$this->load->helper('url');
 	$this->load->library('session');
 
@@ -129,24 +131,24 @@ $this->form_validation->set_rules('duracion_session', 'Duracion_session', 'requi
 
 		
 		$newevento = array( 'categoria_id' => $this->input->post('categoria_id'), 
- 'fecha' => $this->input->post('fecha'), 
- 'hora' => $this->input->post('hora'), 
- 'lugar' => $this->input->post('lugar'), 
- 'precio' => $this->input->post('precio'), 
- 'precio_hombres' => $this->input->post('precio_hombres'), 
- 'edad_minima' => $this->input->post('edad_minima'), 
- 'edad_maxima' => $this->input->post('edad_maxima'), 
- 'edad_minina_hombre' => $this->input->post('edad_minina_hombre'), 
- 'edad_maxima_hombre' => $this->input->post('edad_maxima_hombre'), 
- 'estado_hombres' => $this->input->post('estado_hombres'), 
- 'estado_mujeres' => $this->input->post('estado_mujeres'), 
- 'coincidencias_habilitadas' => $this->input->post('coincidencias_habilitadas'), 
- 'tipo_evento' => $this->input->post('tipo_evento'), 
- 'localidad' => $this->input->post('localidad'), 
- 'duracion_session' => $this->input->post('duracion_session'), 
- 'created_at' => $this->input->post('created_at'), 
- 'updated_at' => $this->input->post('updated_at'), 
-);
+		 'fecha' => $this->input->post('fecha'), 
+		 'hora' => $this->input->post('hora'), 
+		 'lugar' => $this->input->post('lugar'), 
+		 'precio' => $this->input->post('precio'), 
+		 'precio_hombres' => $this->input->post('precio_hombres'), 
+		 'edad_minima' => $this->input->post('edad_minima'), 
+		 'edad_maxima' => $this->input->post('edad_maxima'), 
+		 'edad_minina_hombre' => $this->input->post('edad_minina_hombre'), 
+		 'edad_maxima_hombre' => $this->input->post('edad_maxima_hombre'), 
+		 'estado_hombres' => $this->input->post('estado_hombres'), 
+		 'estado_mujeres' => $this->input->post('estado_mujeres'), 
+		 'coincidencias_habilitadas' => $this->input->post('coincidencias_habilitadas'), 
+		 'tipo_evento' => $this->input->post('tipo_evento'), 
+		 'localidad' => $this->input->post('localidad'), 
+		 'duracion_session' => $this->input->post('duracion_session'), 
+		 'created_at' => $this->input->post('created_at'), 
+		 'updated_at' => $this->input->post('updated_at'), 
+		);
 		#save
 		$this->evento->add_record($newevento);
 		$this->session->set_flashdata('success', 'evento creado. <a href="eventos/detail/'.$this->db->insert_id().'">Ver</a>');
@@ -223,7 +225,6 @@ public function update(){
 		'tipo_evento' => $this->input->post('tipo_evento'),
 		'localidad' => $this->input->post('localidad'),
 		'duracion_session' => $this->input->post('duracion_session'),
-		'created_at' => $this->input->post('created_at'),
 		'updated_at' => $this->input->post('updated_at'),
 		);
 		#save

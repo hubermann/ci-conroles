@@ -14,6 +14,10 @@ class Categoria_evento extends CI_Model{
 
 	}
 
+	public function get_records_menu(){
+		$this->db->select()->from('categoria_eventos')->order_by('nombre','ASC');
+		return $this->db->get()->result();
+	}
 	//detail
 	public function get_record($id){
 		$this->db->where('id' ,$id);

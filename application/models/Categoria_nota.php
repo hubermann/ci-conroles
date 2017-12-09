@@ -15,7 +15,7 @@ class Categoria_nota extends CI_Model{
 	}
 
 	public function get_records_menu(){
-		$this->db->select()->from('categoria_notas')->order_by('id','ASC');
+		$this->db->select()->from('categoria_notas')->order_by('nombre','ASC');
 		return $this->db->get()->result();
 
 	}
