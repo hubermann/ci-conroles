@@ -6,43 +6,36 @@ echo form_hidden('id', $query->id);
 ?>
 <legend><?php echo $title ?></legend>
 <div class="well well-large well-transparent">
-
+	
+	<fieldset>
  
 
-
-<!-- Text input-->
-<!--
-<div class="control-group">
-<label class="control-label">Categoria id</label>
-	<div class="controls">
-	<select name="categoria_id" id="categoria_id">
-		<?php 
-		/* 
-		$categorias = $this->categoria->get_records_menu();
-		if($categorias){
-
-			foreach ($categorias as $value) {
-				if($query->categoria_id == $value->id){$sel= "selected";}else{$sel="";}
-				echo '<option value="'.$value->id.'" '.$sel.'>'.$value->nombre.'</option>';
-			}
-		}
-		*/
-		?>
-		</select>
-		
-		<?php echo form_error('categoria_id','<p class="error">', '</p>'); ?>
-	</div>
-</div>
--->
-
-			<!-- Text input-->
-			<div class="control-group">
-			<label class="control-label">Categoria_id</label>
+		<!-- Text input-->
+		<div class="control-group">
+		<label class="control-label">Categoria</label>
 			<div class="controls">
-			<input value="<?php echo $query->categoria_id; ?>" type="text" class="form-control" name="categoria_id" />
-			<?php echo form_error('categoria_id','<p class="error">', '</p>'); ?>
+				
+				<select name="categoria_id" id="categoria_id" class="form-control">
+				<?php  
+				
+				$categorias = $this->categoria_evento->get_records_menu();
+				if($categorias){
+
+					foreach ($categorias as $value) {
+						
+						if($query->categoria_id==$value->id){$selected = "selected";}else{ $selected = "";}
+						echo '<option value="'.$value->id.'" '.$selected.'>'.$value->nombre.'</option>';
+					}
+				}
+				
+				?>
+				</select>
+
+				<?php echo form_error('categoria_id','<p class="error">', '</p>'); ?>
 			</div>
-			</div>
+		</div>
+
+
 			<!-- Text input-->
 			<div class="control-group">
 			<label class="control-label">Fecha</label>
@@ -60,13 +53,29 @@ echo form_hidden('id', $query->id);
 			</div>
 			</div>
 			<!-- Text input-->
-			<div class="control-group">
-			<label class="control-label">Lugar</label>
+		<div class="control-group">
+		<label class="control-label">Lugar</label>
 			<div class="controls">
-			<input value="<?php echo $query->lugar; ?>" type="text" class="form-control" name="lugar" />
-			<?php echo form_error('lugar','<p class="error">', '</p>'); ?>
+				
+				<select name="lugar" id="lugar" class="form-control">
+				<?php  
+				
+				$lugares = $this->lugar->get_records_menu();
+				if($lugares){
+
+					foreach ($lugares as $value) {
+						
+						if($query->lugar==$value->id){$selected = "selected";}else{ $selected = "";}
+						echo '<option value="'.$value->id.'" '.$selected.'>'.$value->nombre.'</option>';
+					}
+				}
+				
+				?>
+				</select>
+
+				<?php echo form_error('lugar','<p class="error">', '</p>'); ?>
 			</div>
-			</div>
+		</div>
 			<!-- Text input-->
 			<div class="control-group">
 			<label class="control-label">Precio</label>
@@ -141,12 +150,27 @@ echo form_hidden('id', $query->id);
 			</div>
 			<!-- Text input-->
 			<div class="control-group">
-			<label class="control-label">Tipo_evento</label>
-			<div class="controls">
-			<input value="<?php echo $query->tipo_evento; ?>" type="text" class="form-control" name="tipo_evento" />
-			<?php echo form_error('tipo_evento','<p class="error">', '</p>'); ?>
-			</div>
-			</div>
+				<label class="control-label">Lugar</label>
+					<div class="controls">
+						<select name="tipo_evento" id="tipo_evento" class="form-control">
+						<?php  
+						
+						$tipos_eventos = $this->eventos_tipo->get_records_menu();
+						if($tipos_eventos){
+
+							foreach ($tipos_eventos as $value) {
+								
+								if($query->tipo_evento==$value->id){$selected = "selected";}else{ $selected = "";}
+								echo '<option value="'.$value->id.'" '.$selected.'>'.$value->nombre.'</option>';
+							}
+						}
+						
+						?>
+						</select>
+
+						<?php echo form_error('tipo_evento','<p class="error">', '</p>'); ?>
+					</div>
+				</div>
 			<!-- Text input-->
 			<div class="control-group">
 			<label class="control-label">Localidad</label>
@@ -163,22 +187,7 @@ echo form_hidden('id', $query->id);
 			<?php echo form_error('duracion_session','<p class="error">', '</p>'); ?>
 			</div>
 			</div>
-			<!-- Text input-->
-			<div class="control-group">
-			<label class="control-label">Created_at</label>
-			<div class="controls">
-			<input value="<?php echo $query->created_at; ?>" type="text" class="form-control" name="created_at" />
-			<?php echo form_error('created_at','<p class="error">', '</p>'); ?>
-			</div>
-			</div>
-			<!-- Text input-->
-			<div class="control-group">
-			<label class="control-label">Updated_at</label>
-			<div class="controls">
-			<input value="<?php echo $query->updated_at; ?>" type="text" class="form-control" name="updated_at" />
-			<?php echo form_error('updated_at','<p class="error">', '</p>'); ?>
-			</div>
-			</div>
+
 
 <div class="control-group">
 <label class="control-label"></label>

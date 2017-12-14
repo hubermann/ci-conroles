@@ -15,13 +15,13 @@ echo form_hidden('cita[id]');
 			<label class="control-label">Evento</label>
 				<div class="controls">
 					
-					<select name="evento_id" id="evento_id">
+					<select name="evento_id" id="evento_id" class="form-control">
 					<?php  
 					$eventos = $this->evento->get_records_menu();
 					if($eventos){
 
 						foreach ($eventos as $value) {
-							echo '<option value="'.$value->id.'">'.$value->nombre.' </option>';
+							echo '<option value="'.$value->id.'">Cat: '.$value->categoria_nombre .' - Fecha: '.$value->fecha.' '.$value->hora.' </option>';
 						}
 					}
 					?>
@@ -35,7 +35,7 @@ echo form_hidden('cita[id]');
 			<label class="control-label">Usuario</label>
 				<div class="controls">
 					
-					<select name="usuario_id" id="usuario_id">
+					<select name="usuario_id" id="usuario_id"  class="form-control">
 					<?php  
 					$usuarios = $this->usuario->get_records_menu();
 					if($usuarios){

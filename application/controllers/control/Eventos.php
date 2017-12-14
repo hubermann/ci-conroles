@@ -9,6 +9,7 @@ public function __construct(){
 	$this->load->model('evento');
 	$this->load->model('lugar');
 	$this->load->model('categoria_evento');
+	$this->load->model('eventos_tipo');
 	$this->load->helper('url');
 	$this->load->library('session');
 
@@ -128,7 +129,7 @@ $this->form_validation->set_rules('duracion_session', 'Duracion_session', 'requi
 			$this->load->helper('url');
 			$slug = url_title($this->input->post('titulo'), 'dash', TRUE);
 		}
-
+		$now = date("Y-m-d h:m:s");
 		
 		$newevento = array( 'categoria_id' => $this->input->post('categoria_id'), 
 		 'fecha' => $this->input->post('fecha'), 
@@ -146,8 +147,8 @@ $this->form_validation->set_rules('duracion_session', 'Duracion_session', 'requi
 		 'tipo_evento' => $this->input->post('tipo_evento'), 
 		 'localidad' => $this->input->post('localidad'), 
 		 'duracion_session' => $this->input->post('duracion_session'), 
-		 'created_at' => $this->input->post('created_at'), 
-		 'updated_at' => $this->input->post('updated_at'), 
+		 'created_at' => $now, 
+		 'updated_at' => $now, 
 		);
 		#save
 		$this->evento->add_record($newevento);
@@ -172,6 +173,7 @@ public function editar(){
 
 //update
 public function update(){
+	 #print_r($_POST).die(); 
 	$this->load->helper('form');
 	$this->load->library('form_validation'); 
 	$this->form_validation->set_rules('categoria_id', 'Categoria_id', 'required');

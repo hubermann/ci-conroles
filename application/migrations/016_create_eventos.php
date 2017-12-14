@@ -20,7 +20,7 @@ class Migration_Create_Eventos extends CI_Migration
                 ),
 	
 					"fecha"    		=>        array(
-                    "type"                =>        "DATETIME",
+                    "type"                =>        "DATE",
                 ),
 	
 					"hora"    		=>        array(

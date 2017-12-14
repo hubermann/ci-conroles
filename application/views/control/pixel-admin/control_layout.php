@@ -95,6 +95,9 @@
 					<li>
 						<a href="<?=base_url('control/categoria_eventos');?>" class="waves-effect"><i class="fa fa-bookmark-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Categorias Eventos</span></a>
 					</li>
+					<li>
+						<a href="<?=base_url('control/eventos_tipos');?>" class="waves-effect"><i class="fa fa-bookmark-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Tipos de Eventos</span></a>
+					</li>
 
 					<li>
 						<a href="<?=base_url('control/eventos');?>" class="waves-effect"><i class="fa fa-bookmark-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Eventos</span></a>
@@ -195,6 +198,12 @@
 	<script src="<?php echo base_url('public_folder/pixeladmin-lite/html/js/dashboard1.js'); ?>"></script>
 
 	<script src="<?php echo base_url('public_folder/pixeladmin-lite/plugins/bower_components/toast-master/js/jquery.toast.js'); ?>"></script>
+
+	<!-- 	datetimepicker -->
+	<script src="<?php echo base_url('public_folder/pixeladmin-lite/plugins/bower_components/moment/moment.js'); ?>"></script>
+	<script src="<?php echo base_url('public_folder/pixeladmin-lite/plugins/bower_components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js'); ?>"></script>
+
+
 	
 	<?php if ($this->session->flashdata('success')): ?>
 		<script type="text/javascript">
@@ -257,7 +266,54 @@
 		});
 
   </script>
+<script type="text/javascript">
+     $(function () {
+   var bindDatePicker = function() {
+		$(".date").datetimepicker({
+        format:'YYYY-MM-DD',
+			icons: {
+				time: "fa fa-clock-o",
+				date: "fa fa-calendar",
+				up: "fa fa-arrow-up",
+				down: "fa fa-arrow-down"
+			}
+		}).find('input:first').on("blur",function () {
+			// check if the date is correct. We can accept dd-mm-yyyy and yyyy-mm-dd.
+			// update the format if it's yyyy-mm-dd
+			var date = parseDate($(this).val());
 
+			if (! isValidDate(date)) {
+				//create date based on momentjs (we have that)
+				date = moment().format('YYYY-MM-DD');
+			}
+
+			$(this).val(date);
+		});
+	}
+   
+   var isValidDate = function(value, format) {
+		format = format || false;
+		// lets parse the date to the best of our knowledge
+		if (format) {
+			value = parseDate(value);
+		}
+
+		var timestamp = Date.parse(value);
+
+		return isNaN(timestamp) == false;
+   }
+   
+   var parseDate = function(value) {
+		var m = value.match(/^(\d{1,2})(\/|-)?(\d{1,2})(\/|-)?(\d{4})$/);
+		if (m)
+			value = m[5] + '-' + ("00" + m[3]).slice(-2) + '-' + ("00" + m[1]).slice(-2);
+
+		return value;
+   }
+   
+   bindDatePicker();
+ });
+</script>
 
 
 

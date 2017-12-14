@@ -7,12 +7,23 @@ class Evento extends CI_Model{
 	$this->load->database();
 
 	}
+	
 	public function get_records($num,$start)
 	{
 		$this->db->select("eventos.*,categoria_eventos.id as categoria_id,categoria_eventos.nombre as categoria_nombre");
 	  $this->db->from("eventos");
 	  $this->db->join("categoria_eventos", "categoria_eventos.id = eventos.categoria_id",'left');
 		$this->db->order_by('eventos.id','ASC')->limit($num,$start);
+		return $this->db->get()->result();
+	}
+
+
+	public function get_records_menu()
+	{
+		$this->db->select("eventos.*,categoria_eventos.id as categoria_id,categoria_eventos.nombre as categoria_nombre");
+	  $this->db->from("eventos");
+	  $this->db->join("categoria_eventos", "categoria_eventos.id = eventos.categoria_id",'left');
+		$this->db->order_by('eventos.id','ASC');
 		return $this->db->get()->result();
 	}
 

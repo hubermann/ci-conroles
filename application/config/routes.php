@@ -19,12 +19,20 @@ $route['control/citas/(:num)'] = 'control/citas/index/$';
 $route['control/registros/(:num)'] = 'control/registros/index/$';
 $route['control/eventos/(:num)'] = 'control/eventos/index/$';
 $route['control/categoria_eventos/(:num)'] = 'control/categoria_eventos/index/$';
+$route['control/eventos_tipos/(:num)'] = 'control/eventos_tipos/index/$';
 /* append */
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
+
+$route['registro'] 						= 'welcome/register';
+$route['login'] 						= 'welcome/login';
+$route['check_login'] 						= 'welcome/check_login';
+$route['logout'] 						= 'welcome/logout';
+
+$route['process_registration'] 		= 'welcome/process_registration';
 
 
 // CREATE TABLE IF NOT EXISTS `ci_sessions` (

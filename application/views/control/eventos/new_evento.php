@@ -35,34 +35,23 @@ echo form_hidden('evento[id]');
 			</div>
 
 			<!-- Text input-->
-			<!-- <div class="control-group">
-			<label class="control-label">Fecha</label>
-			<div class="controls">
-			<input value="<?php echo set_value('fecha'); ?>" class="form-control" type="text" name="fecha" />
-			<?php echo form_error('fecha','<p class="error">', '</p>'); ?>
-			</div>
-			</div> -->
-
 			<div class="row">
-        
-            <div class="form-group">
-            <div class='col-sm-3'>
-                <div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-			<!-- Text input-->
-			<div class="control-group">
-			<label class="control-label">Hora</label>
-			<div class="controls">
-			<input value="<?php echo set_value('hora'); ?>" class="form-control" type="text" name="hora" />
-			<?php echo form_error('hora','<p class="error">', '</p>'); ?>
-			</div>
-			</div>
+				<div class="col-md-6">
+					<label class="control-label">Fecha</label>
+					<div class="controls">
+					<input value="<?php echo set_value('fecha'); ?>" class="form-control" type="text" name="fecha" placeholder="YYYY-MM-DD"/>
+					<?php echo form_error('fecha','<p class="error">', '</p>'); ?>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<label class="control-label">Hora</label>
+					<div class="controls">
+					<input value="<?php echo set_value('hora'); ?>" class="form-control" type="text" name="hora" />
+					<?php echo form_error('hora','<p class="error">', '</p>'); ?>
+					</div>
+				</div>
+			</div> 
+
 			<!-- Text input-->
 			<div class="control-group">
 			<label class="control-label">Lugar</label>
@@ -158,11 +147,25 @@ echo form_hidden('evento[id]');
 			</div>
 			<!-- Text input-->
 			<div class="control-group">
-			<label class="control-label">Tipo_evento</label>
-			<div class="controls">
-			<input value="<?php echo set_value('tipo_evento'); ?>" class="form-control" type="text" name="tipo_evento" />
-			<?php echo form_error('tipo_evento','<p class="error">', '</p>'); ?>
-			</div>
+			<label class="control-label">Tipo de eventos</label>
+				<div class="controls">
+					
+					<select name="tipo_evento" id="tipo_evento"  class="form-control">
+					<?php  
+				
+					$tipos_eventos = $this->eventos_tipo->get_records_menu();
+					if($tipos_eventos){
+
+						foreach ($tipos_eventos as $value) {
+							echo '<option value="'.$value->id.'">'.$value->nombre.'</option>';
+						}
+					}
+					
+					?>
+					</select>
+
+					<?php echo form_error('tipo_evento','<p class="error">', '</p>'); ?>
+				</div>
 			</div>
 			<!-- Text input-->
 			<div class="control-group">
