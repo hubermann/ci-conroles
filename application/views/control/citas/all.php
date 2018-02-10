@@ -19,42 +19,63 @@
 			</h3>
 			<div class="table-responsive">
 				<table class="table ">
-					
-					<?php 
-						if(count($query)){ 
-							 
 
+					<?php
+						if(count($query)){
+
+var_dump($query).die();
 							$head = '<thead>
 												<tr>
 
-													<th>Titulo</th>
-													<th>Categoria</th>
-													<th> Descripcion </th>
-													<th> Fecha desde </th>
+													<th>Evento</th>
+													<th>Usuario</th>
+													<th>Cita</th>
+													<th> Clasificacion </th>
 													<th class="text-right">Opciones</th>
 												</tr>
 											</thead>';
 							print($head);
 							$body = "<tbody>";
-							
+
 							foreach ($query as $row):
 
 								$body .= '<tr>';
 								$body .= '<td class="txt-oflo">'.$row->evento_id.' </td>';
 								$body .= '<td class="txt-oflo">'.$row->usuario_id.' </td>';
-								$body .= '<td class="txt-oflo"> '.$cita.' </td>';
+								$body .= '<td class="txt-oflo"> '.$row->cita.' </td>';
 								$body .= '<td class="txt-oflo"> '.$row->clasificacion_id.'  </td>';
-								
-								$body .= '<td> 
+
+								echo '<!-- Modal -->
+								<div class="modal fade" id="myModal'.$row->id.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								  <div class="modal-dialog" role="document">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+								      </div>
+								      <div class="modal-body">
+								        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								        <button type="button" class="btn btn-primary">Save changes</button>
+								      </div>
+								    </div>
+								  </div>
+								</div>';
+
+
+								$body .= '<td>
 														<div class="btn-group pull-right">
 														<a class="btn btn-small" href="'.base_url('control/citas/editar/'.$row->id.'').'"><i class="fa fa-edit"></i></a>
-														<a class="btn btn-small" href="'.base_url('control/citas/imagenes/'.$row->id.'').'"><i class="fa fa-camera-retro"></i></a>
-														<a href="'.base_url('control/citas/destroy/'.$row->id.'').'" class="delete btn btn-small" data-confirm="Are you sure to delete this item?">'.$row->id.'<i class="fa fa-trash-o"></i></a>	
+														<a class="btn btn-small" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal'.$row->id.'""><i class="fa fa-camera-retro"></i></a>
+
+														<a href="'.base_url('control/citas/destroy/'.$row->id.'').'" class="delete btn btn-small" data-confirm="Are you sure to delete this item?">'.$row->id.'<i class="fa fa-trash-o"></i></a>
 														</div>
 													</td>';
 								$body .= '</tr>';
 
-								endforeach; 
+								endforeach;
 
 								$body .= '</tbody>';
 								print($body);
@@ -64,7 +85,7 @@
 						}
 					?>
 
-				</table> 
+				</table>
 			</div>
 
 				<div class="table-responsive">
@@ -77,4 +98,3 @@
 	</div>
 </div>
 <!-- /.row -->
-

@@ -26,13 +26,33 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
+/* LOGIN */
+$route['registro'] = 'users_front/registro';
+$route['ingreso'] = 'users_front/ingreso';
+$route['desconectar'] = 'users_front/desconectar';
+$route['perfil'] = 'users_front/perfil';
+$route['perfil-editar'] = 'users_front/perfil_modificar';
+$route['experiencias-editar'] = 'users_front/experiencias_modificar';
 
-$route['registro'] 						= 'welcome/register';
-$route['login'] 						= 'welcome/login';
-$route['check_login'] 						= 'welcome/check_login';
-$route['logout'] 						= 'welcome/logout';
+$route['create_experiencia'] = 'users_front/create_experiencia';
+$route['perfil-imagen'] = 'users_front/perfil_modificar_imagen';
+$route['perfil-cargar-imagen'] = 'users_front/upload_imagen';
+$route['perfil-modificar-acceso'] = 'users_front/perfil_modificar_password';
+$route['update_tab_busco'] = 'users_front/update_tab_busco';
+$route['reset_password'] = 'users_front/reset_password';
+$route['solicitud_reset_password'] = 'users_front/solicitud_reset_password';
+$route['callback_reset_validation/(:any)'] = 'users_front/callback_reset_password';
+$route['create_new_pass'] = 'users_front/create_new_pass';
 
-$route['process_registration'] 		= 'welcome/process_registration';
+
+
+
+// $route['registro'] 						= 'welcome/register';
+// $route['login'] 						= 'welcome/login';
+// $route['check_login'] 						= 'welcome/check_login';
+// $route['logout'] 						= 'welcome/logout';
+
+// $route['process_registration'] 		= 'welcome/process_registration';
 
 
 // CREATE TABLE IF NOT EXISTS `ci_sessions` (

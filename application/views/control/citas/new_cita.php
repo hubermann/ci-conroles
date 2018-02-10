@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 $attributes = array('class' => 'form-horizontal', 'id' => 'new_cita');
 echo form_open_multipart(base_url('control/citas/create/'),$attributes);
@@ -14,9 +14,9 @@ echo form_hidden('cita[id]');
 			<div class="control-group">
 			<label class="control-label">Evento</label>
 				<div class="controls">
-					
+
 					<select name="evento_id" id="evento_id" class="form-control">
-					<?php  
+					<?php
 					$eventos = $this->evento->get_records_menu();
 					if($eventos){
 
@@ -34,9 +34,9 @@ echo form_hidden('cita[id]');
 			<div class="control-group">
 			<label class="control-label">Usuario</label>
 				<div class="controls">
-					
+
 					<select name="usuario_id" id="usuario_id"  class="form-control">
-					<?php  
+					<?php
 					$usuarios = $this->usuario->get_records_menu();
 					if($usuarios){
 
@@ -50,22 +50,96 @@ echo form_hidden('cita[id]');
 					<?php echo form_error('usuario_id','<p class="error">', '</p>'); ?>
 				</div>
 			</div>
-			<!-- Text input-->
-			<div class="control-group">
-			<label class="control-label">Cita</label>
-			<div class="controls">
-			<input value="<?php echo set_value('cita'); ?>" class="form-control" type="text" name="cita" />
-			<?php echo form_error('cita','<p class="error">', '</p>'); ?>
+
+			<div class="row">
+				<div class="col-md-6">
+					<!-- Text input-->
+					<div class="control-group">
+					<label class="control-label">Cita</label>
+					<div class="controls">
+					<input value="<?php echo set_value('cita'); ?>" class="form-control" type="text" name="cita[]" />
+						<?php echo form_error('cita','<p class="error">', '</p>'); ?>
+					</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<!-- Text input-->
+					<div class="control-group">
+					<label class="control-label">Clasificacion_id</label>
+					<div class="controls">
+						<?php echo form_dropdown('clasificacion_id[]', $this->config->item('clasificaciones_citas'), '',['class' =>'form-control'] ); ?>
+					</div>
+					</div>
+				</div>
 			</div>
+
+			<div class="row">
+				<div class="col-md-6">
+					<!-- Text input-->
+					<div class="control-group">
+					<label class="control-label">Cita</label>
+					<div class="controls">
+					<input value="<?php echo set_value('cita'); ?>" class="form-control" type="text" name="cita[]" />
+						<?php echo form_error('cita','<p class="error">', '</p>'); ?>
+					</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<!-- Text input-->
+					<div class="control-group">
+					<label class="control-label">Clasificacion_id</label>
+					<div class="controls">
+						<?php echo form_dropdown('clasificacion_id[]', $this->config->item('clasificaciones_citas'), '',['class' =>'form-control'] ); ?>
+					</div>
+					</div>
+				</div>
 			</div>
-			<!-- Text input-->
-			<div class="control-group">
-			<label class="control-label">Clasificacion_id</label>
-			<div class="controls">
-			<input value="<?php echo set_value('clasificacion_id'); ?>" class="form-control" type="text" name="clasificacion_id" />
-			<?php echo form_error('clasificacion_id','<p class="error">', '</p>'); ?>
+
+			<div class="row">
+				<div class="col-md-6">
+					<!-- Text input-->
+					<div class="control-group">
+					<label class="control-label">Cita</label>
+					<div class="controls">
+					<input value="<?php echo set_value('cita'); ?>" class="form-control" type="text" name="cita[]" />
+						<?php echo form_error('cita','<p class="error">', '</p>'); ?>
+					</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<!-- Text input-->
+					<div class="control-group">
+					<label class="control-label">Clasificacion_id</label>
+					<div class="controls">
+						<?php echo form_dropdown('clasificacion_id[]', $this->config->item('clasificaciones_citas'), '',['class' =>'form-control'] ); ?>
+					</div>
+					</div>
+				</div>
 			</div>
+
+			<div class="row">
+				<div class="col-md-6">
+					<!-- Text input-->
+					<div class="control-group">
+					<label class="control-label">Cita</label>
+					<div class="controls">
+					<input value="<?php echo set_value('cita'); ?>" class="form-control" type="text" name="cita[]" />
+						<?php echo form_error('cita','<p class="error">', '</p>'); ?>
+					</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<!-- Text input-->
+					<div class="control-group">
+					<label class="control-label">Clasificacion_id</label>
+					<div class="controls">
+						<?php echo form_dropdown('clasificacion_id[]', $this->config->item('clasificaciones_citas'), '',['class' =>'form-control'] ); ?>
+					</div>
+					</div>
+				</div>
 			</div>
+
+
 
 <div class="control-group">
 <label class="control-label"></label>

@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 class Cita extends CI_Model{
 
@@ -9,8 +9,20 @@ class Cita extends CI_Model{
 	}
 	//all
 	public function get_records($num,$start){
-		$this->db->select()->from('citas')->order_by('id','ASC')->limit($num,$start);
-		return $this->db->get()->result();
+		 $this->db->select()->from('citas')->order_by('id','ASC')->limit($num,$start);
+		 return $this->db->get()->result();
+
+// 		$this->db->select('e.*, c.*, u.*');
+// 	     $this->db->from('eventos e, citas c, usuarios u');
+// 	     $this->db->where('c.id = c.usuario_id');
+// 	     $this->db->where('e.id = c.evento_id');
+// 	     $query = $this->db->get();
+//
+// SELECT e.id, e.fecha, e.localidad, u.*, c.*
+// FROM
+// eventos e, usuarios u, citas c
+// WHERE e.id = c.evento_id
+// AND u.id = c.usuario_id
 
 	}
 
@@ -20,11 +32,11 @@ class Cita extends CI_Model{
 		$this->db->limit(1);
 		$c = $this->db->get('citas');
 
-		return $c->row(); 
+		return $c->row();
 	}
-	
+
 	//total rows
-	public function count_rows(){ 
+	public function count_rows(){
 		$this->db->select('id')->from('citas');
 		$query = $this->db->get();
 		return $query->num_rows();
@@ -34,7 +46,7 @@ class Cita extends CI_Model{
 
 		//add new
 		public function add_record($data){ $this->db->insert('citas', $data);
-				
+
 
 	}
 
@@ -61,9 +73,9 @@ class Cita extends CI_Model{
 					$this->db->limit(1);
 					$c = $this->db->get('citas');
 
-					return $c->row('nombre'); 
+					return $c->row('nombre');
 				}
-		
+
 		*/
 
 }

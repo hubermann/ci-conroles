@@ -15,7 +15,7 @@
 					<div class="col-lg-5 g-bg-teal g-rounded-left-5--lg-up">
 						<div class="g-pa-50">
 							<!-- Form -->
-							<form class="g-py-15" method="POST" action="<?php echo base_url('check_login'); ?>">
+							<form class="g-py-15" method="POST" action="<?php echo base_url('ingreso'); ?>">
 								<h2 class="h3 g-color-white mb-4">Login</h2>
 								<div class="mb-4">
 									<div class="input-group">
@@ -62,7 +62,7 @@
 					<div class="col-lg-5 g-bg-white g-rounded-right-5--lg-up">
 						<div class="g-pa-50">
 							<!-- Form -->
-							<form class="g-py-15" method="POST" action="<?php echo base_url('process_registration'); ?>">
+							<form class="g-py-15" method="POST" action="<?php echo base_url('registro'); ?>">
 								<h2 class="h3 g-color-black mb-4">Registro</h2>
 								<p class="mb-4">Profitable contracts, invoices &amp; payments for the best cases!</p>
 
@@ -72,9 +72,21 @@
 													<i class="icon-communication-128 u-line-icon-pro"></i>
 												</span>
 										<input class="form-control g-color-black g-brd-left-none g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-pl-0 g-pr-15 g-py-13" name="nombre" value="<?php echo set_value('nombre'); ?>" placeholder="Nombre">
-										
+
 									</div>
 									<?php echo form_error('nombre','<p class="error">', '</p>'); ?>
+								</div>
+
+
+								<div class="mb-4">
+									<div class="input-group rounded">
+										<span class="input-group-addon g-width-45 g-brd-gray-light-v4 g-color-gray-dark-v5">
+													<i class="icon-communication-128 u-line-icon-pro"></i>
+												</span>
+										<input class="form-control g-color-black g-brd-left-none g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-pl-0 g-pr-15 g-py-13" name="apellido" value="<?php echo set_value('apellido'); ?>" placeholder="Apellido">
+
+									</div>
+									<?php echo form_error('apellido','<p class="error">', '</p>'); ?>
 								</div>
 
 								<div class="mb-4">
@@ -83,7 +95,7 @@
 													<i class="icon-finance-067 u-line-icon-pro"></i>
 												</span>
 										<input class="form-control g-color-black g-brd-left-none g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-pl-0 g-pr-15 g-py-13" name="nickname" value="<?php echo set_value('nickname'); ?>" placeholder="Nickname">
-										
+
 									</div>
 									<?php echo form_error('nickname','<p class="error">', '</p>'); ?>
 								</div>
@@ -94,7 +106,7 @@
 													<i class="icon-communication-062 u-line-icon-pro"></i>
 												</span>
 										<input class="form-control g-color-black g-brd-left-none g-bg-white g-bg-white--focus g-brd-gray-light-v4 g-pl-0 g-pr-15 g-py-13" type="email" name="email" value="<?php echo set_value('email'); ?>" placeholder="Email">
-										
+
 									</div>
 									<?php echo form_error('email','<p class="error">', '</p>'); ?>
 								</div>
@@ -115,7 +127,7 @@
 										<input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" type="checkbox"> -->
 										<!-- <div class="u-check-icon-checkbox-v6 g-absolute-centered--y g-left-0">
 											<i class="fa" data-check-icon="&#xf00c"></i>
-										</div> 
+										</div>
 										Al crear mi cuenta acepto los <a href="#">Terminos y condiciones de uso</a>
 									</label> -->
 								</div>
@@ -130,7 +142,7 @@
 									</label> -->
 								</div>
 
-								<button class="btn btn-md btn-block u-btn-primary rounded text-uppercase g-py-13" type="submit">Login</button>
+								<button class="btn btn-md btn-block u-btn-primary rounded text-uppercase g-py-13" type="submit">Registro</button>
 							</form>
 							<!-- End Form -->
 						</div>

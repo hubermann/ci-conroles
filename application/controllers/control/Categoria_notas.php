@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Categoria_notas extends CI_Controller{
 
@@ -21,7 +21,7 @@ public function __construct(){
 	    setlocale(LC_TIME, 'es_AR');
 	}
 
-	$this->data['thumbnail_sizes'] = array(); //thumbnails sizes 
+	$this->data['thumbnail_sizes'] = array(); //thumbnails sizes
 
 }
 
@@ -33,15 +33,15 @@ public function index(){
 		$data['pagination_links'] = "";
 		$total_pages = ceil($this->categoria_nota->count_rows() / $per_page);
 
-		if ($total_pages > 1){ 
-			for ($i=1;$i<=$total_pages;$i++){ 
-			if ($page == $i) 
-				//si muestro el índice de la página actual, no coloco enlace 
-				$data['pagination_links'] .=  '<li class="active"><a>'.$i.'</a></li>'; 
-			else 
-				//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa pagina 
-				$data['pagination_links']  .= '<li><a href="'.base_url().'control/categoria_notas/'.$i.'" > '. $i .'</a></li>'; 
-		} 
+		if ($total_pages > 1){
+			for ($i=1;$i<=$total_pages;$i++){
+			if ($page == $i)
+				//si muestro el índice de la página actual, no coloco enlace
+				$data['pagination_links'] .=  '<li class="active"><a>'.$i.'</a></li>';
+			else
+				//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa pagina
+				$data['pagination_links']  .= '<li><a href="'.base_url().'control/categoria_notas/'.$i.'" > '. $i .'</a></li>';
+		}
 	}
 	//End Pagination
 
@@ -79,9 +79,9 @@ public function create(){
 
 	$this->load->helper('form');
 	$this->load->library('form_validation');
-$this->form_validation->set_rules('nombre', 'Nombre', 'required');
+	$this->form_validation->set_rules('nombre', 'Nombre', 'required');
 
-	
+
 	if ($this->form_validation->run() === FALSE){
 
 		$this->load->helper('form');
@@ -93,10 +93,10 @@ $this->form_validation->set_rules('nombre', 'Nombre', 'required');
 	}else{
 		$this->load->helper('url');
 		$slug = url_title($this->input->post('nombre'), 'dash', TRUE);
-	
-		
-		$newcategoria_nota = array( 'nombre' => $this->input->post('nombre'), 
-		 'slug' => $slug, 
+
+
+		$newcategoria_nota = array( 'nombre' => $this->input->post('nombre'),
+		 'slug' => $slug,
 		);
 		#save
 		$this->categoria_nota->add_record($newcategoria_nota);
@@ -112,7 +112,7 @@ $this->form_validation->set_rules('nombre', 'Nombre', 'required');
 //edit
 public function editar(){
 	$this->load->helper('form');
-	$data['title']= 'Editar categoria_nota';	
+	$data['title']= 'Editar categoria_nota';
 	$data['content'] = 'control/categoria_notas/edit_categoria_nota';
 	$data['menu'] = 'control/categoria_notas/menu_categoria_nota';
 	$data['query'] = $this->categoria_nota->get_record($this->uri->segment(4));
@@ -122,7 +122,7 @@ public function editar(){
 //update
 public function update(){
 	$this->load->helper('form');
-	$this->load->library('form_validation'); 
+	$this->load->library('form_validation');
 $this->form_validation->set_rules('nombre', 'Nombre', 'required');
 
 
@@ -136,7 +136,7 @@ $this->form_validation->set_rules('nombre', 'Nombre', 'required');
 		$data['menu'] = 'control/categoria_notas/menu_categoria_nota';
 		$data['query'] = $this->categoria_nota->get_record($this->input->post('id'));
 		$this->load->view('control/pixel-admin/control_layout', $data);
-	}else{		
+	}else{
 		$id=  $this->input->post('id');
 		$this->load->helper('url');
 		$slug = url_title($this->input->post('nombre'), 'dash', TRUE);
@@ -146,7 +146,7 @@ $this->form_validation->set_rules('nombre', 'Nombre', 'required');
 			$slug = url_title($this->input->post('nombre'), 'dash', TRUE);
 		}
 
-		$editedcategoria_nota = array(  
+		$editedcategoria_nota = array(
 			'nombre' => $this->input->post('nombre'),
 			'slug' => $slug,
 		);
@@ -164,7 +164,7 @@ $this->form_validation->set_rules('nombre', 'Nombre', 'required');
 }
 
 
-//delete comfirm		
+//delete comfirm
 public function delete_comfirm(){
 	$this->load->helper('form');
 	$data['content'] = 'control/categoria_notas/comfirm_delete';
@@ -206,11 +206,11 @@ public function delete(){
 			}
 
 		$id_item = $this->uri->segment(4);
-		
+
 
 		$this->categoria_nota->delete_record($id_item);
 		redirect('control/categoria_notas', 'refresh');
-		
+
 
 	}
 }

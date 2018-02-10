@@ -244,7 +244,8 @@
 									<li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
 										<div class="g-pr-10">
 											<strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Name</strong>
-											<span class="align-top">John Doe</span>
+											<input value="<?php echo $query->nombre; ?>" type="text" class="form-control" name="nombre" />
+											<?php echo form_error('nombre','<p class="error">', '</p>'); ?>
 										</div>
 										<span>
 												<i class="icon-pencil g-color-gray-dark-v5 g-color-primary--hover g-cursor-pointer g-pos-rel g-top-1"></i>
@@ -255,8 +256,9 @@
 									<!-- Your ID -->
 									<li class="d-flex align-items-center justify-content-between g-brd-bottom g-brd-gray-light-v4 g-py-15">
 										<div class="g-pr-10">
-											<strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Your ID</strong>
-											<span class="align-top">FKJ-032440</span>
+											<strong class="d-block d-md-inline-block g-color-gray-dark-v2 g-width-200 g-pr-10">Nombre</strong>
+											<input value="<?php echo $query->apellido; ?>" type="text" class="form-control" name="apellido" />
+											<?php echo form_error('apellido','<p class="error">', '</p>'); ?>
 										</div>
 										<span>
 												<i class="icon-pencil g-color-gray-dark-v5 g-color-primary--hover g-cursor-pointer g-pos-rel g-top-1"></i>

@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 $attributes = array('class' => 'form-horizontal', 'id' => 'new_lugar');
 echo form_open_multipart(base_url('control/lugares/create/'),$attributes);
@@ -66,17 +66,17 @@ echo form_hidden('lugar[id]');
 			<div class="control-group">
 			<label class="control-label">Beneficio</label>
 				<div class="controls">
-					
-					<select class="form-control"	name="beneficio_id" id="beneficio_id">
-					<?php 
-					$beneficios = $this->beneficio->get_records_menu();
-					if($beneficios){
 
-						foreach ($beneficios->result() as $value) {
-							echo '<option value="'.$value->id.'">'.$value->nombre.'</option>';
+					<select class="form-control"	name="beneficio_id" id="beneficio_id">
+						<option value="0">Sin beneficio</option>
+						<?php
+						$beneficios = $this->beneficio->get_records_menu();
+						if($beneficios){
+							foreach ($beneficios->result() as $value) {
+								echo '<option value="'.$value->id.'">'.$value->nombre.'</option>';
+							}
 						}
-					}
-					?>
+						?>
 					</select>
 
 					<?php echo form_error('beneficios_id','<p class="error">', '</p>'); ?>

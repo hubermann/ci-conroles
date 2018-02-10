@@ -75,35 +75,37 @@ class Usuario extends CI_Model{
 			$this->db->delete('usuarios');
 		}
 
+		function check_credentials_front($email, $password){
 
-		function check_credentials($email, $password){
+			$this->db->where(array('email' => $email, 'status'=>0));
+			$query = $this->db->get('usuarios');
 
-			$this->db->select('*')->from('usuarios')
-		->limit(1)
-		->where( array('email' => $email, 'password'=> $password));
-		$query = $this->db->count_all_results();
+			if ($query->num_rows() != 1){
+				return FALSE;
+			} 
 
+			if ($query->row('password') === hash('sha512', $query->row('salt').$password)){
 
-		if ($query != 1) return FALSE;
+				// Contraseña correcta (creo session)
+				$this->session->set_userdata(array(
+					'user_id' => $query->row('id'),
+					'user_email' => $query->row('email'),
+					'user_nickname' => $query->row('nickname')
+				));
 
-		$user = $this->db->select('*')->from('usuarios')
-						->where( array('email' => $email))
-						->limit(1)
-						->get();
+				return TRUE;
+			}
+			//return false por defecto
+			return FALSE;
+		}
 
-		$db_salt = $user->row('salt');
-	  $db_hash = $user->row('password');
-	  
-	  if ($db_hash === hash('sha512', $db_salt.$password)){
-	  	$sess_array = array('id' => $user->row('id'),'email' => $user->row('email'));
-		
-			$this->session->set_userdata('logged_in', $sess_array);
-
-			return TRUE;
-	  }
-	  return FALSE;
-		
-	}
+		//Cerrar session FRONT
+		public function logout_front(){
+			$this->session->unset_userdata('user_id');
+			$this->session->unset_userdata('user_email');
+			$this->session->unset_userdata('user_role');
+			redirect('/', 'refresh');
+		}
 
 }
 

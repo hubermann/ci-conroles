@@ -3,20 +3,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 
-$config['roles_list'] = array( 
-	'1' => 'recruiter', 
-	'2' => 'user_simple', 
+$config['roles_list'] = array(
+	'1' => 'recruiter',
+	'2' => 'user_simple',
 	);
 
 
-$config['niveles_estudio_list'] = array( 
-	'Primarios' => 'Primarios', 
-	'Secundarios' => 'Secundarios', 
-	'Universitarios' => 'Universitarios', 
-	'otros' => 'otros', 
-
+$config['niveles_estudio_list'] = array(
+	'Primarios' => 'Primarios',
+	'Secundarios' => 'Secundarios',
+	'Universitarios' => 'Universitarios',
+	'otros' => 'otros',
 	);
 
+$config['clasificaciones_citas'] = array(
+	'Me gusto[cambiar]' => 'Me gusto [cambiar]',
+	'masomeno[cambiar]' => 'masomeno[cambiar] ',
+	'No califica [cambiar]' => 'no califica[cambiar]',
+	);
+
+$config['relaciones_tipo'] = array(
+	'1' => 'Nuevas amistades',
+	'2' => 'Amistad y despues vemos ',
+	'3' => 'Una relacion sin compromiso',
+	'4' => 'Una relacion con fines serios',
+	'5' => 'Nuevas experiencias',
+	);
 
 
 $config['aprobado_list'] = array('1' => 'Si', '0' => 'No' );
@@ -82,6 +94,3 @@ $config['paises_list'] = array(
 	'12' => 'España',
 	'13' => 'Otro'
 	);
-
-
-

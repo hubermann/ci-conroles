@@ -1,13 +1,13 @@
-<?php  
+<?php
 $attributes = array('class' => 'form-horizontal', 'id' => 'edit_lugar');
 echo form_open_multipart(base_url('control/lugares/update/'),$attributes);
 
-echo form_hidden('id', $query->id); 
+echo form_hidden('id', $query->id);
 ?>
 <legend><?php echo $title ?></legend>
 <div class="well well-large well-transparent">
 
- 
+
 
 
 <!-- Text input-->
@@ -16,8 +16,8 @@ echo form_hidden('id', $query->id);
 <label class="control-label">Categoria id</label>
 	<div class="controls">
 	<select name="categoria_id" id="categoria_id">
-		<?php 
-		/* 
+		<?php
+		/*
 		$categorias = $this->categoria->get_records_menu();
 		if($categorias){
 
@@ -29,7 +29,7 @@ echo form_hidden('id', $query->id);
 		*/
 		?>
 		</select>
-		
+
 		<?php echo form_error('categoria_id','<p class="error">', '</p>'); ?>
 	</div>
 </div>
@@ -82,7 +82,8 @@ echo form_hidden('id', $query->id);
 			<label class="control-label">Beneficio</label>
 				<div class="controls">
 					<select class="form-control"	name="beneficio_id" id="beneficio_id">
-					<?php 
+            <option value="0" <?php if($query->beneficio_id == 0){ echo "selected";} ?> >Sin beneficio</option>
+					<?php
 					$beneficios = $this->beneficio->get_records_menu();
 					if($beneficios){
 						foreach ($beneficios->result() as $value) {

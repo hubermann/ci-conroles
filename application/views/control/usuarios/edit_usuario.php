@@ -1,8 +1,8 @@
-<?php  
+<?php
 $attributes = array('class' => 'form-horizontal', 'id' => 'edit_usuario');
 echo form_open_multipart(base_url('control/usuarios/update/'),$attributes);
 
-echo form_hidden('id', $query->id); 
+echo form_hidden('id', $query->id);
 ?>
 <legend><?php echo $title ?></legend>
 <div class="well well-large well-transparent">
@@ -21,7 +21,7 @@ echo form_hidden('id', $query->id);
 <div class="row">
 	<!-- Tab panes -->
 	<div class="tab-content">
-		
+
 		<!-- tab datos personales -->
 		<div role="tabpanel" class="tab-pane active" id="datos_personales">
 			<div class="col-md-2"></div>
@@ -73,13 +73,14 @@ echo form_hidden('id', $query->id);
 			</div> <!-- /col-md-8 -->
 			<div class="col-md-2"></div>
 </div>
-	
+
 </div>
 
 
-	
+
 
 
 <?php echo form_close(); ?>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </div>

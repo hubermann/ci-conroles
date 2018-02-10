@@ -56,14 +56,14 @@
 				</ul>
 				<ul class="nav navbar-top-links navbar-right pull-right">
 
-					<?php 
+					<?php
 					if( $this->session->userdata('logged_in') )
 					{
 						$usuario = $this->session->userdata('logged_in');
 
 						echo '
 						<li>
-							<a class="profile-pic" href="#"> 
+							<a class="profile-pic" href="#">
 								<!-- <img src="pixeladmin-lite/plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"> -->
 								'.$usuario['email'].'
 							</a>
@@ -71,7 +71,7 @@
 					}
 
 					?>
-					
+
 					<li>
 						<a href="<?php echo base_url('control/logout'); ?>"> Cerrar sesion </a>
 					</li>
@@ -174,7 +174,7 @@
 	<!-- /#wrapper -->
 	<!-- jQuery -->
 
-	<script src="<?php echo base_url('public_folder/pixeladmin-lite/plugins/bower_components/jquery/dist/jquery.min.js'); ?>"></script>
+	<script  src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
 	<!-- Bootstrap Core JavaScript -->
 
 	<script src="<?php echo base_url('public_folder/pixeladmin-lite/html/bootstrap/dist/js/bootstrap.min.js'); ?>"></script>
@@ -204,7 +204,7 @@
 	<script src="<?php echo base_url('public_folder/pixeladmin-lite/plugins/bower_components/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js'); ?>"></script>
 
 
-	
+
 	<?php if ($this->session->flashdata('success')): ?>
 		<script type="text/javascript">
 			$(document).ready(function() {
@@ -290,7 +290,7 @@
 			$(this).val(date);
 		});
 	}
-   
+
    var isValidDate = function(value, format) {
 		format = format || false;
 		// lets parse the date to the best of our knowledge
@@ -302,7 +302,7 @@
 
 		return isNaN(timestamp) == false;
    }
-   
+
    var parseDate = function(value) {
 		var m = value.match(/^(\d{1,2})(\/|-)?(\d{1,2})(\/|-)?(\d{4})$/);
 		if (m)
@@ -310,7 +310,7 @@
 
 		return value;
    }
-   
+
    bindDatePicker();
  });
 </script>

@@ -7,6 +7,10 @@
 
 		</div>
 		<div class="col-md-12">
+
+		<?php 
+var_dump($this->session->userdata('user_nickname'));
+		 ?>
 			<br>
 			<br>
 			<br>
