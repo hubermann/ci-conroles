@@ -242,13 +242,13 @@
 				</ul>
 				<!-- End Nav tabs -->
 
-				<?php include('tabs_perfil/tab_editar_datos.php'); ?>
+				<?php include('tabs_perfil/tab_edit_datos.php'); ?>
 
-				<?php include('tabs_perfil/tab_descripcion.php'); ?>
+				<?php include('tabs_perfil/tab_edit_descripcion.php'); ?>
 
-				<?php include('tabs_perfil/tab_busco.php'); ?>
+				<?php include('tabs_perfil/tab_edit_busco.php'); ?>
 
-				<?php include('tabs_perfil/tab_imagenes.php'); ?>
+				<?php include('tabs_perfil/tab_edit_imagenes.php'); ?>
 
 				</div>
 				<!-- End Tab panes -->

@@ -47,7 +47,7 @@
         <label class="col-sm-3 col-form-label g-color-gray-dark-v2 g-font-weight-700 text-sm-right g-mb-10">Apellido</label>
         <div class="col-sm-9">
           <div class="input-group g-brd-primary--focus">
-            <input class="form-control form-control-md border-right-0 rounded-0 g-py-13 pr-0" type="text" value="<?php echo $query->apellido; ?>" placeholder="Apellido">
+            <input class="form-control form-control-md border-right-0 rounded-0 g-py-13 pr-0" name="apellido" type="text" value="<?php echo $query->apellido; ?>" placeholder="Apellido">
             <?php echo form_error('apellido','<p class="error">', '</p>'); ?>
             <div class="input-group-addon d-flex align-items-center g-bg-white g-color-gray-light-v1 rounded-0">
               <i class="icon-lock"></i>

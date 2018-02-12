@@ -13,7 +13,7 @@ function confirma_eliminar(idvar, urldel) {
               $("#"+idvar).remove();
 
     	    }
-    	});	
+    	});
 	}
 }
 </script>
@@ -27,7 +27,7 @@ function confirma_eliminar(idvar, urldel) {
 
 <div class="panel panel-default">
     <div class="panel-body">
-    <?php 
+    <?php
 
     $atts = array('id' => 'form_imagenes', 'class' => "navbar-form navbar-left", 'role'=> 'search');
     echo form_open_multipart(base_url('control/usuarios/add_imagen'), $atts);
@@ -53,9 +53,7 @@ if($query_imagenes->result()!=""){
         <p onclick="confirma_eliminar('.$imagen->id.')" class="btn btn-default" role="button">Quitar imagen</p>
         </div>
         </div>';
-        
-
-    }   
+    }
 }#fin if
 
 ?>

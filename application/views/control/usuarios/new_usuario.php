@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 $attributes = array('class' => 'form-horizontal', 'id' => 'new_usuario');
 echo form_open_multipart(base_url('control/usuarios/create/'),$attributes);
@@ -15,9 +15,9 @@ echo form_hidden('usuario[id]');
 <div class="control-group">
 <label class="control-label">Categoria</label>
 	<div class="controls">
-		
+
 		<select name="categoria_id" id="categoria_id">
-		<?php  
+		<?php
 		/*
 		$categorias = $this->Categoria->get_records_menu();
 		if($categorias){
@@ -107,7 +107,7 @@ echo form_hidden('usuario[id]');
 		<div class="control-group">
 			<label class="control-label">Sexo</label>
 			<div class="controls">
-				<?php $options_sexo = [0=> "Hombre", 1=>"Mujer"]; 
+				<?php $options_sexo = [0=> "Hombre", 1=>"Mujer"];
 				echo form_dropdown('sexo', $options_sexo);
 				?>
 			</div>
@@ -123,7 +123,7 @@ echo form_hidden('usuario[id]');
 			</div>
 		</div>
 	</div>
-</div>		
+</div>
 
 
 <div class="row">
@@ -177,7 +177,7 @@ echo form_hidden('usuario[id]');
 			</div>
 		</div>
 	</div>
-</div>		
+</div>
 
 
 <!-- Text input-->
@@ -238,7 +238,7 @@ echo form_hidden('usuario[id]');
 <div class="control-group">
 	<label class="control-label">Fuma</label>
 	<div class="controls">
-		<?php $options_fuma = [0=> "No", 1=>"Si"]; 
+		<?php $options_fuma = [0=> "No", 1=>"Si"];
 		echo  form_dropdown('fuma', $options_fuma);
 		?>
 	</div>
@@ -247,7 +247,7 @@ echo form_hidden('usuario[id]');
 <div class="control-group">
 	<label class="control-label">Toma</label>
 	<div class="controls">
-		<?php $options_toma = [0=> "No", 1=>"Si"]; 
+		<?php $options_toma = [0=> "No", 1=>"Si"];
 		echo form_dropdown('toma', $options_toma);
 		?>
 	</div>
@@ -272,8 +272,8 @@ echo form_hidden('usuario[id]');
 <div class="control-group">
 	<label class="control-label">Estado_civil</label>
 	<div class="controls">
-		<?php $options_estado_civil = [0=> "Soltero", 1=>"Casado", 2=>"Separado", 3=>"Viudo"]; 
-		echo form_dropdown('estado_civil', $options_estado_civil);
+		<?php
+		echo form_dropdown('estado_civil', $this->config->item('options_estado_civil'),[set_value('estado_civil')]);
 		?>
 	</div>
 </div>
@@ -288,41 +288,16 @@ echo form_hidden('usuario[id]');
 <!-- Text input-->
 <div class="control-group">
 	<label class="control-label">Provincia</label>
-	<div class="controls">  
-		<?php $options_provincia =[0 => '-', 1 => 'Buenos Aires',
-		2 => 'Capital Federal', 
-		3 =>'Catamarca',
-		4 =>'Chaco',
-		5 =>'Chubut',
-		6 =>'Córdoba',
-		7 =>'Corrientes',
-		8 =>'Entre Ríos',
-		9 =>'Formosa',
-		10 =>'Jujuy',
-		11 =>'La Pampa',
-		12 =>'La Rioja',
-		13 =>'Mendoza',
-		14 =>'Misiones',
-		15 =>'Neuquén',
-		16 =>'Río Negro',
-		17 =>'Salta',
-		18 =>'San Juan',
-		19 =>'San Luis',
-		20 =>'Santa Cruz',
-		21 =>'Santa Fe',
-		22 =>'Santiago del Estero',
-		23=>'Tierra del Fuego',
-		24 =>'Tucumán'];
-		echo form_dropdown('provincia', $options_provincia);
-		?>
+	<div class="controls">
+		<?php echo form_dropdown('provincia', $this->config->item('options_provincia'), []); ?>
 	</div>
 </div>
 <!-- Text input-->
 <div class="control-group">
 	<label class="control-label">Zodiaco</label>
 	<div class="controls">
-		<?php $options_zodiaco = ["Aries","Tauro","Géminis","Cáncer","Leo","Virgo","Libra","Escorpio","Sagitario","Capricornio","Acuario","Piscis"]; 
-		echo form_dropdown('zodiaco', $options_zodiaco);
+		<?php
+		echo form_dropdown('zodiaco', $this->config->item('options_zodiaco'), [set_value('zodiaco')]);
 		?>
 	</div>
 </div>
@@ -346,7 +321,7 @@ echo form_hidden('usuario[id]');
 <div class="control-group">
 	<label class="control-label">Celular_cia</label>
 	<div class="controls">
-		<input value="<?php echo set_value('celular_cia'); ?>" class="form-control" type="text" name="celular_cia" />
+		<?php echo form_dropdown('celular_cia', $this->config->item('celular_cia'), [set_value('celular_cia')]); ?>
 		<?php echo form_error('celular_cia','<p class="error">', '</p>'); ?>
 	</div>
 </div>
@@ -395,7 +370,7 @@ echo form_hidden('usuario[id]');
 <div class="control-group">
 	<label class="control-label">Religion</label>
 	<div class="controls">
-		<input value="<?php echo set_value('religion'); ?>" class="form-control" type="text" name="religion" />
+		<?php echo form_dropdown('religion', $this->config->item('religion'), [set_value('religion')]); ?>
 		<?php echo form_error('religion','<p class="error">', '</p>'); ?>
 	</div>
 </div>
@@ -419,7 +394,7 @@ echo form_hidden('usuario[id]');
 <div class="control-group">
 	<label class="control-label">Activo</label>
 	<div class="controls">
-		<?php $options_activo = [0=> "No", 1=>"Si"]; 
+		<?php $options_activo = [0=> "No", 1=>"Si"];
 		echo form_dropdown('activo', $options_activo);
 		?>
 	</div>
@@ -432,7 +407,7 @@ echo form_hidden('usuario[id]');
 		<div class="control-group">
 			<label class="control-label">Estatura</label>
 			<div class="controls">
-				<input value="<?php echo set_value('estatura'); ?>" class="form-control" type="text" name="estatura" />
+				<?php echo form_dropdown('estatura', $this->config->item('estatura'), [set_value('estatura')]); ?>
 				<?php echo form_error('estatura','<p class="error">', '</p>'); ?>
 			</div>
 		</div>
@@ -442,7 +417,7 @@ echo form_hidden('usuario[id]');
 		<div class="control-group">
 			<label class="control-label">Peso</label>
 			<div class="controls">
-				<input value="<?php echo set_value('peso'); ?>" class="form-control" type="text" name="peso" />
+				<?php echo form_dropdown('peso', $this->config->item('peso'), [set_value('peso')]); ?>
 				<?php echo form_error('peso','<p class="error">', '</p>'); ?>
 			</div>
 		</div>
@@ -452,7 +427,7 @@ echo form_hidden('usuario[id]');
 		<div class="control-group">
 			<label class="control-label">Contextura_fisica</label>
 			<div class="controls">
-				<input value="<?php echo set_value('contextura_fisica'); ?>" class="form-control" type="text" name="contextura_fisica" />
+				<?php echo form_dropdown('contextura_fisica', $this->config->item('contextura_fisica'), [set_value('contextura_fisica')]); ?>
 				<?php echo form_error('contextura_fisica','<p class="error">', '</p>'); ?>
 			</div>
 		</div>
@@ -462,7 +437,7 @@ echo form_hidden('usuario[id]');
 		<div class="control-group">
 			<label class="control-label">Color_pelo</label>
 			<div class="controls">
-				<input value="<?php echo set_value('color_pelo'); ?>" class="form-control" type="text" name="color_pelo" />
+				<?php echo form_dropdown('color_pelo', $this->config->item('color_pelo'), [set_value('color_pelo')]); ?>
 				<?php echo form_error('color_pelo','<p class="error">', '</p>'); ?>
 			</div>
 		</div>
@@ -472,7 +447,7 @@ echo form_hidden('usuario[id]');
 		<div class="control-group">
 			<label class="control-label">Color_ojos</label>
 			<div class="controls">
-				<input value="<?php echo set_value('color_ojos'); ?>" class="form-control" type="text" name="color_ojos" />
+				<?php echo form_dropdown('color_ojos', $this->config->item('color_ojos'), [set_value('color_ojos')]); ?>
 				<?php echo form_error('color_ojos','<p class="error">', '</p>'); ?>
 			</div>
 		</div>

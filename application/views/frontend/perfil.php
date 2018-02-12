@@ -68,33 +68,33 @@
 				<div class="list-group list-group-border-0 g-mb-40">
 					<!-- Overall -->
 					<a href="page-profile-main-1.html" class="list-group-item list-group-item-action justify-content-between">
-						<span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i> Overall</span>
+						<span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i> Mis datos</span>
 						<span class="u-label g-font-size-11 g-bg-gray-dark-v2 g-rounded-20 g-px-10">2</span>
 					</a>
 					<!-- End Overall -->
 
 					<!-- Profile -->
 					<a href="page-profile-profile-1.html" class="list-group-item list-group-item-action justify-content-between">
-						<span><i class="icon-cursor g-pos-rel g-top-1 g-mr-8"></i> Profile</span>
+						<span><i class="icon-cursor g-pos-rel g-top-1 g-mr-8"></i> Mis coincidencias</span>
 					</a>
 					<!-- End Profile -->
 
 					<!-- Users Contacts -->
 					<a href="page-profile-users-1.html" class="list-group-item list-group-item-action justify-content-between">
-						<span><i class="icon-notebook g-pos-rel g-top-1 g-mr-8"></i> Users Contacts</span>
+						<span><i class="icon-notebook g-pos-rel g-top-1 g-mr-8"></i> Mis eventos</span>
 					</a>
 					<!-- End Users Contacts -->
 
 					<!-- My Projects -->
 					<a href="page-profile-projects-1.html" class="list-group-item list-group-item-action justify-content-between">
-						<span><i class="icon-layers g-pos-rel g-top-1 g-mr-8"></i> My Projects</span>
+						<span><i class="icon-layers g-pos-rel g-top-1 g-mr-8"></i> Mi contactos</span>
 						<span class="u-label g-font-size-11 g-bg-primary g-rounded-20 g-px-10">9</span>
 					</a>
 					<!-- End My Projects -->
 
 					<!-- Comments -->
 					<a href="page-profile-comments-1.html" class="list-group-item list-group-item-action justify-content-between">
-						<span><i class="icon-bubbles g-pos-rel g-top-1 g-mr-8"></i> Comments</span>
+						<span><i class="icon-bubbles g-pos-rel g-top-1 g-mr-8"></i> Cerrar sesión</span>
 						<span class="u-label g-font-size-11 g-bg-pink g-rounded-20 g-px-8">24</span>
 					</a>
 					<!-- End Comments -->

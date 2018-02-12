@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Usuarios extends CI_Controller{
 
@@ -22,7 +22,7 @@ class Usuarios extends CI_Controller{
 			setlocale(LC_TIME, 'es_AR');
 		}
 
-	$this->data['thumbnail_sizes'] = array(); //thumbnails sizes 
+	$this->data['thumbnail_sizes'] = array(); //thumbnails sizes
 
 }
 
@@ -34,15 +34,15 @@ public function index(){
 	$data['pagination_links'] = "";
 	$total_pages = ceil($this->usuario->count_rows() / $per_page);
 
-	if ($total_pages > 1){ 
-		for ($i=1;$i<=$total_pages;$i++){ 
-			if ($page == $i) 
-				//si muestro el índice de la página actual, no coloco enlace 
-				$data['pagination_links'] .=  '<li class="active"><a>'.$i.'</a></li>'; 
-			else 
-				//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa pagina 
-				$data['pagination_links']  .= '<li><a href="'.base_url().'control/usuarios/'.$i.'" > '. $i .'</a></li>'; 
-		} 
+	if ($total_pages > 1){
+		for ($i=1;$i<=$total_pages;$i++){
+			if ($page == $i)
+				//si muestro el índice de la página actual, no coloco enlace
+				$data['pagination_links'] .=  '<li class="active"><a>'.$i.'</a></li>';
+			else
+				//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa pagina
+				$data['pagination_links']  .= '<li><a href="'.base_url().'control/usuarios/'.$i.'" > '. $i .'</a></li>';
+		}
 	}
 	//End Pagination
 
@@ -136,74 +136,74 @@ public function create(){
 		$this->load->view('control/pixel-admin/control_layout', $data);
 
 	}else{
-		
+
 		if($this->input->post('slug')){
 			$this->load->helper('url');
 			$slug = url_title($this->input->post('titulo'), 'dash', TRUE);
 		}
 		$user_salt = password_hash($this->input->post('password'), PASSWORD_BCRYPT);
-		
-		$newusuario = array( 'nickname' => $this->input->post('nickname'), 
-			'password' => $this->input->post('password'), 
-			'salt' => $user_salt, 
-			'email' => $this->input->post('email'), 
-			'apellido' => $this->input->post('apellido'), 
-			'nombre' => $this->input->post('nombre'), 
-			'dni' => $this->input->post('dni'), 
-			'sexo' => $this->input->post('sexo'), 
-			'nacimiento' => $this->input->post('nacimiento'), 
-			'edad' => $this->input->post('edad'), 
-			'telcontacto' => $this->input->post('telcontacto'), 
-			'barrio' => $this->input->post('barrio'), 
-			'calle' => $this->input->post('calle'), 
-			'numero' => $this->input->post('numero'), 
-			'piso' => $this->input->post('piso'), 
-			'depto' => $this->input->post('depto'), 
-			'conocio' => $this->input->post('conocio'), 
-			'profesion' => $this->input->post('profesion'), 
-			'localidad' => $this->input->post('localidad'), 
-			'fuma' => $this->input->post('fuma'), 
-			'toma' => $this->input->post('toma'), 
-			'descripcion' => $this->input->post('descripcion'), 
-			'telcelular' => $this->input->post('telcelular'), 
-			'estado_civil' => $this->input->post('estado_civil'), 
-			'educacion' => $this->input->post('educacion'), 
-			'provincia' => $this->input->post('provincia'), 
-			'zodiaco' => $this->input->post('zodiaco'), 
-			'busco' => $this->input->post('busco'), 
-			'ocupacion' => $this->input->post('ocupacion'), 
-			'celular_cia' => $this->input->post('celular_cia'), 
-			'tel_citas' => $this->input->post('tel_citas'), 
-			'validado' => $this->input->post('validado'), 
-			'hijos' => $this->input->post('hijos'), 
-			'codigo_verificacion' => $this->input->post('codigo_verificacion'), 
-			'negocios' => $this->input->post('negocios'), 
-			'cod_postal' => $this->input->post('cod_postal'), 
-			'religion' => $this->input->post('religion'), 
-			'foto_main' => $this->input->post('foto_main'), 
-			'nacionalidad' => $this->input->post('nacionalidad'), 
-			'activo' => $this->input->post('activo'), 
-			'estatura' => $this->input->post('estatura'), 
-			'peso' => $this->input->post('peso'), 
-			'contextura_fisica' => $this->input->post('contextura_fisica'), 
-			'color_pelo' => $this->input->post('color_pelo'), 
-			'color_ojos' => $this->input->post('color_ojos'), 
-			'convivencia' => $this->input->post('convivencia'), 
-			'facebook' => $this->input->post('facebook'), 
-			'twitter' => $this->input->post('twitter'), 
-			'linkedin' => $this->input->post('linkedin'), 
-			'youtube' => $this->input->post('youtube'), 
-			'myspace' => $this->input->post('myspace'), 
-			'badoo' => $this->input->post('badoo'), 
-			'msn' => $this->input->post('msn'), 
-			'skype' => $this->input->post('skype'), 
-			'whatsapp' => $this->input->post('whatsapp'), 
-			'google' => $this->input->post('google'), 
-			'tipo_busuqeda' => $this->input->post('tipo_busuqeda'), 
-			'completa_signin' => $this->input->post('completa_signin'), 
-			'claves_erroneas' => $this->input->post('claves_erroneas'), 
-			'id_paises' => $this->input->post('id_paises'), 
-			'score' => $this->input->post('score'), 
+
+		$newusuario = array( 'nickname' => $this->input->post('nickname'),
+			'password' => $this->input->post('password'),
+			'salt' => $user_salt,
+			'email' => $this->input->post('email'),
+			'apellido' => $this->input->post('apellido'),
+			'nombre' => $this->input->post('nombre'),
+			'dni' => $this->input->post('dni'),
+			'sexo' => $this->input->post('sexo'),
+			'nacimiento' => $this->input->post('nacimiento'),
+			'edad' => $this->input->post('edad'),
+			'telcontacto' => $this->input->post('telcontacto'),
+			'barrio' => $this->input->post('barrio'),
+			'calle' => $this->input->post('calle'),
+			'numero' => $this->input->post('numero'),
+			'piso' => $this->input->post('piso'),
+			'depto' => $this->input->post('depto'),
+			'conocio' => $this->input->post('conocio'),
+			'profesion' => $this->input->post('profesion'),
+			'localidad' => $this->input->post('localidad'),
+			'fuma' => $this->input->post('fuma'),
+			'toma' => $this->input->post('toma'),
+			'descripcion' => $this->input->post('descripcion'),
+			'telcelular' => $this->input->post('telcelular'),
+			'estado_civil' => $this->input->post('estado_civil'),
+			'educacion' => $this->input->post('educacion'),
+			'provincia' => $this->input->post('provincia'),
+			'zodiaco' => $this->input->post('zodiaco'),
+			'busco' => $this->input->post('busco'),
+			'ocupacion' => $this->input->post('ocupacion'),
+			'celular_cia' => $this->input->post('celular_cia'),
+			'tel_citas' => $this->input->post('tel_citas'),
+			'validado' => $this->input->post('validado'),
+			'hijos' => $this->input->post('hijos'),
+			'codigo_verificacion' => $this->input->post('codigo_verificacion'),
+			'negocios' => $this->input->post('negocios'),
+			'cod_postal' => $this->input->post('cod_postal'),
+			'religion' => $this->input->post('religion'),
+			'foto_main' => $this->input->post('foto_main'),
+			'nacionalidad' => $this->input->post('nacionalidad'),
+			'activo' => $this->input->post('activo'),
+			'estatura' => $this->input->post('estatura'),
+			'peso' => $this->input->post('peso'),
+			'contextura_fisica' => $this->input->post('contextura_fisica'),
+			'color_pelo' => $this->input->post('color_pelo'),
+			'color_ojos' => $this->input->post('color_ojos'),
+			'convivencia' => $this->input->post('convivencia'),
+			'facebook' => $this->input->post('facebook'),
+			'twitter' => $this->input->post('twitter'),
+			'linkedin' => $this->input->post('linkedin'),
+			'youtube' => $this->input->post('youtube'),
+			'myspace' => $this->input->post('myspace'),
+			'badoo' => $this->input->post('badoo'),
+			'msn' => $this->input->post('msn'),
+			'skype' => $this->input->post('skype'),
+			'whatsapp' => $this->input->post('whatsapp'),
+			'google' => $this->input->post('google'),
+			'tipo_busuqeda' => $this->input->post('tipo_busuqeda'),
+			'completa_signin' => $this->input->post('completa_signin'),
+			'claves_erroneas' => $this->input->post('claves_erroneas'),
+			'id_paises' => $this->input->post('id_paises'),
+			'score' => $this->input->post('score'),
 			);
 	#save
 	$this->usuario->add_record($newusuario);
@@ -219,7 +219,7 @@ public function create(){
 //edit
 public function editar(){
 	$this->load->helper('form');
-	$data['title']= 'Editar usuario';	
+	$data['title']= 'Editar usuario';
 	$data['content'] = 'control/usuarios/edit_usuario';
 	$data['menu'] = 'control/usuarios/menu_usuario';
 	$data['query'] = $this->usuario->get_record($this->uri->segment(4));
@@ -229,7 +229,7 @@ public function editar(){
 	//update
 	public function update(){
 		$this->load->helper('form');
-		$this->load->library('form_validation'); 
+		$this->load->library('form_validation');
 		$this->form_validation->set_rules('nickname', 'Nickname', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
 		$this->form_validation->set_rules('email', 'Email', 'required');
@@ -272,7 +272,7 @@ public function editar(){
 			$data['menu'] = 'control/usuarios/menu_usuario';
 			$data['query'] = $this->usuario->get_record($this->input->post('id'));
 			$this->load->view('control/pixel-admin/control_layout', $data);
-		}else{		
+		}else{
 			$id=  $this->input->post('id');
 
 			if($this->input->post('slug')){
@@ -281,7 +281,7 @@ public function editar(){
 			}
 
 
-			$editedusuario = array(  
+			$editedusuario = array(
 				'nickname' => $this->input->post('nickname'),
 				'email' => $this->input->post('email'),
 				'apellido' => $this->input->post('apellido'),
@@ -360,7 +360,7 @@ public function editar(){
 	}
 
 
-//delete comfirm		
+//delete comfirm
 public function delete_comfirm(){
 	$this->load->helper('form');
 	$data['content'] = 'control/usuarios/comfirm_delete';
@@ -431,13 +431,13 @@ public function add_imagen(){
 
 		if ( $file['status'] != 0 ){
 		//guardo
-			$nueva_imagen = array(  
+			$nueva_imagen = array(
 				'usuario_id' => $this->input->post('id'),
 				'filename' => $file['filename'],
 				);
 		#save
 			$this->session->set_flashdata('success', 'Imagen cargada!');
-			$this->imagenes_usuario->add_record($nueva_imagen);	
+			$this->imagenes_usuario->add_record($nueva_imagen);
 			redirect('control/usuarios/imagenes/'.$this->input->post('id'));
 		}
 		$this->session->set_flashdata('error', $file['msg']);
@@ -447,13 +447,13 @@ public function add_imagen(){
 }
 
 public function delete_imagen(){
-	$id_imagen = $this->uri->segment(4); 
+	$id_imagen = $this->uri->segment(4);
 
 	$imagen = $this->imagenes_usuario->get_record($id_imagen);
 	$path = 'images-usuarios/'.$imagen->filename;
 	unlink($path);
-	
-	$this->imagenes_usuario->delete_record($id_imagen);	
+
+	$this->imagenes_usuario->delete_record($id_imagen);
 	#echo "Eliminada : ".$imagen->filename;
 }
 
@@ -461,10 +461,10 @@ public function delete_imagen(){
 
 /*******  FILE ADJUNTO  ********/
 public function upload_file(){
-	
+
 	//1 = OK - 0 = Failure
 	$file = array('status' => '', 'filename' => '', 'msg' => '' );
-	
+
 	array('image/jpeg','image/pjpeg', 'image/jpg', 'image/png', 'image/gif','image/bmp');
 	//check extencion
 	/*
@@ -473,14 +473,14 @@ public function upload_file(){
 	*/
 	$file_extensions_allowed = array('image/jpeg','image/pjpeg', 'image/jpg', 'image/png', 'image/gif','image/bmp');
 	$exts_humano = array('JPG', 'JPEG', 'PNG', 'GIF');
-	
-	
+
+
 	$exts_humano = implode(', ',$exts_humano);
 	$ext = $_FILES['adjunto']['type'];
 	#$ext = strtolower($ext);
 	if(!in_array($ext, $file_extensions_allowed)){
 		$exts = implode(', ',$file_extensions_allowed);
-		
+
 		$file['msg'] .="<p>".$_FILES['adjunto']['name']." <br />Puede subir archivos que tengan alguna de estas extenciones: ".$exts_humano."</p>";
 		$file['status'] = 0 ;
 	}else{
@@ -496,11 +496,11 @@ public function upload_file(){
 		$imagname=''.$random.'_'.$name_whitout_whitespaces;
 		#$thumbname='tn_'.$imagname;
 		$yukle->set_file_name($imagname);
-		
+
 
 		$yukle->start_copy();
-		
-		
+
+
 
 		if($yukle->is_ok()){
 
@@ -524,13 +524,13 @@ public function upload_file(){
 		}
 
 
-		
+
 		//clean
 		$yukle->set_tmp_name('');
 		$yukle->set_file_size('');
 		$yukle->set_file_type('');
 		$imagname='';
-	}//fin if(extencion)	
+	}//fin if(extencion)
 
 
 	return $file;

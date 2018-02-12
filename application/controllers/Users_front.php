@@ -11,7 +11,7 @@ class Users_Front extends CI_Controller
         $this->load->helper('form');
         $this->load->library('session');
         $this->load->library('form_validation');
-        $this->load->model(array('usuario', 'categoria_evento', 'usuario_eventos_preferido','usuario_tipo_relacion'));
+        $this->load->model(array('usuario', 'categoria_evento', 'usuario_eventos_preferido','usuario_tipo_relacion','imagenes_usuario'));
 
 
 
@@ -20,6 +20,7 @@ class Users_Front extends CI_Controller
             setlocale(LC_ALL, "es_ES");
             setlocale(LC_TIME, 'es_AR');
         }
+        $this->data['thumbnail_sizes'] = array(); //thumbnails sizes
     }
 
 
@@ -517,6 +518,7 @@ class Users_Front extends CI_Controller
             $data['categorias_eventos'] = $this->categoria_evento->get_records_menu();
             $data['tipos_relacion_user']= $this->usuario_tipo_relacion->get_records_by_user($this->session->userdata('user_id'));
             $data['usuario_eventos_preferidos']= $this->usuario_eventos_preferido->get_records_by_user($this->session->userdata('user_id'));
+            $data['imagenes_usuario'] = $this->imagenes_usuario->imagenes_usuario($this->session->userdata('user_id'));
 
             $this->load->view('frontend_main', $data);
         } else {
@@ -567,6 +569,7 @@ class Users_Front extends CI_Controller
         }
     }
 
+
     public function update_tab_busco()
     {
       //limpiar los actuales #relaciones_tipo
@@ -579,7 +582,7 @@ class Users_Front extends CI_Controller
           $relacion =[];
         }
       }
-    
+
       //limpiar los actuales #eventos
       $this->usuario_eventos_preferido->reset($this->session->userdata('user_id'));
       if($this->input->post('tipos_eventos')){
@@ -590,33 +593,56 @@ class Users_Front extends CI_Controller
         }
       }
 
-
-
       redirect('perfil-editar', 'refresh');
     }
 
-    public function upload_imagen()
+
+    public function update_tab_descripcion()
     {
-        if ($_FILES['filename']['size'] > 0) {
-            $file  = $this->upload_file();
 
-            if ($file['status'] != 0) {
-                //guardo
-                $usuario = $this->usuario->get_record($this->session->userdata('user_id'));
-                $path = 'images-usuarios/'.$usuario->filename;
+      $datos_update = [
+        'estatura' => $this->input->post('estatura'),
+        'peso' => $this->input->post('peso'),
+        'contextura_fisica' => $this->input->post('contextura_fisica'),
+        'color_ojos' => $this->input->post('color_ojos'),
+        'color_pelo' => $this->input->post('color_pelo'),
+        'estado_civil' => $this->input->post('estado_civil'),
+        'convivencia' => $this->input->post('convivencia'),
+        'fuma' => $this->input->post('fuma'),
+        'toma' => $this->input->post('toma'),
+        'ocupacion' => $this->input->post('ocupacion'),
+        'profesion' => $this->input->post('profesion'),
+        'bio' => $this->input->post('bio'),
+        'busco' => $this->input->post('busco'),
+        'hijos' => $this->input->post('hijos'),
+      ];
 
-                if (is_link($path)) {
-                    unlink($path);
-                }
+      $this->usuario->update_record($this->session->userdata('user_id'), $datos_update);
+      $this->session->set_flashdata('success', 'Información actualizada.');
+      redirect('perfil-editar#tab_editar_descripcion', 'refresh');
+    }
 
+    public function add_imagen(){
+    	$file =[];
+    			//adjunto
+    		if($_FILES['adjunto']['size'] > 0 && $_FILES['adjunto']['name'] != ""){
 
-                $data = array('filename' => $file['filename']);
-                $this->usuario->update_record($this->session->userdata('user_id'), $data);
-                $this->session->set_flashdata('success', 'Imagen actualizada!');
-            }
-        }
+    		$file  = $this->upload_file();
 
-        redirect('perfil-imagen', 'refresh');
+    		if ( $file['status'] != 0 ){
+    		//guardo
+    			$nueva_imagen = array(
+    				'usuario_id' => $this->session->userdata('user_id'),
+    				'filename' => $file['filename'],
+    				);
+    		#save
+    			$this->session->set_flashdata('success', 'Imagen cargada!');
+    			$this->imagenes_usuario->add_record($nueva_imagen);
+    			redirect('perfil-editar', 'refresh');
+    		}
+    		$this->session->set_flashdata('error', $file['msg']);
+    	}
+    	redirect('perfil-editar', 'refresh');
     }
 
     public function perfil_modificar_imagen()
@@ -626,65 +652,98 @@ class Users_Front extends CI_Controller
         $this->load->view('frontend_main', $data);
     }
 
-
-
-    public function upload_file()
+    public function perfil_delete_image()
     {
+      $id_imagen = $this->uri->segment(2);
 
-    //1 = OK - 0 = Failure
-        $file = array('status' => '', 'filename' => '', 'msg' => '' );
+      $imagen = $this->imagenes_usuario->get_record($id_imagen);
 
+      if($imagen->usuario_id == $this->session->userdata('user_id'))
+      {
+        $path = 'images-usuarios/'.$imagen->filename;
+      	unlink($path);
 
-        //check ext.
-        $file_extensions_allowed = array('image/gif', 'image/png', 'image/jpeg', 'image/jpg');
-        $exts_humano = array('gif', 'png', 'jpeg', 'jpg');
-        $exts_humano = implode(', ', $exts_humano);
-        $ext = $_FILES['filename']['type'];
-        #$ext = strtolower($ext);
-        if (!in_array($ext, $file_extensions_allowed)) {
-            $exts = implode(', ', $file_extensions_allowed);
+      	$this->imagenes_usuario->delete_record($id_imagen);
+      }
 
-            $file['msg'] .="<p>".$_FILES['filename']['name']." <br />Puede subir archivos que tengan alguna de estas extenciones: ".$exts_humano."</p>";
-        } else {
-            include(APPPATH.'libraries/class.upload.php');
-            $yukle = new upload;
-            $yukle->set_max_size(1900000);
-            $yukle->set_directory('./images-usuarios');
-            $yukle->set_tmp_name($_FILES['filename']['tmp_name']);
-            $yukle->set_file_size($_FILES['filename']['size']);
-            $yukle->set_file_type($_FILES['filename']['type']);
-            $random = substr(md5(rand()), 0, 6);
-            $name_whitout_whitespaces = str_replace(" ", "-", $_FILES['filename']['name']);
-            $imagname=''.$random.'_'.$name_whitout_whitespaces;
-            #$thumbname='tn_'.$imagname;
-            $yukle->set_file_name($imagname);
+    }
 
 
-            $yukle->start_copy();
+
+    /*******  FILE ADJUNTO  ********/
+    public function upload_file(){
+
+    	//1 = OK - 0 = Failure
+    	$file = array('status' => '', 'filename' => '', 'msg' => '' );
+
+    	array('image/jpeg','image/pjpeg', 'image/jpg', 'image/png', 'image/gif','image/bmp');
+    	//check extencion
+    	/*
+    	$file_extensions_allowed = array('application/pdf', 'application/msword', 'application/rtf', 'application/vnd.ms-excel','application/vnd.ms-powerpoint','application/zip','application/x-rar-compressed', 'text/plain');
+    	$exts_humano = array('PDF', 'WORD', 'RTF', 'EXCEL', 'PowerPoint', 'ZIP', 'RAR');
+    	*/
+    	$file_extensions_allowed = array('image/jpeg','image/pjpeg', 'image/jpg', 'image/png', 'image/gif','image/bmp');
+    	$exts_humano = array('JPG', 'JPEG', 'PNG', 'GIF');
 
 
-            if ($yukle->is_ok()) {
-                $yukle->resize(800, 0);
-                $yukle->set_thumbnail_name('tn_'.$random.'_'.$name_whitout_whitespaces);
-                $yukle->create_thumbnail();
-                $yukle->set_thumbnail_size(180, 0);
+    	$exts_humano = implode(', ',$exts_humano);
+    	$ext = $_FILES['adjunto']['type'];
+    	#$ext = strtolower($ext);
+    	if(!in_array($ext, $file_extensions_allowed)){
+    		$exts = implode(', ',$file_extensions_allowed);
 
-                //UPLOAD ok
-                $file['filename'] = $imagname;
-                $file['status'] = 1;
-            } else {
-                $file['status'] = 0 ;
-                $file['msg'] = 'Error al subir archivo';
-            }
+    		$file['msg'] .="<p>".$_FILES['adjunto']['name']." <br />Puede subir archivos que tengan alguna de estas extenciones: ".$exts_humano."</p>";
+    		$file['status'] = 0 ;
+    	}else{
+    		include(APPPATH.'libraries/class.upload.php');
+    		$yukle = new upload;
+    		$yukle->set_max_size(1900000);
+    		$yukle->set_directory('./images-usuarios');
+    		$yukle->set_tmp_name($_FILES['adjunto']['tmp_name']);
+    		$yukle->set_file_size($_FILES['adjunto']['size']);
+    		$yukle->set_file_type($_FILES['adjunto']['type']);
+    		$random = substr(md5(rand()),0,6);
+    		$name_whitout_whitespaces = str_replace(" ","-",$_FILES['adjunto']['name']);
+    		$imagname=''.$random.'_'.$name_whitout_whitespaces;
+    		#$thumbname='tn_'.$imagname;
+    		$yukle->set_file_name($imagname);
 
-            //clean
-            $yukle->set_tmp_name('');
-            $yukle->set_file_size('');
-            $yukle->set_file_type('');
-            $imagname='';
-        }//fin if(extencion)
+
+    		$yukle->start_copy();
 
 
-        return $file;
+
+    		if($yukle->is_ok()){
+
+    			if(count($this->data['thumbnail_sizes'])){
+    				foreach ($this->data['thumbnail_sizes'] as $thumb_size) {
+                            //create thumbnail
+                            #$yukle->resize(1000,0);
+                            #$$yukle->set_thumbnail_name('tn_'.$thumb_size.'_'.$imagname);
+                            #$$result_thumb = $yukle->create_thumbnail();
+                            #$$yukle->set_thumbnail_size($thumb_size, 0);
+    				}
+    			}
+
+                    //UPLOAD ok
+    			$file['filename'] = $imagname;
+    			$file['status'] = 1;
+    		}
+    		else{
+    			$file['status'] = 0 ;
+    			$file['msg'] = 'Error al subir archivo';
+    		}
+
+
+
+    		//clean
+    		$yukle->set_tmp_name('');
+    		$yukle->set_file_size('');
+    		$yukle->set_file_type('');
+    		$imagname='';
+    	}//fin if(extencion)
+
+
+    	return $file;
     }
 }//END CLASS

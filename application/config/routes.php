@@ -36,9 +36,12 @@ $route['experiencias-editar'] = 'users_front/experiencias_modificar';
 
 $route['create_experiencia'] = 'users_front/create_experiencia';
 $route['perfil-imagen'] = 'users_front/perfil_modificar_imagen';
-$route['perfil-cargar-imagen'] = 'users_front/upload_imagen';
+$route['perfil-delete-image/(:num)'] = 'users_front/perfil_delete_image';
+$route['perfil-cargar-imagen'] = 'users_front/add_imagen';
 $route['perfil-modificar-acceso'] = 'users_front/perfil_modificar_password';
 $route['update_tab_busco'] = 'users_front/update_tab_busco';
+$route['update_tab_imagenes'] = 'users_front/update_tab_busco';
+$route['update_tab_descripcion'] = 'users_front/update_tab_descripcion';
 $route['reset_password'] = 'users_front/reset_password';
 $route['solicitud_reset_password'] = 'users_front/solicitud_reset_password';
 $route['callback_reset_validation/(:any)'] = 'users_front/callback_reset_password';
