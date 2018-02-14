@@ -4,9 +4,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 
 $config['roles_list'] = array(
-    '1' => 'recruiter',
+    '1' => 'something',
     '2' => 'user_simple',
     );
+
+$config['options_sexo'] = [0=> "Mujer", 1=>"Hombre"];
+
 
 
 $config['niveles_estudio_list'] = array(

@@ -11,9 +11,9 @@ class Users_Front extends CI_Controller
         $this->load->helper('form');
         $this->load->library('session');
         $this->load->library('form_validation');
-        $this->load->model(array('usuario', 'categoria_evento', 'usuario_eventos_preferido','usuario_tipo_relacion','imagenes_usuario'));
+        $this->load->model(array('usuario', 'evento','categoria_evento', 'usuario_eventos_preferido','usuario_tipo_relacion','imagenes_usuario'));
 
-
+        $this->usuario_logueado = $this->session->userdata('user_id');
 
         if (! ini_get('date.timezone')) {
             date_default_timezone_set('GMT');
@@ -745,5 +745,13 @@ class Users_Front extends CI_Controller
 
 
     	return $file;
+    }
+
+    public function mis_eventos()
+    {
+
+      $data['eventos_disponibles'] = $this->evento->get_records();
+      $data['content'] = 'frontend/mis-eventos';
+      $this->load->view('frontend_main', $data);
     }
 }//END CLASS

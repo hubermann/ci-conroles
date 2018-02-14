@@ -46,6 +46,7 @@ $route['reset_password'] = 'users_front/reset_password';
 $route['solicitud_reset_password'] = 'users_front/solicitud_reset_password';
 $route['callback_reset_validation/(:any)'] = 'users_front/callback_reset_password';
 $route['create_new_pass'] = 'users_front/create_new_pass';
+$route['mis-eventos'] = 'users_front/mis_eventos';
 
 
 

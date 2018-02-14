@@ -1,15 +1,9 @@
 <!-- Payment Options -->
 <div class="tab-pane fade" id="nav-1-1-default-hor-left-underline--3" role="tabpanel">
 
-<div class="row"><!-- row tipo relacion -->
+<div class="col-md-12"><!-- row tipo relacion -->
   <h2 class="h4 g-font-weight-300">Que tipo de relación?</h2>
-  <!-- tab de 2 -->
-  <div class="col-md-2">
 
-  </div><!-- end tab de 2 -->
-
-  <!-- tab de 10 -->
-  <div class="col-md-10 col-md-offset-2">
     <form class="" action="update_tab_busco" method="post">
       <div class="row">
         <div class="col-md-6">
@@ -47,19 +41,14 @@
           ?>
         </div>
       </div>
-  </div><!-- end tab de 10 -->
+
 </div> <!-- end row tipo relacion -->
 
 
-<div class="row"><!-- row tipo relacion -->
+<div class="col-md-12"><!-- row tipo relacion -->
+  <br>
   <h2 class="h4 g-font-weight-300">En que tipo de eventos te gustaria participar?</h2>
-  <!-- tab de 2 -->
-  <div class="col-md-2">
 
-  </div><!-- end tab de 2 -->
-
-  <!-- tab de 10 -->
-  <div class="col-md-10 col-md-offset-2">
     <div class="row">
       <div class="col-md-6">
         <?php
@@ -95,7 +84,7 @@
         ?>
       </div>
     </div>
-  </div><!-- end tab de 10 -->
+
 </div> <!-- end row tipo relacion -->
 
 

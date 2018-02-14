@@ -1,7 +1,7 @@
 <!-- Tab imagenes -->
 <div class="tab-pane fade" id="nav-1-1-default-hor-left-underline--4" role="tabpanel">
-  <h2 class="h4 g-font-weight-300">Manage your Notifications</h2>
-  <p class="g-mb-25">Below are the notifications you may manage.</p>
+  <h2 class="h4 g-font-weight-300">Mis imagenes</h2>
+  <p class="g-mb-25">Puedes quitar o agregar nuevas imagenes.</p>
 
 
   <script type="text/javascript">
@@ -26,6 +26,9 @@
 
   <style>
       .container_img{height: 140px;  overflow: hidden;}
+      .container_img img{padding: .8em;}
+      .thumbnail .options{padding: .5em; bottom: .5em; }
+      .box-img{border: 1px solid #f2f2f2; float: left;}
   </style>
 
 
@@ -36,6 +39,7 @@
       $atts = array('id' => 'form_imagenes', 'class' => "navbar-form navbar-left", 'role'=> 'search');
       echo form_open_multipart(base_url('perfil-cargar-imagen'), $atts);
       echo '<input type="file" class="form-control" name="adjunto" id="adjunto" />
+      <br />
       <button onclick="validateImage();" class="btn btn-default"><span class="glyphicon glyphicon-camera"></span> Agregar Imagen</button>
       ';
       echo form_close();
@@ -43,23 +47,28 @@
       </div>
   </div>
 
-
+<div class="row">
+  <br>
+  <div class="col-md-12">
   <?php
   if ($imagenes_usuario->result()!="") {
       $count = 1;
       foreach ($imagenes_usuario->result() as $imagen) {
           echo '
-          <div id="wrapp_thumb'.$imagen->id.'">
-          <div class="thumbnail_delete thumbnail" id="'.$imagen->id.'" style="float:left; margin: 1em; padding:.8em; text-align:center;">
-          <div class="container_img"><img src="'.base_url('images-usuarios/'.$imagen->filename).'" width="120" alt="" /></div>
-          <p onclick="confirma_eliminar('.$imagen->id.')" class="btn btn-default" role="button">Quitar imagen</p>
+
+          <div class="box-img col-md-4" id="wrapp_thumb'.$imagen->id.'">
+
+          <div class="thumbnail" id="'.$imagen->id.'">
+          <div class="container_img"><img src="'.base_url('images-usuarios/'.$imagen->filename).'" width="100%" alt="" /></div>
+          <div class="options"><button onclick="confirma_eliminar('.$imagen->id.')" class="btn btn-default" role="button"> <i class="icon-home g-pos-rel g-top-1 g-mr-8"></i> Quitar imagen</button> </div>
           </div>
           </div>';
       }
   }#fin if
 
   ?>
-
+  </div>
+</div>
 
 
 

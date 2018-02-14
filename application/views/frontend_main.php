@@ -27,6 +27,9 @@
 	<link rel="stylesheet" href="<?php echo base_url('public_folder/frontend/assets/vendor/hs-megamenu/src/hs.megamenu.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('public_folder/frontend/assets/vendor/hamburgers/hamburgers.min.css'); ?>">
 
+
+	<link rel="stylesheet" href="<?php echo base_url('public_folder/frontend/font-awesome/fontawesome-all.min.css'); ?>">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<!-- CSS Unify -->
 	<link rel="stylesheet" href="<?php echo base_url('public_folder/frontend/assets/css/unify-core.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('public_folder/frontend/assets/css/style.css'); ?>">
@@ -53,14 +56,6 @@
 	<?php include_once('frontend/notificaciones.php'); ?>
 
 	<?php (isset($content)) ? $this->load->view($content) : $this->load->view('frontend/inicio'); ?>
-
-	<h1>Welcome</h1>
-
-	<p>lorem</p>
-
-
-
-
 
 	<?php #include_once('frontend/profile-settings.php'); ?>
 

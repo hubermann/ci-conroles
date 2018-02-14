@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 class Evento extends CI_Model{
 
@@ -7,12 +7,14 @@ class Evento extends CI_Model{
 	$this->load->database();
 
 	}
-	
-	public function get_records($num,$start)
+
+	public function get_records($num=10,$start=1)
 	{
-		$this->db->select("eventos.*,categoria_eventos.id as categoria_id,categoria_eventos.nombre as categoria_nombre");
+		$this->db->select("eventos.*,categoria_eventos.id as categoria_id,categoria_eventos.nombre as categoria_nombre, lugares.direccion as evento_direccion, eventos_tipos.id, eventos_tipos.nombre as evento_tipo");
 	  $this->db->from("eventos");
 	  $this->db->join("categoria_eventos", "categoria_eventos.id = eventos.categoria_id",'left');
+		$this->db->join("lugares", "lugares.id = eventos.lugar",'left');
+		$this->db->join("eventos_tipos", "eventos_tipos.id = eventos.tipo_evento",'left');
 		$this->db->order_by('eventos.id','ASC')->limit($num,$start);
 		return $this->db->get()->result();
 	}
@@ -27,7 +29,7 @@ class Evento extends CI_Model{
 		return $this->db->get()->result();
 	}
 
-	
+
 
 	//detail
 	public function get_record($id){
@@ -35,11 +37,11 @@ class Evento extends CI_Model{
 		$this->db->limit(1);
 		$c = $this->db->get('eventos');
 
-		return $c->row(); 
+		return $c->row();
 	}
-	
+
 	//total rows
-	public function count_rows(){ 
+	public function count_rows(){
 		$this->db->select('id')->from('eventos');
 		$query = $this->db->get();
 		return $query->num_rows();
@@ -49,7 +51,7 @@ class Evento extends CI_Model{
 
 		//add new
 		public function add_record($data){ $this->db->insert('eventos', $data);
-				
+
 
 	}
 
@@ -76,9 +78,9 @@ class Evento extends CI_Model{
 					$this->db->limit(1);
 					$c = $this->db->get('eventos');
 
-					return $c->row('nombre'); 
+					return $c->row('nombre');
 				}
-		
+
 		*/
 
 }
