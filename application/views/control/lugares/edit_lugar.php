@@ -1,3 +1,14 @@
+<script>
+	function show_preview(input) {
+	if (input.files && input.files[0]) {
+	var reader = new FileReader();
+	reader.onload = function (e) {
+	$('#previewImg').html('<img src="'+e.target.result+'" width="140" />' );
+	}
+	reader.readAsDataURL(input.files[0]);
+	}
+}
+</script>
 <?php
 $attributes = array('class' => 'form-horizontal', 'id' => 'edit_lugar');
 echo form_open_multipart(base_url('control/lugares/update/'),$attributes);
@@ -77,6 +88,22 @@ echo form_hidden('id', $query->id);
 			</select>
 			</div>
 			</div>
+
+			<div class="control-group">
+				<label class="control-label">Imagen</label>
+				<div class="controls">
+				<div id="previewImg">
+				<?php if($query->adjunto){
+				echo '<p><img src="'.base_url('images-lugares/'.$query->adjunto).'" width="140" /></p>';
+				} ?>
+
+			</div>
+				<input value="<?php echo set_value('adjunto'); ?>" type="file" class="form-control" name="adjunto" onchange="show_preview(this)"/>
+				<?php echo form_error('adjunto','<p class="error">', '</p>'); ?>
+				</div>
+			</div>
+
+
 				<!-- Text input-->
 			<div class="control-group">
 			<label class="control-label">Beneficio</label>

@@ -56,13 +56,13 @@
     <!-- End Profile -->
 
     <!-- Profile -->
-    <a href="page-profile-profile-1.html" class="list-group-item list-group-item-action justify-content-between">
+    <a href="<?= base_url('mis-eventos') ?>" class="list-group-item list-group-item-action justify-content-between">
       <span><i class="icon-cursor g-pos-rel g-top-1 g-mr-8"></i> Mis eventos</span>
     </a>
     <!-- End Profile -->
 
     <!-- Users Contacts -->
-    <a href="page-profile-users-1.html" class="list-group-item list-group-item-action justify-content-between">
+    <a href="<?= base_url('mis-eventos') ?>" class="list-group-item list-group-item-action justify-content-between">
       <span><i class="icon-notebook g-pos-rel g-top-1 g-mr-8"></i> Mis contactos</span>
     </a>
     <!-- End Users Contacts -->

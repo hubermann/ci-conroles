@@ -16,9 +16,9 @@
 			</h3>
 			<div class="table-responsive">
 				<table class="table ">
-					
-					<?php 
-						if(count($query)){ 
+
+					<?php
+						if(count($query)){
 
 
 							$head = '<thead>
@@ -33,26 +33,28 @@
 											</thead>';
 							print($head);
 							$body = "<tbody>";
-							
+
 							foreach ($query as $row):
+								$imagen = (strlen($row->filename) > 0) ? '<img src="'.base_url('images-lugares/'.$row->filename).' " width="100" />' : "[no-image]";
+
 								$visible = ($row->visible == 1) ? "Si": "No" ;
 								$body .= '<tr>';
-								$body .= '<td class="txt-oflo"> '.$row->nombre.' </td>';
+								$body .= '<td class="txt-oflo"> '.$row->nombre.'<br>'.$imagen.' </td>';
 								$body .= '<td class="txt-oflo"> '.$row->direccion.' </td>';
 								$body .= '<td class="txt-oflo"> '.$row->telefono.' </td>';
 								$body .= '<td class="txt-oflo"> '.$row->link.' </td>';
 								$body .= '<td class="txt-oflo"> '. $visible.' </td>';
-								$body .= '<td> 
+								$body .= '<td>
 														<div class="btn-group pull-right">
 														<a class="btn btn-small" href="'.base_url('control/lugares/detail/'.$row->id.'').'"><i class="fa fa-chain"></i></a>
 														<a class="btn btn-small" href="'.base_url('control/lugares/editar/'.$row->id.'').'"><i class="fa fa-edit"></i></a>
-														<a class="btn btn-small" href="'.base_url('control/lugares/imagenes/'.$row->id.'').'"><i class="fa fa-camera-retro"></i></a>	
-														<a href="'.base_url('control/lugares/destroy/'.$row->id.'').'" class="delete btn btn-small" data-confirm="Are you sure to delete this item?"><i class="fa fa-trash-o"></i></a>				
+														<a class="btn btn-small" href="'.base_url('control/lugares/imagenes/'.$row->id.'').'"><i class="fa fa-camera-retro"></i></a>
+														<a href="'.base_url('control/lugares/destroy/'.$row->id.'').'" class="delete btn btn-small" data-confirm="Are you sure to delete this item?"><i class="fa fa-trash-o"></i></a>
 														</div>
 													</td>';
 								$body .= '</tr>';
 
-								endforeach; 
+								endforeach;
 
 								$body .= '</tbody>';
 								print($body);
@@ -62,7 +64,7 @@
 						}
 					?>
 
-				</table> 
+				</table>
 			</div>
 
 				<div class="table-responsive">
@@ -75,4 +77,3 @@
 	</div>
 </div>
 <!-- /.row -->
-

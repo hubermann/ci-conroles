@@ -8,16 +8,17 @@
 	reader.readAsDataURL(input.files[0]);
 	}
 }
-</script><?php  
+</script>
+<?php
 $attributes = array('class' => 'form-horizontal', 'id' => 'edit_beneficio');
 echo form_open_multipart(base_url('control/beneficios/update/'),$attributes);
 
-echo form_hidden('id', $query->id); 
+echo form_hidden('id', $query->id);
 ?>
 <legend><?php echo $title ?></legend>
 <div class="well well-large well-transparent">
 
- 
+
 
 
 <!-- Text input-->
@@ -26,8 +27,8 @@ echo form_hidden('id', $query->id);
 <label class="control-label">Categoria id</label>
 	<div class="controls">
 	<select name="categoria_id" id="categoria_id">
-		<?php 
-		/* 
+		<?php
+		/*
 		$categorias = $this->categoria->get_records_menu();
 		if($categorias){
 
@@ -39,7 +40,7 @@ echo form_hidden('id', $query->id);
 		*/
 		?>
 		</select>
-		
+
 		<?php echo form_error('categoria_id','<p class="error">', '</p>'); ?>
 	</div>
 </div>
@@ -77,20 +78,20 @@ echo form_hidden('id', $query->id);
 			<?php echo form_error('link','<p class="error">', '</p>'); ?>
 			</div>
 			</div>
-	<!-- Text input-->
-<div class="control-group">
-	<label class="control-label">Imagen</label>
-	<div class="controls">
-	<div id="previewImg">
-	<?php if($query->filename){
-	echo '<p><img src="'.base_url('images-beneficios/'.$query->filename).'" width="140" /></p>';
-	} ?>
+			<!-- Text input-->
+			<div class="control-group">
+				<label class="control-label">Imagen</label>
+				<div class="controls">
+				<div id="previewImg">
+				<?php if($query->adjunto){
+				echo '<p><img src="'.base_url('images-beneficios/'.$query->adjunto).'" width="140" /></p>';
+				} ?>
 
-</div>
-	<input value="<?php echo set_value('filename'); ?>" type="file" class="form-control" name="filename" onchange="show_preview(this)"/>
-	<?php echo form_error('filename','<p class="error">', '</p>'); ?>
-	</div>
-</div>
+			</div>
+				<input value="<?php echo set_value('adjunto'); ?>" type="file" class="form-control" name="adjunto" onchange="show_preview(this)"/>
+				<?php echo form_error('adjunto','<p class="error">', '</p>'); ?>
+				</div>
+			</div>
 
 
 <div class="control-group">

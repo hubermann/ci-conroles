@@ -10,7 +10,7 @@ class Evento extends CI_Model{
 
 	public function get_records($num=10,$start=1)
 	{
-		$this->db->select("eventos.*,categoria_eventos.id as categoria_id,categoria_eventos.nombre as categoria_nombre, lugares.direccion as evento_direccion, eventos_tipos.id, eventos_tipos.nombre as evento_tipo");
+		$this->db->select("eventos.*,categoria_eventos.id as categoria_id,categoria_eventos.nombre as categoria_nombre, lugares.direccion as evento_direccion, lugares.filename as logo_lugar, eventos_tipos.id, eventos_tipos.nombre as evento_tipo");
 	  $this->db->from("eventos");
 	  $this->db->join("categoria_eventos", "categoria_eventos.id = eventos.categoria_id",'left');
 		$this->db->join("lugares", "lugares.id = eventos.lugar",'left');

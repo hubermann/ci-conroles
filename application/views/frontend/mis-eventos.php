@@ -54,9 +54,11 @@ var_dump($datos_user);
 
 <?php
 	foreach ($eventos_disponibles as $evento_disp) {
+		$imagen_logo = (strlen($evento_disp->logo_lugar) > 0) ? '<img src="'.base_url('images-lugares/'.$evento_disp->logo_lugar).' " width="100" />' : "[no-image]";
+
 		$precio_usuario = ($datos_user['user_sexo'] == "0") ? $evento_disp->precio :$evento_disp->precio_hombres;
 		echo '<div class="row card_wrapper evento_pendiente">
-			<div class="card_logo">logo</div>
+			<div class="card_logo">'.$imagen_logo.' '.$evento_disp->logo_lugar.'</div>
 			<div class="card_descripcion">
 				<h3>'.$evento_disp->fecha.' - '.$evento_disp->hora.' '.$precio_usuario.' </h3>
 				<p>'.$evento_disp->categoria_nombre.'
