@@ -2,8 +2,16 @@
 <div class="col-lg-3 g-mb-50 g-mb-0--lg">
   <!-- User Image -->
   <div class="u-block-hover g-pos-rel">
+
     <figure>
-      <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../assets/img-temp/400x450/img5.jpg" alt="Image Description">
+      <?php
+      if(strlen($this->avatar_usuario) > 6)
+      {
+        echo '<img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="images-usuarios/'.$this->avatar_usuario.'" alt="Image Description">';
+      }else{
+        echo '<img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../assets/img-temp/400x450/img5.jpg" alt="Image Description">';
+      }
+      ?>
     </figure>
 
     <!-- Figure Caption -->

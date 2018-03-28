@@ -31,6 +31,13 @@ class Usuario extends CI_Model
         return $this->db->get()->result();
     }
 
+    //para invitar a un evento
+    public function get_para_evento($edad_min, $edad_max)
+    {
+        $this->db->select('*')->from('usuarios')->where("edad BETWEEN $edad_min AND $edad_max");
+        return $this->db->get()->result();
+    }
+
     //detail
     public function get_record($id)
     {
@@ -69,7 +76,11 @@ class Usuario extends CI_Model
     public function update_record($id, $data)
     {
         $this->db->where('id', $id);
-        $this->db->update('usuarios', $data);
+        if($this->db->update('usuarios', $data))
+        {
+          return true;
+        }
+        return false;
     }
 
     //destroy

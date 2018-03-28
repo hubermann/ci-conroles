@@ -29,6 +29,9 @@
       .container_img img{padding: .8em;}
       .thumbnail .options{padding: .5em; bottom: .5em; }
       .box-img{border: 1px solid #f2f2f2; float: left;}
+      .avatar{border:1px solid red; background: pink;}
+
+      .btn-perfil{ font-size: 90%;background: #f2f2f2; border: 1px solid #ccc; border-radius: .3em;}
   </style>
 
 
@@ -40,12 +43,14 @@
       echo form_open_multipart(base_url('perfil-cargar-imagen'), $atts);
       echo '<input type="file" class="form-control" name="adjunto" id="adjunto" />
       <br />
-      <button onclick="validateImage();" class="btn btn-default"><span class="glyphicon glyphicon-camera"></span> Agregar Imagen</button>
+      <button onclick="validateImage();" class="btn btn-perfil"><span class="glyphicon glyphicon-camera"></span> Agregar Imagen</button>
       ';
       echo form_close();
       ?>
       </div>
   </div>
+
+
 
 <div class="row">
   <br>
@@ -54,13 +59,21 @@
   if ($imagenes_usuario->result()!="") {
       $count = 1;
       foreach ($imagenes_usuario->result() as $imagen) {
+        if($imagen->avatar == 1){ $class_avatar = "avatar";}else{$class_avatar = "";}
           echo '
-
           <div class="box-img col-md-4" id="wrapp_thumb'.$imagen->id.'">
 
           <div class="thumbnail" id="'.$imagen->id.'">
-          <div class="container_img"><img src="'.base_url('images-usuarios/'.$imagen->filename).'" width="100%" alt="" /></div>
-          <div class="options"><button onclick="confirma_eliminar('.$imagen->id.')" class="btn btn-default" role="button"> <i class="icon-home g-pos-rel g-top-1 g-mr-8"></i> Quitar imagen</button> </div>
+          <div class="container_img '.$class_avatar.'"><img src="'.base_url('images-usuarios/'.$imagen->filename).'" width="100%" alt="" /></div>
+            <div class="options">
+              <button onclick="confirma_eliminar('.$imagen->id.')" class="btn btn-perfil">
+                <i class="icon-home g-pos-rel g-top-1 g-mr-8"></i> Quitar imagen
+              </button>
+              <form  action="'.base_url('actualizar_avatar').'" method="post">
+                <input type="hidden" name="imagen_id" value="'.$imagen->id.'">
+                <button type="submit" class="btn btn-perfil">Hacer principal</button>
+              </form>
+            </div>
           </div>
           </div>';
       }

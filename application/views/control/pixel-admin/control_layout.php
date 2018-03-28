@@ -26,6 +26,17 @@
 
 	<link href="<?php echo base_url('public_folder/pixeladmin-lite/html/css/colors/orange-dark.css'); ?>" id="theme" rel="stylesheet">
 
+<style media="screen">
+
+	.card{width: 100%; display: block; padding: .8em; border: 1px solid #ccc; border-radius: .3em; margin: .5em 0; background: #fff;}
+	.card-body{display: block; padding: 0 .5em;}
+	.card-footer{display: block; overflow: hidden; margin-top: .8em;}
+	.btn-primary{border-radius: .3em;}
+	.btn-small{border:1px solid #ccc; background: #f2f2f2; border-radius: .3em;}
+	.btn-small:hover{border:1px solid #444; background: #fff;}
+	.italic{font-style: italic;}
+</style>
+
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -167,7 +178,7 @@
 
 			</div>
 			<!-- /.container-fluid -->
-			<footer class="footer text-center"> 2017 &copy; 10en8.com </footer>
+			<footer class="footer text-center"> 2018 &copy; 10en8.com </footer>
 		</div>
 		<!-- /#page-wrapper -->
 	</div>

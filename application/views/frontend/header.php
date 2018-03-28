@@ -76,7 +76,7 @@
 				<?php if( $this->session->userdata('user_id') ){ ;?>
 
 				<div class="d-inline-block g-hidden-xs-down g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
-					<a class="btn u-btn-outline-primary g-font-size-13 text-uppercase g-py-10 g-px-15" href="https://wrapbootstrap.com/theme/unify-responsive-website-template-WB0412697?ref=htmlstream" target="_blank"><?= "Hola ".$this->session->userdata('user_nickname');  ?></a>
+					<a class="btn u-btn-outline-primary g-font-size-13 text-uppercase g-py-10 g-px-15" href="<?= base_url('perfil-editar');?>"><?= "Hola ".$this->session->userdata('user_nickname');  ?></a>
 				</div>
 				<?php }else{ ?>
 				<div class="d-inline-block g-hidden-xs-down g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">

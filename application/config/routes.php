@@ -20,6 +20,15 @@ $route['control/registros/(:num)'] = 'control/registros/index/$';
 $route['control/eventos/(:num)'] = 'control/eventos/index/$';
 $route['control/categoria_eventos/(:num)'] = 'control/categoria_eventos/index/$';
 $route['control/eventos_tipos/(:num)'] = 'control/eventos_tipos/index/$';
+
+$route['control/eventos/solicitudes_recibidas/(:num)'] = 'control/eventos/solicitudes_recibidas/$';
+$route['control/eventos/solicitudes_aprobadas/(:num)'] = 'control/eventos/solicitudes_aprobadas/$';
+$route['control/eventos/solicitudes_pago_demorado/(:num)'] = 'control/eventos/solicitudes_pago_demorado/$';
+$route['control/eventos/solicitudes_confirmadas/(:num)'] = 'control/eventos/solicitudes_confirmadas/$';
+
+$route['control/eventos_manager/invitar_ajax/(:num)/(:num)'] = 'control/eventos_manager/invitar_ajax/$/$';
+
+
 /* append */
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
@@ -38,7 +47,9 @@ $route['create_experiencia'] = 'users_front/create_experiencia';
 $route['perfil-imagen'] = 'users_front/perfil_modificar_imagen';
 $route['perfil-delete-image/(:num)'] = 'users_front/perfil_delete_image';
 $route['perfil-cargar-imagen'] = 'users_front/add_imagen';
+$route['actualizar_avatar'] = 'users_front/actualizar_avatar';
 $route['perfil-modificar-acceso'] = 'users_front/perfil_modificar_password';
+$route['update_tab_datos'] = 'users_front/update_tab_datos';
 $route['update_tab_busco'] = 'users_front/update_tab_busco';
 $route['update_tab_imagenes'] = 'users_front/update_tab_busco';
 $route['update_tab_descripcion'] = 'users_front/update_tab_descripcion';
@@ -47,7 +58,7 @@ $route['solicitud_reset_password'] = 'users_front/solicitud_reset_password';
 $route['callback_reset_validation/(:any)'] = 'users_front/callback_reset_password';
 $route['create_new_pass'] = 'users_front/create_new_pass';
 $route['mis-eventos'] = 'users_front/mis_eventos';
-
+$route['solicitar_asistencia_evento/(:num)'] = 'users_front/solicitar_asistencia_evento/$';
 
 
 

@@ -31,34 +31,53 @@
 				<!-- Nav tabs -->
 				<h3>Mis eventos</h3>
 
-<style media="screen">
-.evento_pendiente{border-right: 2px solid red;}
-.evento_aprobado{border-right: 2px solid green;}
-.card_logo{ width: 15%; float: left;}
-.card_descripcion{ width: 60%; float: left;}
-.card_button{ width: 22%; float: left;}
-.card_wrapper{border: 1px solid #ddd}
-.bg-gray{background: #ddd; padding: .2em .4em; border-radius: .4em;}
-</style>
+				<style media="screen">
+				.evento_pendiente{border-right: 2px solid red;}
+				.evento_aprobado{border-right: 2px solid green;}
+				.card_logo{ width: 15%; float: left;}
+				.card_descripcion{ width: 60%; float: left;}
+				.card_button{ width: 22%; float: left;}
+				.card_wrapper{border: 1px solid #ddd}
+				.bg-gray{background: #ddd; padding: .2em .4em; border-radius: .4em;}
+				</style>
 
 <div class="row">
-	<?php
-
-$datos_user =$this->session->userdata();
-
-var_dump($datos_user);
-
-
-	 ?>
+	<?php $datos_user =$this->session->userdata();
+    ?>
 </div>
 
 <?php
-	foreach ($eventos_disponibles as $evento_disp) {
-		$imagen_logo = (strlen($evento_disp->logo_lugar) > 0) ? '<img src="'.base_url('images-lugares/'.$evento_disp->logo_lugar).' " width="100" />' : "[no-image]";
+    foreach ($eventos_disponibles as $evento_disp) {
 
-		$precio_usuario = ($datos_user['user_sexo'] == "0") ? $evento_disp->precio :$evento_disp->precio_hombres;
-		echo '<div class="row card_wrapper evento_pendiente">
-			<div class="card_logo">'.$imagen_logo.' '.$evento_disp->logo_lugar.'</div>
+			echo $status_invitacion = $this->usuarios_evento->verificar_asistencia($this->session->userdata('user_id'), $evento_disp->id);
+			$boton_evento = "";
+			switch ($status_invitacion) {
+				case 5: #desconfirmado por demorar el pago
+					$boton_evento = '<a class="btn btn-small">Desconfirmado por demora.</a>';
+					break;
+				case 1: # Solicitud enviada esperando aprobacion
+					$boton_evento = '<a class="btn btn-small">Aguardando aprobacion.</a>';
+					break;
+				case 2: # Solicitud aprobada. esperando El pago
+					$boton_evento = '<a href="payment" class="btn btn-small">Pagar asistencia</a>';
+					break;
+				case 3: # Pago demorado
+					$boton_evento = '<a class="btn btn-small">Pago demorado. volver a pagar</a>';
+					break;
+				case 4: # Pago procesado ok
+					$boton_evento = '<a class="btn btn-small">Pago realizado correctamente</a>';
+					break;
+				default: # Disponible para solicitar asistencia
+					$boton_evento = '<a href="'.base_url('solicitar_asistencia_evento/'.$evento_disp->id).'" class="btn btn-small">Quiero asistir!</a>';
+					break;
+			}
+
+
+        $imagen_logo = (strlen($evento_disp->logo_lugar) > 0) ? '<img src="'.base_url('images-lugares/'.$evento_disp->logo_lugar).' " width="100" />' : "[no-image]";
+
+        $precio_usuario = ($datos_user['user_sexo'] == "0") ? $evento_disp->precio :$evento_disp->precio_hombres;
+        echo '<div class="row card_wrapper evento_pendiente">
+			<div class="card_logo">'.$imagen_logo.' </div>
 			<div class="card_descripcion">
 				<h3>'.$evento_disp->fecha.' - '.$evento_disp->hora.' '.$precio_usuario.' </h3>
 				<p>'.$evento_disp->categoria_nombre.'
@@ -69,29 +88,14 @@ var_dump($datos_user);
 
 			</div>
 			<div class="card_button">
-				<a class="btn btn-primary" name="button">Quiero irrrr!</a>
+				'.$boton_evento.'
 			</div>
 		</div>';
-	}
-
-
+    }
 
 ?>
 
 
-
-
-
-<div class="row card_wrapper evento_pendiente">
-	<div class="card_logo">logo</div>
-	<div class="card_descripcion">
-		<h3>Evento de tomar sopa</h3>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-	</div>
-	<div class="card_button">
-		<a class="btn btn-primary" name="button">Quiero irrrr!</a>
-	</div>
-</div>
 
         </div>
 				<!-- End Tab panes -->

@@ -39,15 +39,11 @@
 	<!-- CSS Customization -->
 	<link rel="stylesheet" href="<?php echo base_url('public_folder/frontend/assets/css/custom.css'); ?>">
 
-
-
 </head>
 
 <body>
 	<main>
 	<?php include_once('frontend/header.php'); ?>
-
-
 
 	<br>
 	<br>

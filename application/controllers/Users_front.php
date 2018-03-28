@@ -11,10 +11,10 @@ class Users_Front extends CI_Controller
         $this->load->helper('form');
         $this->load->library('session');
         $this->load->library('form_validation');
-        $this->load->model(array('usuario', 'evento','categoria_evento', 'usuario_eventos_preferido','usuario_tipo_relacion','imagenes_usuario'));
+        $this->load->model(['usuario', 'evento','categoria_evento', 'usuario_eventos_preferido','usuario_tipo_relacion','imagenes_usuario','usuarios_evento']);
 
         $this->usuario_logueado = $this->session->userdata('user_id');
-
+        $this->avatar_usuario = $this->imagenes_usuario->usuario_avatar($this->usuario_logueado);
         if (! ini_get('date.timezone')) {
             date_default_timezone_set('GMT');
             setlocale(LC_ALL, "es_ES");
@@ -473,6 +473,7 @@ class Users_Front extends CI_Controller
     /* EDITAR DATOS DEL PERFIL */
     public function perfil_modificar()
     {
+
         if (!$this->session->userdata('user_id')) {
             redirect('/');
         }
@@ -483,28 +484,28 @@ class Users_Front extends CI_Controller
 
         // para evitar que de error de que el mail no es unique
         $info_user = $this->usuario->get_record($this->session->userdata('user_id'));
-        if ($this->input->post('email') != $original_email = $info_user->email) {
-            $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[usuarios.email]');
-            $this->form_validation->set_message('is_unique', 'Existe registro con ese mail.');
+        // if ($this->input->post('email') != $original_email = $info_user->email) {
+        //     $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[usuarios.email]');
+        //     $this->form_validation->set_message('is_unique', 'Existe registro con ese mail.');
+        // } else {
+        //     $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        // }
+
+
+
+        // para evitar que de error de que el nickanme no es unique
+        if ($this->input->post('nickname') != $original_nick = $info_user->nickname) {
+            $this->form_validation->set_rules('nickname', 'Nickname', 'required|is_unique[usuarios.nickname]|min_length[3]|max_length[20]');
+            $this->form_validation->set_message('is_unique', 'Existe registro con ese Nickname.');
         } else {
-            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+            $this->form_validation->set_rules('nickname', 'Nickname', 'required|min_length[3]|max_length[20]');
         }
 
-
-        if ($this->session->userdata('user_id') == 1) {
-            // para evitar que de error de que el nickanme no es unique
-            if ($this->input->post('nickname') != $original_nick = $info_user->nickname) {
-                $this->form_validation->set_rules('nickname', 'Nickname', 'required|is_unique[usuarios.nickname]|min_length[3]|max_length[20]');
-                $this->form_validation->set_message('is_unique', 'Existe registro con ese Nickname.');
-            } else {
-                $this->form_validation->set_rules('nickname', 'Nickname', 'required|min_length[3]|max_length[20]');
-            }
-        }//nickname for user_role 2
 
 
         $this->form_validation->set_message('required', 'El campo %s es requerido.');
 
-        $this->form_validation->set_message('valid_email', 'El mail debe ser valido.');
+        //$this->form_validation->set_message('valid_email', 'El mail debe ser valido.');
         $this->form_validation->set_message('is_unique', 'El %s existe asociado a otra cuenta.');
 
 
@@ -562,12 +563,82 @@ class Users_Front extends CI_Controller
             $this->session->set_flashdata('success', 'usuario Actualizado!');
             $this->usuario->update_record($id, $editedusuario);
             if ($this->input->post('id')!="") {
+                $this->session->set_flashdata('success', 'Tu perfil se actualizo.');
                 redirect('perfil', 'refresh');
             } else {
+                $this->session->set_flashdata('error', 'Tu perfil no pudo ser actualizado.');
                 redirect('perfil', 'refresh');
             }
         }
     }
+
+
+    public function update_tab_datos()
+    {
+
+        if (!$this->session->userdata('user_id')) {
+            redirect('/');
+        }
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('nombre', 'Nombre', 'required');
+        $this->form_validation->set_rules('apellido', 'Apellido', 'required');
+
+        // para evitar que de error de que el mail no es unique
+        $info_user = $this->usuario->get_record($this->session->userdata('user_id'));
+
+
+        // para evitar que de error de que el nickanme no es unique
+        if ($this->input->post('nickname') != $original_nick = $info_user->nickname) {
+            $this->form_validation->set_rules('nickname', 'Nickname', 'required|is_unique[usuarios.nickname]|min_length[3]|max_length[20]');
+            $this->form_validation->set_message('is_unique', 'Existe registro con ese Nickname.');
+        } else {
+            $this->form_validation->set_rules('nickname', 'Nickname', 'required|min_length[3]|max_length[20]');
+        }
+
+        $this->form_validation->set_message('required', 'El campo %s es requerido.');
+        $this->form_validation->set_message('is_unique', 'El %s existe asociado a otra cuenta.');
+
+        if ($this->form_validation->run() === false) {
+            $this->load->helper('form');
+
+            $data['title'] = 'Modificar mis datos';
+            $data['content'] = 'frontend/perfil-editar';
+            $data['query'] = $this->usuario->get_record($this->session->userdata('user_id'));
+            $data['categorias_eventos'] = $this->categoria_evento->get_records_menu();
+            $data['tipos_relacion_user']= $this->usuario_tipo_relacion->get_records_by_user($this->session->userdata('user_id'));
+            $data['usuario_eventos_preferidos']= $this->usuario_eventos_preferido->get_records_by_user($this->session->userdata('user_id'));
+            $data['imagenes_usuario'] = $this->imagenes_usuario->imagenes_usuario($this->session->userdata('user_id'));
+
+            $this->load->view('frontend_main', $data);
+        } else {
+            $id=  $this->input->post('id');
+
+            // set default time zone if not set at php.ini
+            if (!date_default_timezone_get('date.timezone')) {
+                date_default_timezone_set('America/Buenos_Aires');
+            }
+            $ahora = date("Y-m-d H:i:s");
+
+            $nick_sanitizado = url_title($this->input->post('nickname'), 'dash', true);
+
+            $editedusuario = array(
+            'nombre' => $this->input->post('nombre'),
+            'apellido' => $this->input->post('apellido'),
+            'nickname' => $nick_sanitizado,
+            'updated_at' => $ahora,
+        );
+
+            if ($this->usuario->update_record($id, $editedusuario)) {
+                $this->session->set_flashdata('success', 'Tu perfil se actualizo.');
+                redirect('perfil-editar', 'refresh');
+            } else {
+                $this->session->set_flashdata('error', 'Tu perfil no pudo ser actualizado.');
+                redirect('perfil-editar', 'refresh');
+            }
+        }
+    }
+
 
 
     public function update_tab_busco()
@@ -749,9 +820,44 @@ class Users_Front extends CI_Controller
 
     public function mis_eventos()
     {
-
+      if (!$this->session->userdata('user_id')) {
+          $this->session->set_flashdata('error', 'Necesitas ingresar con tu email y contraseña.');
+          redirect('ingreso');
+      }
       $data['eventos_disponibles'] = $this->evento->get_records();
       $data['content'] = 'frontend/mis-eventos';
       $this->load->view('frontend_main', $data);
     }
+
+    public function actualizar_avatar()
+    {
+      if($this->input->post('imagen_id') && $this->session->userdata('user_id'))
+      {
+        if($this->imagenes_usuario->update_avatar($this->input->post('imagen_id'),$this->session->userdata('user_id')))
+        {
+          $this->session->set_flashdata('success', 'Imagen principal actualizada.');
+          redirect('perfil-editar', 'refresh');
+        }else{
+          $this->session->set_flashdata('error', 'No pudimos modificar la imagen. Intenta dentro de unos minutos por favor.');
+          redirect('perfil-editar', 'refresh');
+        }
+      }
+    }
+
+
+    public function solicitar_asistencia_evento()
+    {
+      if($this->uri->segment(2) && $this->session->userdata('user_id'))
+      {
+        if($this->usuarios_evento->solicitar_asistencia($this->session->userdata('user_id'), $this->uri->segment(2)))
+        {
+          $this->session->set_flashdata('success', 'Tu solicitud de asistencia a el evento ha sido enviada.');
+          redirect('mis-eventos', 'refresh');
+        }else{
+          $this->session->set_flashdata('error', 'Tu solicitud no pudo procesar. Intenta luego o comunicate con nosotros por favor y te brindaremos asistencia.');
+          redirect('mis-eventos', 'refresh');
+        }
+      }
+    }
+
 }//END CLASS
