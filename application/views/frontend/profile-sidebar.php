@@ -76,7 +76,7 @@
     <!-- End Users Contacts -->
 
     <!-- My Projects -->
-    <a href="page-profile-projects-1.html" class="list-group-item list-group-item-action justify-content-between">
+    <a href="<?= base_url('desconectar'); ?>" class="list-group-item list-group-item-action justify-content-between">
       <span><i class="icon-layers g-pos-rel g-top-1 g-mr-8"></i> Cerrar sesión</span>
     </a>
     <!-- End My Projects -->

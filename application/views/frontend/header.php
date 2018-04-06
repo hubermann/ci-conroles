@@ -1,6 +1,6 @@
 <!-- Header -->
 <header id="js-header" class="u-header u-header--static">
-	<div class="u-header__section u-header__section--light g-bg-white g-transition-0_3 g-py-10">
+	<div class="u-header__section bg-header u-header__section--light g-transition-0_3 g-py-10">
 		<nav class="js-mega-menu navbar navbar-expand-lg">
 			<div class="container">
 				<!-- Responsive Toggle Button -->
@@ -23,24 +23,24 @@
 				<div class="collapse navbar-collapse align-items-center flex-sm-row g-pt-10 g-pt-5--lg g-mr-40--lg" id="navBar">
 					<ul class="navbar-nav text-uppercase g-pos-rel g-font-weight-600 ml-auto">
 						<!-- Intro -->
-						<li class="nav-item  g-mx-10--lg g-mx-15--xl">
-							<a href="../../index.html" class="nav-link g-py-7 g-px-0">Home</a>
+						<li class="nav-item link-header g-mx-10--lg g-mx-15--xl">
+							<a href="../../index.html" class=" g-py-7 g-px-0">Home</a>
 						</li>
 
-						<li class="nav-item  g-mx-10--lg g-mx-15--xl">
-							<a href="../../index.html" class="nav-link g-py-7 g-px-0">Cómo funciona</a>
+						<li class="nav-item link-header g-mx-10--lg g-mx-15--xl">
+							<a href="../../index.html" class=" g-py-7 g-px-0">Cómo funciona</a>
 						</li>
 
-						<li class="nav-item  g-mx-10--lg g-mx-15--xl">
-							<a href="../../index.html" class="nav-link g-py-7 g-px-0">Eventos</a>
+						<li class="nav-item link-header g-mx-10--lg g-mx-15--xl">
+							<a href="../../index.html" class=" g-py-7 g-px-0">Eventos</a>
 						</li>
 
-						<li class="nav-item  g-mx-10--lg g-mx-15--xl">
-							<a href="../../index.html" class="nav-link g-py-7 g-px-0">Quíenes somos</a>
+						<li class="nav-item link-header g-mx-10--lg g-mx-15--xl">
+							<a href="../../index.html" class=" g-py-7 g-px-0">Quíenes somos</a>
 						</li>
 
-						<li class="nav-item  g-mx-10--lg g-mx-15--xl">
-							<a href="../../index.html" class="nav-link g-py-7 g-px-0">FAQ</a>
+						<li class="nav-item link-header g-mx-10--lg g-mx-15--xl">
+							<a href="../../index.html" class=" g-py-7 g-px-0">FAQ</a>
 						</li>
 						<!-- End Intro -->
 
@@ -48,11 +48,11 @@
 						<?php if( $this->session->userdata('user_id') ){ ?>
 
 					<!-- logout -->
+						<!-- <li class="nav-item  g-mx-10--lg g-mx-15--xl">
+							<a href="<?= base_url('perfil-editar'); ?>" class=" g-py-7 g-px-0">Mi perfil</a>
+						</li> -->
 						<li class="nav-item  g-mx-10--lg g-mx-15--xl">
-							<a href="<?php echo base_url('perfil-editar'); ?>" class="nav-link g-py-7 g-px-0">Mi perfil</a>
-						</li>
-						<li class="nav-item  g-mx-10--lg g-mx-15--xl">
-							<a href="<?php echo base_url('desconectar'); ?>" class="nav-link g-py-7 g-px-0">Finalizar</a>
+							<a href="<?= base_url('desconectar'); ?>" class=" g-py-7 g-px-0">Finalizar</a>
 						</li>
 						<!-- End logout -->
 
@@ -60,7 +60,7 @@
 
 						<!-- Login -->
 						<li class="nav-item  g-mx-10--lg g-mx-15--xl">
-							<a href="<?php echo base_url('ingreso'); ?>" class="nav-link g-py-7 g-px-0">Ingresar</a>
+							<a href="<?= base_url('ingreso'); ?>" class=" g-py-7 g-px-0">Ingresar</a>
 						</li>
 						<!-- End Login -->
 
@@ -80,7 +80,7 @@
 				</div>
 				<?php }else{ ?>
 				<div class="d-inline-block g-hidden-xs-down g-pos-rel g-valign-middle g-pl-30 g-pl-0--lg">
-					<a class="btn u-btn-outline-primary g-font-size-13 text-uppercase g-py-10 g-px-15" href="<?php echo base_url('registro'); ?>" target="_blank">Crea tu cuenta!</a>
+					<a class="btn u-btn-outline-primary g-font-size-13 text-uppercase g-py-10 g-px-15" href="<?= base_url('registro'); ?>" >Crea tu cuenta!</a>
 				</div>
 
 				<?php } ?>

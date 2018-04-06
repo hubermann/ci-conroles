@@ -45,10 +45,6 @@
 	<main>
 	<?php include_once('frontend/header.php'); ?>
 
-	<br>
-	<br>
-	<br>
-
 	<?php include_once('frontend/notificaciones.php'); ?>
 
 	<?php (isset($content)) ? $this->load->view($content) : $this->load->view('frontend/inicio'); ?>
@@ -65,6 +61,7 @@
 
 	<!-- JS Global Compulsory -->
 	<script  src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+	<script type="text/javascript" src="<?= base_url('public_folder/frontend/assets/vendor/jquery/jquery-3.2.1.js');?>"></script>
 	<script src="<?php echo base_url('public_folder/frontend/assets/vendor/jquery-migrate/jquery-migrate.min.js') ?>"></script>
 	<script src="<?php echo base_url('public_folder/frontend/assets/vendor/jquery.easing/js/jquery.easing.js') ?>"></script>
 	<script src="<?php echo base_url('public_folder/frontend/assets/vendor/popper.min.js') ?>"></script>

@@ -31,15 +31,7 @@
 				<!-- Nav tabs -->
 				<h3>Mis eventos</h3>
 
-				<style media="screen">
-				.evento_pendiente{border-right: 2px solid red;}
-				.evento_aprobado{border-right: 2px solid green;}
-				.card_logo{ width: 15%; float: left;}
-				.card_descripcion{ width: 60%; float: left;}
-				.card_button{ width: 22%; float: left;}
-				.card_wrapper{border: 1px solid #ddd}
-				.bg-gray{background: #ddd; padding: .2em .4em; border-radius: .4em;}
-				</style>
+
 
 <div class="row">
 	<?php $datos_user =$this->session->userdata();
@@ -53,22 +45,39 @@
 			$boton_evento = "";
 			switch ($status_invitacion) {
 				case 5: #desconfirmado por demorar el pago
-					$boton_evento = '<a class="btn btn-small">Desconfirmado por demora.</a>';
+					$boton_evento = '
+					<div class="box-notificacion-evento dashed-gray">
+						<a href="#">Desconfirmado por demora.</a>
+					</div>';
 					break;
 				case 1: # Solicitud enviada esperando aprobacion
-					$boton_evento = '<a class="btn btn-small">Aguardando aprobacion.</a>';
+					$boton_evento = '
+					<div class="box-notificacion-evento dashed-orange">
+						<a href="#" class="btn btn-small">Aguardando aprobacion.</a>
+					</div>';
 					break;
 				case 2: # Solicitud aprobada. esperando El pago
-					$boton_evento = '<a href="payment" class="btn btn-small">Pagar asistencia</a>';
+					$boton_evento = '
+					<div class="box-notificacion-evento no-border">
+						<p>Solicitud de asistencia aprobada!</p>
+						<a href="payment" class="button-blue">Pagar asistencia</a>
+					</div>';
 					break;
 				case 3: # Pago demorado
-					$boton_evento = '<a class="btn btn-small">Pago demorado. volver a pagar</a>';
+					$boton_evento = '<div class="box-notificacion-evento dashed-sky">
+					<a href="volver" class="button-sky">Pago demorado. <br> Contactate con nosotros en el día de hoy para podér asistir al evento.</a>
+					</div>';
 					break;
 				case 4: # Pago procesado ok
-					$boton_evento = '<a class="btn btn-small">Pago realizado correctamente</a>';
+					$boton_evento = '
+					<div class="box-notificacion-evento dashed-green">
+					<a href="#" class="button-green">Pago realizado correctamente</a>
+					</div>';
 					break;
 				default: # Disponible para solicitar asistencia
-					$boton_evento = '<a href="'.base_url('solicitar_asistencia_evento/'.$evento_disp->id).'" class="btn btn-small">Quiero asistir!</a>';
+					$boton_evento = '<div class="box-notificacion-evento no-border">
+					<a href="'.base_url('solicitar_asistencia_evento/'.$evento_disp->id).'" class="button-orange">Quiero asistir!</a>
+					</div>';
 					break;
 			}
 

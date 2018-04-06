@@ -1328,6 +1328,7 @@ hr {
 .js-header-change-moment.g-bg-primary-semi-transparent--shift {
   background-color: rgba(114, 192, 44, 0.9); }
 
+/*
 .u-header__section--light .navbar-brand,
 .u-header__section--light .navbar-toggler,
 .u-header__section--light--shift.js-header-change-moment .navbar-brand,
@@ -1343,6 +1344,25 @@ hr {
 .u-header__section--light--shift.js-header-change-moment .navbar-toggler:focus,
 .u-header__section--light--shift.js-header-change-moment .navbar-toggler:hover {
   color: #555555; }
+  */
+
+
+  .u-header__section--light .navbar-brand,
+  .u-header__section--light .navbar-toggler,
+  .u-header__section--light--shift.js-header-change-moment .navbar-brand,
+  .u-header__section--light--shift.js-header-change-moment .navbar-toggler {
+    color: #fff; }
+
+  .u-header__section--light .navbar-brand:focus,
+  .u-header__section--light .navbar-brand:hover,
+  .u-header__section--light .navbar-toggler:focus,
+  .u-header__section--light .navbar-toggler:hover,
+  .u-header__section--light--shift.js-header-change-moment .navbar-brand:focus,
+  .u-header__section--light--shift.js-header-change-moment .navbar-brand:hover,
+  .u-header__section--light--shift.js-header-change-moment .navbar-toggler:focus,
+  .u-header__section--light--shift.js-header-change-moment .navbar-toggler:hover {
+    color: #CCC; }
+
 
 .u-header__section--light .navbar-nav:not([class*="u-main-nav-v"]) .nav-link,
 .u-header__section--light--shift.js-header-change-moment .navbar-nav:not([class*="u-main-nav-v"]) .nav-link {

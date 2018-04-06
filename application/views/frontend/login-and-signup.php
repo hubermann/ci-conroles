@@ -1,5 +1,5 @@
 <!-- Login & Signup -->
-		<section class="u-bg-overlay g-bg-pos-top-center g-bg-img-hero g-bg-black-opacity-0_3--after g-py-100" style="background-image: url(../../assets/img-temp/1920x1080/img24.jpg);">
+		<section class="u-bg-overlay g-bg-pos-top-center g-bg-img-hero g-bg-black-opacity-0_3--after g-py-100" style="background-image: url(<?= base_url("public_folder/frontend/assets/img/bg/full_images/bg_one.jpg") ?>);">
 			<div class="container u-bg-overlay__inner">
 				<div class="row justify-content-center text-center mb-5">
 					<div class="col-lg-8">
@@ -13,7 +13,8 @@
 
 				<div class="row justify-content-center align-items-center no-gutters">
 					<div class="col-lg-5 g-bg-teal g-rounded-left-5--lg-up">
-						<div class="g-pa-50">
+						<div class="g-pa-50" height="100%">
+
 							<!-- Form -->
 							<form class="g-py-15" method="POST" action="<?php echo base_url('ingreso'); ?>">
 								<h2 class="h3 g-color-white mb-4">Login</h2>
