@@ -12,14 +12,15 @@
 						<h4> <?= $row->nombre_lugar ?> - <?= $row->fecha ?> <?= $row->hora ?></h4>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 					</div>
-
+					
 				</div>
 				<div class="card-footer">
 					<div class="pull-right">
-						<a class="btn btn-small" href="<?= base_url('control/eventos/detail/'.$row->evento_id); ?>"><i class="fa fa-eye"></i></a>
-						<a class="btn btn-small" href="<?= base_url('control/eventos/editar/'.$row->evento_id); ?>"><i class="fa fa-edit"></i></a>
-						<a href="<?= base_url('control/eventos/destroy/'.$row->evento_id); ?>" class="delete btn btn-small" data-confirm="Are you sure to delete this item?"><i class="fa fa-trash-o"></i></a>
-						<a class="btn btn-small" data-toggle="modal" data-target="#ModalEvento<?=$row->evento_id?>"><i class="fa fa-chain"></i></a>
+						<a class="btn btn-small" href="<?= base_url('control/eventos/detail/'.$row->evento_id); ?>"><i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="Solicitudes"></i></a>
+						<a class="btn btn-small" href="<?= base_url('control/eventos/citas/'.$row->evento_id); ?>"><i class="fa fa-comments" data-toggle="tooltip" data-placement="top" title="Citas"></i></a>
+						<a class="btn btn-small" href="<?= base_url('control/eventos/editar/'.$row->evento_id); ?>"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Editar"></i></a>
+						<a href="<?= base_url('control/eventos/destroy/'.$row->evento_id); ?>" class="delete btn btn-small" data-confirm="Are you sure to delete this item?"><i class="fa fa-trash-o" data-toggle="tooltip" data-placement="top" title="Eliminar"></i></a>
+						<a class="btn btn-small" data-toggle="modal" data-target="#ModalEvento<?=$row->evento_id?>"><i class="fa fa-chain" data-toggle="tooltip" data-placement="top" title="Detalle"></i></a>
 					</div>
 				</div>
 			</div>

@@ -9,6 +9,7 @@ class Citas extends CI_Controller{
 		$this->load->model('cita');
 		$this->load->model('usuario');
 		$this->load->model('evento');
+		$this->load->model('usuarios_evento');
 		$this->load->helper('url');
 		$this->load->library('session');
 
@@ -56,10 +57,24 @@ public function index(){
 
 }
 
+//citas por evento
+public function citas_evento(){
+	$id_evento = $this->uri->segment(4);
+	$evento = $this->evento->get_record($id_evento);
+	$data['title'] = 'citas por usuario para el evento '.$evento->nombre_lugar.' ('.$evento->evento_direccion.') '.$evento->fecha.'';
+	$data['content'] = 'control/eventos/citas';
+	$data['menu'] = 'control/citas/menu_cita';
+	$data['usuarios'] = $this->usuarios_evento->get_asistencias_comfirmadas($id_evento);
+	#$data['query'] = $this->cita->get_record($this->uri->segment(4));
+	$this->load->view('control/pixel-admin/control_layout', $data);
+
+}
+
+
 //detail
 public function detail(){
 
-	$data['title'] = 'cita';
+	$data['title'] = 'citas';
 	$data['content'] = 'control/citas/detail';
 	$data['menu'] = 'control/citas/menu_cita';
 	$data['query'] = $this->cita->get_record($this->uri->segment(4));

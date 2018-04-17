@@ -9,7 +9,7 @@
       {
         echo '<img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="images-usuarios/'.$this->avatar_usuario.'" alt="Image Description">';
       }else{
-        echo '<img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="../../assets/img-temp/400x450/img5.jpg" alt="Image Description">';
+        echo '<img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="'.base_url('public_folder/frontend/no-image-available.jpg').'" alt="Image Description">';
       }
       ?>
     </figure>
@@ -42,8 +42,11 @@
 
     <!-- User Info -->
     <span class="g-pos-abs g-top-20 g-left-0">
-        <a class="btn btn-sm u-btn-primary rounded-0" href="#">Johne Doeble</a>
-        <small class="d-block g-bg-black g-color-white g-pa-5">Project Manager</small>
+      <?php if($query){
+        echo '<a class="btn btn-sm u-btn-primary rounded-0" href="#">'.$query->nickname.' </a>';
+      } ?>
+
+        <!-- <small class="d-block g-bg-black g-color-white g-pa-5">Developer</small> -->
       </span>
     <!-- End User Info -->
   </div>
@@ -53,7 +56,7 @@
   <div class="list-group list-group-border-0 g-mb-40">
     <!-- Overall -->
     <a href="page-profile-main-1.html" class="list-group-item list-group-item-action justify-content-between">
-      <span><i class="fal fa-edit"></i> Mis datos</span>
+      <span> Mis datos</span>
     </a>
     <!-- End Overall -->
 

@@ -73,6 +73,21 @@ class Usuarios_evento extends CI_Model{
 		return $this->db->get()->result();
 	}
 
+	//USuarios que si fueron al evento para poder f\gestionar sus contactos
+	public function get_asistencias_comfirmadas($evento_id)
+	{
+			$this->db->select('usuarios_eventos.*, usuarios.id as user_id,usuarios.nickname,usuarios.nombre,usuarios.apellido,usuarios.edad,usuarios.email,usuarios.sexo,usuarios.provincia,usuarios.localidad,')
+					->from('usuarios_eventos')
+					->where('usuarios_eventos.evento_id', $evento_id)
+					->where('usuarios_eventos.status', 4);
+
+		  $this->db->join("usuarios", "usuarios_eventos.usuario_id = usuarios.id",'left');
+			$this->db->join("lugares", "lugares.id = usuarios_eventos.evento_id",'left');
+			//$this->db->join("eventos_tipos", "eventos_tipos.id = eventos.tipo_evento",'left');
+			//$this->db->order_by('eventos.id','ASC');
+			return $this->db->get()->result();
+	}
+
 
 
 	//detail

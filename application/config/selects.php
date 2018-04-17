@@ -22,7 +22,7 @@ $config['niveles_estudio_list'] = array(
 $config['clasificaciones_citas'] = array(
     'Me gusto[cambiar]' => 'Me gusto [cambiar]',
     'masomeno[cambiar]' => 'masomeno[cambiar] ',
-    'No califica [cambiar]' => 'no califica[cambiar]',
+    'No me agrada [cambiar]' => 'no me agrada [cambiar]',
     );
 
 $config['relaciones_tipo'] = array(
@@ -155,7 +155,8 @@ $config['options_estado_civil'] = [0=> "Soltero", 1=>"Casado", 2=>"Separado", 3=
 $config['options_zodiaco'] = ["Aries","Tauro","Géminis","Cáncer","Leo","Virgo","Libra","Escorpio","Sagitario","Capricornio","Acuario","Piscis"];
 
 $config['options_provincia'] =[
-        0 => '-', 1 => 'Buenos Aires',
+        0 => '-',
+        1 => 'Buenos Aires',
         2 => 'Capital Federal',
         3 =>'Catamarca',
         4 =>'Chaco',

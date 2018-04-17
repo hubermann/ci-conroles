@@ -3,6 +3,9 @@
 
 <!--row -->
 <div class="row">
+
+<p>Al hacer un insert positivo se guarda en contactos_usuarios los datos del contacto. (para amboas users) En caso de que alguno elimine esl contacto se bloquea el contrario. es decir en el listado de contactos del otro usuario deberia dejar de aparecer. </p>
+
 	<div class="col-sm-12">
 		<div class="white-box">
 			<h3 class="box-title"><?php echo $title; ?>

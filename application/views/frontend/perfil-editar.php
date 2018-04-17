@@ -4,15 +4,15 @@
 	<div class="container">
 		<ul class="u-list-inline">
 			<li class="list-inline-item g-mr-7">
-				<a class="u-link-v5 g-color-main g-color-primary--hover" href="#">Home</a>
+				<a class="u-link-v5 g-color-main g-color-primary--hover" href="#">Inicio</a>
 				<i class="fa fa-angle-right g-ml-7"></i>
 			</li>
 			<li class="list-inline-item g-mr-7">
-				<a class="u-link-v5 g-color-main g-color-primary--hover" href="#">Pages</a>
+				<a class="u-link-v5 g-color-main g-color-primary--hover" href="#">Perfil</a>
 				<i class="fa fa-angle-right g-ml-7"></i>
 			</li>
 			<li class="list-inline-item g-color-primary">
-				<span>Profile Settings</span>
+				<span>Configuración</span>
 			</li>
 		</ul>
 	</div>
@@ -29,7 +29,7 @@
 
 			<!-- Profle Content -->
 			<div class="col-lg-9">
-				<h2>Falta hacer que se haga el update de los form de editar perfil</h2>
+
 				<!-- Nav tabs -->
 				<ul class="nav nav-justified u-nav-v1-1 u-nav-primary g-brd-bottom--md g-brd-bottom-2 g-brd-primary g-mb-20" role="tablist" data-target="nav-1-1-default-hor-left-underline" data-tabs-mobile-type="slide-up-down" data-btn-classes="btn btn-md btn-block rounded-0 u-btn-outline-primary g-mb-20">
 					<li class="nav-item">

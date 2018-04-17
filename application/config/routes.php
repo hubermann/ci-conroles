@@ -16,6 +16,8 @@ $route['control/roles/(:num)'] = 'control/roles/index/$';
 $route['control/admins/(:num)'] = 'control/admins/index/$';
 $route['control/permisos/(:num)'] = 'control/permisos/detail/$';
 $route['control/citas/(:num)'] = 'control/citas/index/$';
+//Citas dentro de evento
+$route['control/eventos/citas/(:num)'] = 'control/citas/citas_evento/$';
 $route['control/registros/(:num)'] = 'control/registros/index/$';
 $route['control/eventos/(:num)'] = 'control/eventos/index/$';
 $route['control/categoria_eventos/(:num)'] = 'control/categoria_eventos/index/$';

@@ -126,9 +126,9 @@
 					<li>
 						<a href="<?=base_url('control/lugares');?>" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"></i><span class="hide-menu">Lugares</span></a>
 					</li>
-					<li>
+					<!-- <li>
 						<a href="<?=base_url('control/citas');?>" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"></i><span class="hide-menu">Citas</span></a>
-					</li>
+					</li> -->
 
 					<!--<li>
 						<a href="<?=base_url('control/permisos');?>" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"></i><span class="hide-menu">Permisos</span></a>
