@@ -73,7 +73,7 @@
     <!-- End Profile -->
 
     <!-- Users Contacts -->
-    <a href="<?= base_url('mis-eventos') ?>" class="list-group-item list-group-item-action justify-content-between">
+    <a href="<?= base_url('mis-contactos') ?>" class="list-group-item list-group-item-action justify-content-between">
       <span><i class="icon-notebook g-pos-rel g-top-1 g-mr-8"></i> Mis contactos</span>
     </a>
     <!-- End Users Contacts -->

@@ -825,9 +825,23 @@ class Users_Front extends CI_Controller
           redirect('ingreso');
       }
       $data['eventos_disponibles'] = $this->evento->get_records();
+      $data['query'] = $this->usuario->get_record($this->session->userdata('user_id'));
       $data['content'] = 'frontend/mis-eventos';
       $this->load->view('frontend_main', $data);
     }
+
+    public function mis_contactos()
+    {
+      if (!$this->session->userdata('user_id')) {
+          $this->session->set_flashdata('error', 'Necesitas ingresar con tu email y contraseña.');
+          redirect('ingreso');
+      }
+      $data['query'] = $this->usuario->get_record($this->session->userdata('user_id'));
+      $data['usuario_contactos'] = [];
+      $data['content'] = 'frontend/mis-contactos';
+      $this->load->view('frontend_main', $data);
+    }
+
 
     public function actualizar_avatar()
     {

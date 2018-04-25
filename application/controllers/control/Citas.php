@@ -11,6 +11,7 @@ class Citas extends CI_Controller{
 		$this->load->model('evento');
 		$this->load->model('usuarios_evento');
 		$this->load->helper('url');
+		$this->load->helper('form');
 		$this->load->library('session');
 
 	//Si no hay session redirige a Login
@@ -64,11 +65,34 @@ public function citas_evento(){
 	$data['title'] = 'citas por usuario para el evento '.$evento->nombre_lugar.' ('.$evento->evento_direccion.') '.$evento->fecha.'';
 	$data['content'] = 'control/eventos/citas';
 	$data['menu'] = 'control/citas/menu_cita';
+	$data['evento_id'] = $id_evento;
 	$data['usuarios'] = $this->usuarios_evento->get_asistencias_comfirmadas($id_evento);
 	#$data['query'] = $this->cita->get_record($this->uri->segment(4));
 	$this->load->view('control/pixel-admin/control_layout', $data);
 
 }
+
+public function citas_evento_edit()
+{
+	$evento_id 				= $this->input->post('evento_id');
+	$usuario_id				= $this->input->post('usuario_id');
+
+	if(empty($evento_id) || empty($usuario_id) ){ return redirect('control/');}
+	$evento = $this->evento->get_record($evento_id);
+	$data['evento_id'] = $evento->id;
+	$data['usuarios'] = $this->usuarios_evento->get_asistencias_comfirmadas($evento_id);
+	$data['usuario_owner'] = $this->usuario->get_record($usuario_id);
+	$data['title'] = 'citas por usuario para el evento '.$evento->nombre_lugar.' ('.$evento->evento_direccion.') '.$evento->fecha.'';
+	$data['content'] = 'control/eventos/citas_edit';
+	$this->load->view('control/pixel-admin/control_layout', $data);
+}
+
+public function citas_evento_update()
+{
+	var_dump($this->input->post('cita_id'));
+	var_dump($this->input->post('clasificacion_id'));
+}
+
 
 
 //detail

@@ -29,7 +29,7 @@
 			<!-- Profle Content -->
 			<div class="col-lg-9">
 				<!-- Nav tabs -->
-				<h3>Mis eventos</h3>
+				<h3>Mis contactos</h3>
 
 <div class="row">
 	<?php $datos_user =$this->session->userdata();

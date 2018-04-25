@@ -18,6 +18,10 @@ $route['control/permisos/(:num)'] = 'control/permisos/detail/$';
 $route['control/citas/(:num)'] = 'control/citas/index/$';
 //Citas dentro de evento
 $route['control/eventos/citas/(:num)'] = 'control/citas/citas_evento/$';
+$route['control/eventos/citas/(:num)/edit'] = 'control/citas/citas_evento_edit/$';
+$route['control/eventos/citas/update'] = 'control/citas/citas_evento_update';
+
+
 $route['control/registros/(:num)'] = 'control/registros/index/$';
 $route['control/eventos/(:num)'] = 'control/eventos/index/$';
 $route['control/categoria_eventos/(:num)'] = 'control/categoria_eventos/index/$';
@@ -60,6 +64,7 @@ $route['solicitud_reset_password'] = 'users_front/solicitud_reset_password';
 $route['callback_reset_validation/(:any)'] = 'users_front/callback_reset_password';
 $route['create_new_pass'] = 'users_front/create_new_pass';
 $route['mis-eventos'] = 'users_front/mis_eventos';
+$route['mis-contactos'] = 'users_front/mis_contactos';
 $route['solicitar_asistencia_evento/(:num)'] = 'users_front/solicitar_asistencia_evento/$';
 
 
