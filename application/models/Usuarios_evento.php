@@ -85,7 +85,7 @@ class Usuarios_evento extends CI_Model{
 			$this->db->join("lugares", "lugares.id = usuarios_eventos.evento_id",'left');
 			//$this->db->join("eventos_tipos", "eventos_tipos.id = eventos.tipo_evento",'left');
 			//$this->db->order_by('eventos.id','ASC');
-			return $this->db->get()->result();
+			return $this->db->get()->result_array();
 	}
 
 

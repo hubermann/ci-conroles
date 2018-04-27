@@ -72,15 +72,40 @@ public function citas_evento(){
 
 }
 
-public function citas_evento_edit()
-{
+	public function citas_evento_edit()
+	{
 	$evento_id 				= $this->input->post('evento_id');
 	$usuario_id				= $this->input->post('usuario_id');
 
 	if(empty($evento_id) || empty($usuario_id) ){ return redirect('control/');}
 	$evento = $this->evento->get_record($evento_id);
 	$data['evento_id'] = $evento->id;
-	$data['usuarios'] = $this->usuarios_evento->get_asistencias_comfirmadas($evento_id);
+
+	$users = [];
+	foreach ($this->usuarios_evento->get_asistencias_comfirmadas($evento_id) as $usuario) {
+
+		
+			$clasificacion = $this->cita->check_clasificacion($evento_id, $usuario_id, $usuario['user_id']);
+		
+
+		$nombre = $usuario['nombre'];
+		$apellido = $usuario['apellido'];
+		$nickname = $usuario['nickname'];
+		$user_id = $usuario['user_id'];
+		$cita_status = $clasificacion;
+
+		$users[] = array(
+		'nombre' => $nombre, 
+		'apellido' => $apellido,
+		'nickname' => $nickname, 
+		'user_id' =>$user_id, 
+		'cita_status' => $cita_status
+		);
+
+	}
+
+	$data['usuarios'] = $users;
+
 	$data['usuario_owner'] = $this->usuario->get_record($usuario_id);
 	$data['title'] = 'citas por usuario para el evento '.$evento->nombre_lugar.' ('.$evento->evento_direccion.') '.$evento->fecha.'';
 	$data['content'] = 'control/eventos/citas_edit';
@@ -89,8 +114,33 @@ public function citas_evento_edit()
 
 public function citas_evento_update()
 {
-	var_dump($this->input->post('cita_id'));
-	var_dump($this->input->post('clasificacion_id'));
+	#evento
+	#usuario
+	#cita
+	#clasificacion
+
+	$evento_id 				= $this->input->post('evento_id');
+	$usuario_id				= $this->input->post('usuario_id');
+	// remover existentes por user y evento
+	$this->cita->remove_by_evento_and_user($evento_id, $usuario_id);
+
+	$count 						= 0;
+	$clasificaciones 	= $this->input->post('clasificacion_id');
+	$now 							= date("Y-m-d h:m:s");
+	foreach ($this->input->post('cita_id') as $cita) {
+		$clasificacion = $clasificaciones[$count];
+		$newcita = array( 'evento_id' => $evento_id,
+					'usuario_id' => $usuario_id,
+					'cita_id' => $cita,
+					'clasificacion_id' => $clasificaciones[$count],
+					'created_at' => $now,
+					'updated_at' => $now,
+					);
+		$this->cita->add_record($newcita);
+		$count++;
+	}
+
+	echo "Listo!".$newcita['clasificacion_id'];
 }
 
 

@@ -13,13 +13,13 @@
         <div class="card">
           <div class="card-body">
             <div class="row">
-              <h4>'.$usuario->nickname.' - '.$usuario->nombre.' '.$usuario->apellido.'</h4>
+              <h4>'.$usuario['nickname'].' - '.$usuario['nombre'].' '.$usuario['apellido'].'</h4>
               <div class="col-md-12">';
                 foreach ($usuarios as $cita) {
-                  echo '<p> '.$cita->nombre.' '.$cita->apellido.' <span class="pull-right"> No ...</span></p>
+                  echo '<p> '.$cita['nombre'].' '.$cita['apellido'].' <span class="pull-right"> No ...</span></p>
                   <form class="nada" action="'.base_url('control/citas/citas_evento_edit').'" method="post">
                     <input type="hidden" name="evento_id" value="'.$evento_id.'">
-                    <input type="hidden" name="usuario_id" value="'.$usuario->usuario_id.'">
+                    <input type="hidden" name="usuario_id" value="'.$usuario['usuario_id'].'">
 
 
                   ';

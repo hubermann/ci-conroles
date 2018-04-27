@@ -19,24 +19,24 @@
                   <input type="hidden" name="usuario_id" value="'.$usuario_owner->id.'">
                   ';
                 foreach ($usuarios as $cita) {
-                  if($cita->user_id != $usuario_owner->id){
-                  echo '
 
-                    <div class="col-md-6">
-                      <br>
-                      '.$cita->nombre.' '.$cita->apellido.' '.$cita->user_id.'
-                      <input type="hidden" name="cita_id[]" value="'.$cita->user_id.'" />
-                    </div>
-                    <div class="col-md-6">
-                      <!-- Text input-->
-                      <div class="control-group">
-                        <label class="control-label"></label>
-                        <div class="controls">
-                          '.form_dropdown('clasificacion_id[]', $this->config->item('clasificaciones_citas'), '',['class' =>'form-control'] ).'
-                        </div>
-                      </div>
-                  </div>
-                  ';
+                  if($cita['user_id'] != $usuario_owner->id){
+	                  echo '
+	                    <div class="col-md-6">
+	                      <br>
+	                      '.$cita['nombre'].' '.$cita['apellido'].' '.$cita['user_id'].'
+	                      <input type="hidden" name="cita_id[]" value="'.$cita['user_id'].'" />
+	                    </div>
+	                    <div class="col-md-6">
+	                      <!-- Text input-->
+	                      <div class="control-group">
+	                        <label class="control-label"></label>
+	                        <div class="controls">
+	                          '.form_dropdown('clasificacion_id[]', $this->config->item('clasificaciones_citas'), $cita['cita_status'],['class' =>'form-control'] ).'
+	                        </div>
+	                      </div>
+	                  </div>
+	                  ';
                   }
                 }
             echo '
