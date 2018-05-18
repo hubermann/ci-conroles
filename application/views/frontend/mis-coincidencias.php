@@ -29,7 +29,7 @@
 			<!-- Profle Content -->
 			<div class="col-lg-9">
 				<!-- Nav tabs -->
-				<h3>Mis eventos</h3>
+				<h3>Mis coincidencias</h3>
 
 <div class="row">
 	<?php $datos_user =$this->session->userdata();
@@ -101,26 +101,6 @@
     }
 
 ?>
-
-<h5>poner este</h5>
-<ul class="list-unstyled">
-<li class="media g-brd-around g-brd-gray-light-v4 g-brd-left-3 g-brd-blue-left rounded g-pa-20 g-mb-10">
-  <div class="d-flex g-mt-2 g-mr-15">
-    <img class="g-width-40 g-height-40 rounded-circle mCS_img_loaded" src="../../assets/img-temp/100x100/img1.jpg" alt="Image Description">
-  </div>
-  <div class="media-body">
-    <div class="d-flex justify-content-between">
-      <h5 class="h6 g-font-weight-600 g-color-black">Unify Template</h5>
-      <span class="small text-nowrap g-color-blue">2 min ago</span>
-    </div>
-    <p>Curabitur hendrerit dolor sit amet consectetur. Adipiscing elitut leosit amet, consectetur eleifend.</p>
-    <span class="u-label u-label--sm g-bg-gray-light-v4 g-color-main g-rounded-20 g-px-10">HTML</span>
-    <span class="u-label u-label--sm g-bg-gray-light-v4 g-color-main g-rounded-20 g-px-10">AnhularJS</span>
-    <span class="u-label u-label--sm g-bg-gray-light-v4 g-color-main g-rounded-20 g-px-10">PHP</span>
-  </div>
-</li>
-</ul>
-
 
 
 

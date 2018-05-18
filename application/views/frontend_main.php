@@ -26,6 +26,8 @@
 	<link rel="stylesheet" href="<?php echo base_url('public_folder/frontend/assets/vendor/fancybox/jquery.fancybox.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('public_folder/frontend/assets/vendor/hs-megamenu/src/hs.megamenu.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('public_folder/frontend/assets/vendor/hamburgers/hamburgers.min.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('public_folder/frontend/assets/vendor/slick-carousel/slick/slick.css'); ?>">
+
 
 
 	<link rel="stylesheet" href="<?php echo base_url('public_folder/frontend/font-awesome/fontawesome-all.min.css'); ?>">
@@ -39,21 +41,28 @@
 	<!-- CSS Customization -->
 	<link rel="stylesheet" href="<?php echo base_url('public_folder/frontend/assets/css/custom.css'); ?>">
 
+	<style media="screen">
+		.bgheader{background: #444;}
+		.bg-blue{background:#14171e;}
+		.section-bggray{background: #332e33;}
+		.section-bgwhite{background: #FFF;}
+	</style>
 </head>
 
 <body>
 	<main>
-	<?php include_once('frontend/header.php'); ?>
+		<div class="bgheader">
+		<?php include_once('frontend/header.php'); ?>
 
-	<?php include_once('frontend/notificaciones.php'); ?>
+		<?php include_once('frontend/notificaciones.php'); ?>
+		</div>
+		<?php (isset($content)) ? $this->load->view($content) : $this->load->view('frontend/inicio'); ?>
 
-	<?php (isset($content)) ? $this->load->view($content) : $this->load->view('frontend/inicio'); ?>
+		<?php #include_once('frontend/profile-settings.php'); ?>
 
-	<?php #include_once('frontend/profile-settings.php'); ?>
+		<?php include_once('frontend/footer.php'); ?>
 
-	<?php include_once('frontend/footer.php'); ?>
-
-	<?php include_once('frontend/link_to_up.php'); ?>
+		<?php include_once('frontend/link_to_up.php'); ?>
 
 	</main>
 
@@ -67,8 +76,11 @@
 	<script src="<?php echo base_url('public_folder/frontend/assets/vendor/popper.min.js') ?>"></script>
 	<script src="<?php echo base_url('public_folder/frontend/assets/vendor/bootstrap/bootstrap.min.js') ?>"></script>
 
-	<!-- JS Implementing Plugins -->
+	<!-- slick carousel  -->
 	<script src="<?php echo base_url('public_folder/frontend/assets/vendor/hs-megamenu/src/hs.megamenu.js') ?>"></script>
+
+	<!-- JS Implementing Plugins -->
+	<script src="<?php echo base_url('public_folder/frontend/assets/vendor/slick-carousel/slick/slick.js') ?>"></script>
 
 	<!-- JS Unify -->
 	<script src="<?php echo base_url('public_folder/frontend/assets/js/hs.core.js') ?>"></script>
@@ -77,6 +89,36 @@
 	<script src="<?php echo base_url('public_folder/frontend/assets/js/components/hs.tabs.js') ?>"></script>
 	<script src="<?php echo base_url('public_folder/frontend/assets/js/components/hs.go-to.js') ?>"></script>
 	<script src="<?php echo base_url('public_folder/frontend/assets/js/helpers/hs.focus-state.js') ?>"></script>
+
+
+	<!-- JS Global Compulsory -->
+	    <script src="<?php echo base_url('public_folder/frontend/assets/vendor/jquery/jquery.min.js') ?>"></script>
+	    <script src="<?php echo base_url('public_folder/frontend/assets/vendor/jquery-migrate/jquery-migrate.min.js') ?>"></script>
+	    <script src="<?php echo base_url('public_folder/frontend/assets/vendor/jquery.easing/js/jquery.easing.js') ?>"></script>
+	    <script src="<?php echo base_url('public_folder/frontend/assets/vendor/popper.min.js') ?>"></script>
+	    <script src="<?php echo base_url('public_folder/frontend/assets/vendor/bootstrap/bootstrap.min.js') ?>"></script>
+
+	    <!-- JS Implementing Plugins -->
+	    <script src="<?php echo base_url('public_folder/frontend/assets/vendor/appear.js') ?>"></script>
+	    <script src="<?php echo base_url('public_folder/frontend/assets/vendor/masonry/dist/masonry.pkgd.min.js') ?>"></script>
+	    <script src="<?php echo base_url('public_folder/frontend/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') ?>"></script>
+	    <script src="<?php echo base_url('public_folder/frontend/assets/vendor/jquery.countdown.min.js') ?>"></script>
+	    <script src="<?php echo base_url('public_folder/frontend/assets/vendor/fancybox/jquery.fancybox.js') ?>"></script>
+	    <script src="<?php echo base_url('public_folder/frontend/assets/vendor/slick-carousel/slick/slick.js') ?>"></script>
+	    <script src="<?php echo base_url('public_folder/frontend/assets/vendor/gmaps/gmaps.min.js') ?>"></script>
+
+	    <!-- JS Unify -->
+	    <script src="<?php echo base_url('public_folder/frontend/assets/js/hs.core.js') ?>"></script>
+	    <script src="<?php echo base_url('public_folder/frontend/assets/js/components/hs.header.js') ?>"></script>
+	    <script src="<?php echo base_url('public_folder/frontend/assets/js/helpers/hs.hamburgers.js') ?>"></script>
+	    <script src="<?php echo base_url('public_folder/frontend/assets/js/components/hs.scroll-nav.js') ?>"></script>
+	    <script src="<?php echo base_url('public_folder/frontend/assets/js/components/hs.tabs.js') ?>"></script>
+	    <script src="<?php echo base_url('public_folder/frontend/assets/js/components/hs.countdown.js') ?>"></script>
+	    <script src="<?php echo base_url('public_folder/frontend/assets/js/components/hs.carousel.js') ?>"></script>
+	    <script src="<?php echo base_url('public_folder/frontend/assets/js/components/gmap/hs.map.js') ?>"></script>
+	    <script src="<?php echo base_url('public_folder/frontend/assets/js/components/hs.go-to.js') ?>"></script>
+
+
 
 	<!-- JS Customization -->
 	<script src="<?php echo base_url('public_folder/frontend/assets/js/custom.js') ?>"></script>
@@ -113,6 +155,116 @@
 				}, 200);
 			});
 	</script>
+
+	<!-- JS Plugins Init. -->
+    <script>
+      // initialization of google map
+      function initMap() {
+        $.HSCore.components.HSGMap.init('.js-g-map');
+      }
+
+      $(document).on('ready', function () {
+        // initialization of carousel
+        $.HSCore.components.HSCarousel.init('.js-carousel');
+
+        $('#carouselCus1').slick('setOption', 'responsive', [{
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 2
+          }
+        }], true);
+
+        $('#carouselCus2').slick('setOption', 'responsive', [{
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: 3
+          }
+        }, {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 1,
+            centerPadding: '100px'
+          }
+        }, {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1,
+            centerPadding: '60px'
+          }
+        }, {
+          breakpoint: 576,
+          settings: {
+            slidesToShow: 1,
+            centerPadding: '40px'
+          }
+        }], true);
+
+        $('#carouselCus3').slick('setOption', 'responsive', [{
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: 5
+          }
+        }, {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 4
+          }
+        }, {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 3
+          }
+        }, {
+          breakpoint: 576,
+          settings: {
+            slidesToShow: 2
+          }
+        }], true);
+
+        // initialization of header
+        $.HSCore.components.HSHeader.init($('#js-header'));
+        $.HSCore.helpers.HSHamburgers.init('.hamburger');
+
+        // initialization of tabs
+        $.HSCore.components.HSTabs.init('[role="tablist"]');
+
+        // initialization of go to section
+        $.HSCore.components.HSGoTo.init('.js-go-to');
+
+        // initialization of countdowns
+        var countdowns = $.HSCore.components.HSCountdown.init('.js-countdown', {
+          yearsElSelector: '.js-cd-years',
+          monthElSelector: '.js-cd-month',
+          daysElSelector: '.js-cd-days',
+          hoursElSelector: '.js-cd-hours',
+          minutesElSelector: '.js-cd-minutes',
+          secondsElSelector: '.js-cd-seconds'
+        });
+      });
+
+      $(window).on('load', function() {
+        // initialization of HSScrollNav
+        $.HSCore.components.HSScrollNav.init($('#js-scroll-nav'), {
+          duration: 700,
+          easing: 'easeOutExpo'
+        });
+
+        // initialization of masonry.js
+        $('.masonry-grid').imagesLoaded().then(function () {
+          $('.masonry-grid').masonry({
+            columnWidth: '.masonry-grid-sizer',
+            itemSelector: '.masonry-grid-item',
+            percentPosition: true
+          });
+        });
+      });
+
+      $(window).on('resize', function () {
+        setTimeout(function () {
+          $.HSCore.components.HSTabs.init('[role="tablist"]');
+        }, 200);
+      });
+    </script>
 
 
 

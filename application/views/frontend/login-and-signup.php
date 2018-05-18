@@ -1,5 +1,5 @@
 <!-- Login & Signup -->
-		<section class="u-bg-overlay g-bg-pos-top-center g-bg-img-hero g-bg-black-opacity-0_3--after g-py-100" style="background-image: url(<?= base_url("public_folder/frontend/assets/img/bg/full_images/bg_one.jpg") ?>);">
+		<section class="u-bg-overlay g-bg-pos-top-center g-bg-img-hero g-bg-black-opacity-0_3--after g-py-100" style="background-image: url(<?= base_url('public_folder/frontend/assets/img/bg/full_images/10en8-img1.jpg'); ?>);">
 			<div class="container u-bg-overlay__inner">
 				<div class="row justify-content-center text-center mb-5">
 					<div class="col-lg-8">
@@ -42,10 +42,23 @@
 									<button class="btn btn-md btn-block u-btn-primary rounded text-uppercase g-py-13" type="submit">Login</button>
 								</div>
 
-								<div class="text-center g-pos-rel pb-2 g-mb-60">
+								<br>
+								<br>
+								<br>
+								<br>
+
+								<br>
+								<br>
+								<br>
+								<br>
+
+								<br><br>
+								<br>
+								<br>
+								<!-- <div class="text-center g-pos-rel pb-2 g-mb-60">
 									<div class="d-inline-block w-100 g-height-1 g-bg-white"></div>
 									<span class="u-icon-v2 u-icon-size--lg g-brd-white g-color-white g-bg-teal g-font-size-default rounded-circle text-uppercase g-absolute-centered g-pa-24">OR</span>
-								</div>
+								</div> -->
 
 								<!-- <button class="btn btn-block u-btn-facebook rounded text-uppercase g-py-13 g-mb-15" type="submit">
 									<i class="mr-3 fa fa-facebook"></i>

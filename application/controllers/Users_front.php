@@ -830,6 +830,18 @@ class Users_Front extends CI_Controller
       $this->load->view('frontend_main', $data);
     }
 
+    public function mis_coincidencias()
+    {
+      if (!$this->session->userdata('user_id')) {
+          $this->session->set_flashdata('error', 'Necesitas ingresar con tu email y contraseña.');
+          redirect('ingreso');
+      }
+      $data['eventos_disponibles'] = $this->evento->get_records();
+      $data['query'] = $this->usuario->get_record($this->session->userdata('user_id'));
+      $data['content'] = 'frontend/mis-eventos';
+      $this->load->view('frontend_main', $data);
+    }
+
     public function mis_contactos()
     {
       if (!$this->session->userdata('user_id')) {
@@ -872,6 +884,27 @@ class Users_Front extends CI_Controller
           redirect('mis-eventos', 'refresh');
         }
       }
+    }
+
+
+
+    //estaticas
+    public function como_funciona()
+    {
+      $data['content'] = 'frontend/como-funciona.php';
+      $this->load->view('frontend_main', $data);
+    }
+
+    public function preguntas_frecuentes()
+    {
+      $data['content'] = 'frontend/preguntas-frecuentes.php';
+      $this->load->view('frontend_main', $data);
+    }
+
+    public function quienes_somos()
+    {
+      $data['content'] = 'frontend/quienes-somos.php';
+      $this->load->view('frontend_main', $data);
     }
 
 }//END CLASS

@@ -60,17 +60,19 @@ public function index(){
 
 //citas por evento
 public function citas_evento(){
-	$id_evento = $this->uri->segment(4);
-	$evento = $this->evento->get_record($id_evento);
+	
+	$evento_id = $this->uri->segment(4);
+	$evento = $this->evento->get_record($evento_id);
 	$data['title'] = 'citas por usuario para el evento '.$evento->nombre_lugar.' ('.$evento->evento_direccion.') '.$evento->fecha.'';
 	$data['content'] = 'control/eventos/citas';
 	$data['menu'] = 'control/citas/menu_cita';
-	$data['evento_id'] = $id_evento;
-	$data['usuarios'] = $this->usuarios_evento->get_asistencias_comfirmadas($id_evento);
-	#$data['query'] = $this->cita->get_record($this->uri->segment(4));
+	$data['evento_id'] = $evento_id;
+
+	$data['usuarios'] = $this->usuarios_evento->get_asistencias_comfirmadas($evento_id);
 	$this->load->view('control/pixel-admin/control_layout', $data);
 
 }
+
 
 	public function citas_evento_edit()
 	{
@@ -84,9 +86,7 @@ public function citas_evento(){
 	$users = [];
 	foreach ($this->usuarios_evento->get_asistencias_comfirmadas($evento_id) as $usuario) {
 
-		
-			$clasificacion = $this->cita->check_clasificacion($evento_id, $usuario_id, $usuario['user_id']);
-		
+		$clasificacion = $this->cita->check_clasificacion($evento_id, $usuario_id, $usuario['user_id']);
 
 		$nombre = $usuario['nombre'];
 		$apellido = $usuario['apellido'];

@@ -24,11 +24,11 @@
 					<ul class="navbar-nav text-uppercase g-pos-rel g-font-weight-600 ml-auto">
 						<!-- Intro -->
 						<li class="nav-item link-header g-mx-10--lg g-mx-15--xl">
-							<a href="../../index.html" class=" g-py-7 g-px-0">Home</a>
+							<a href="/" class=" g-py-7 g-px-0">Home</a>
 						</li>
 
 						<li class="nav-item link-header g-mx-10--lg g-mx-15--xl">
-							<a href="../../index.html" class=" g-py-7 g-px-0">Cómo funciona</a>
+							<a href="<?= base_url('como-funciona');?>" class=" g-py-7 g-px-0">Cómo funciona</a>
 						</li>
 
 						<li class="nav-item link-header g-mx-10--lg g-mx-15--xl">
@@ -36,11 +36,11 @@
 						</li>
 
 						<li class="nav-item link-header g-mx-10--lg g-mx-15--xl">
-							<a href="../../index.html" class=" g-py-7 g-px-0">Quíenes somos</a>
+							<a href="<?= base_url('quienes-somos');?>" class=" g-py-7 g-px-0">Quíenes somos</a>
 						</li>
 
 						<li class="nav-item link-header g-mx-10--lg g-mx-15--xl">
-							<a href="../../index.html" class=" g-py-7 g-px-0">FAQ</a>
+							<a href="<?= base_url('preguntas-frecuentes');?>" class=" g-py-7 g-px-0">FAQ</a>
 						</li>
 						<!-- End Intro -->
 

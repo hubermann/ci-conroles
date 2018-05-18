@@ -64,11 +64,14 @@ $route['solicitud_reset_password'] = 'users_front/solicitud_reset_password';
 $route['callback_reset_validation/(:any)'] = 'users_front/callback_reset_password';
 $route['create_new_pass'] = 'users_front/create_new_pass';
 $route['mis-eventos'] = 'users_front/mis_eventos';
+$route['mis-coincidencias'] = 'users_front/mis_coincidencias';
 $route['mis-contactos'] = 'users_front/mis_contactos';
 $route['solicitar_asistencia_evento/(:num)'] = 'users_front/solicitar_asistencia_evento/$';
 
 
-
+$route['como-funciona'] = 'users_front/como_funciona';
+$route['preguntas-frecuentes'] = 'users_front/preguntas_frecuentes';
+$route['quienes-somos'] = 'users_front/quienes_somos';
 // $route['registro'] 						= 'welcome/register';
 // $route['login'] 						= 'welcome/login';
 // $route['check_login'] 						= 'welcome/check_login';

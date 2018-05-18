@@ -55,13 +55,13 @@
   <!-- Sidebar Navigation -->
   <div class="list-group list-group-border-0 g-mb-40">
     <!-- Overall -->
-    <a href="page-profile-main-1.html" class="list-group-item list-group-item-action justify-content-between">
+    <a href="<?= base_url('perfil-editar');?>" class="list-group-item list-group-item-action justify-content-between">
       <span> Mis datos</span>
     </a>
     <!-- End Overall -->
 
     <!-- Profile -->
-    <a href="page-profile-profile-1.html" class="list-group-item list-group-item-action justify-content-between">
+    <a href="<?= base_url('mis-coincidencias');?>" class="list-group-item list-group-item-action justify-content-between">
       <span><i class="icon-cursor g-pos-rel g-top-1 g-mr-8"></i> Mis coincidencias</span>
     </a>
     <!-- End Profile -->
