@@ -60,7 +60,7 @@ public function index(){
 
 //citas por evento
 public function citas_evento(){
-	
+
 	$evento_id = $this->uri->segment(4);
 	$evento = $this->evento->get_record($evento_id);
 	$data['title'] = 'citas por usuario para el evento '.$evento->nombre_lugar.' ('.$evento->evento_direccion.') '.$evento->fecha.'';
@@ -95,10 +95,10 @@ public function citas_evento(){
 		$cita_status = $clasificacion;
 
 		$users[] = array(
-		'nombre' => $nombre, 
+		'nombre' => $nombre,
 		'apellido' => $apellido,
-		'nickname' => $nickname, 
-		'user_id' =>$user_id, 
+		'nickname' => $nickname,
+		'user_id' =>$user_id,
 		'cita_status' => $cita_status
 		);
 
@@ -139,8 +139,11 @@ public function citas_evento_update()
 		$this->cita->add_record($newcita);
 		$count++;
 	}
+#http://10en8local:8888/control/eventos/citas/
+	#echo "Listo!".$newcita['clasificacion_id'];
 
-	echo "Listo!".$newcita['clasificacion_id'];
+	$this->session->set_flashdata('success', 'Actualizado!');
+	redirect('control/eventos/citas/'.$evento_id, 'refresh');
 }
 
 
