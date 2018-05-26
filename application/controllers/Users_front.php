@@ -11,7 +11,7 @@ class Users_Front extends CI_Controller
         $this->load->helper('form');
         $this->load->library('session');
         $this->load->library('form_validation');
-        $this->load->model(['usuario', 'evento','categoria_evento', 'usuario_eventos_preferido','usuario_tipo_relacion','imagenes_usuario','usuarios_evento']);
+        $this->load->model(['usuario', 'evento','cita','categoria_evento', 'usuario_eventos_preferido','usuario_tipo_relacion','imagenes_usuario','usuarios_evento']);
 
         $this->usuario_logueado = $this->session->userdata('user_id');
         $this->avatar_usuario = $this->imagenes_usuario->usuario_avatar($this->usuario_logueado);
@@ -832,13 +832,38 @@ class Users_Front extends CI_Controller
 
     public function mis_coincidencias()
     {
+      //muestra de los enventos a los que fue le usuario detalles del evento (lugar, fecha, hora,etc)
       if (!$this->session->userdata('user_id')) {
           $this->session->set_flashdata('error', 'Necesitas ingresar con tu email y contraseña.');
           redirect('ingreso');
       }
-      $data['eventos_disponibles'] = $this->evento->get_records();
+      $eventos_confirmados = $this->usuarios_evento->get_asistencias_comfirmadas_by_user($this->session->userdata('user_id'));
+      if(!empty($eventos_confirmados))
+      {
+        $eventos_usuario = [];
+        foreach ($eventos_confirmados as $evento_confirmado) {
+          #var_dump().die();
+
+          array_push($eventos_usuario,$this->evento->get_record($evento_confirmado['evento_id']));
+        }
+      }
+      $data['eventos_usuario'] = $eventos_usuario;
       $data['query'] = $this->usuario->get_record($this->session->userdata('user_id'));
-      $data['content'] = 'frontend/mis-eventos';
+      $data['content'] = 'frontend/mis-coincidencias';
+      $this->load->view('frontend_main', $data);
+    }
+
+    public function detalle_coincidencias()
+    {
+      //muestra del evento seleccionado las coincidnecias o no con los otros participantes
+      if (!$this->session->userdata('user_id') || !$this->uri->segment(2)) {
+          $this->session->set_flashdata('error', 'Necesitas ingresar con tu email y contraseña.');
+          redirect('ingreso');
+      }
+      $data['citas'] = $this->cita->citas_by_evento($this->uri->segment(2), $this->session->userdata('user_id'));
+
+var_dump($data['citas']);
+      $data['content'] = 'frontend/detalle-coincidencias';
       $this->load->view('frontend_main', $data);
     }
 

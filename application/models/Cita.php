@@ -42,6 +42,14 @@ class Cita extends CI_Model{
 		return $c->row()->clasificacion_id;
 	}
 
+	public function citas_by_evento($evento_id, $usuario_id)
+	{
+		$this->db->where('evento_id', $evento_id);
+		$this->db->where('usuario_id', $usuario_id);
+
+		return $this->db->get('citas')->result();
+	}
+
 	//detail
 	public function get_record($id){
 		$this->db->where('id' ,$id);
@@ -62,7 +70,7 @@ class Cita extends CI_Model{
 
 	//add new
 	public function add_record($data)
-	{ 
+	{
 		$this->db->insert('citas', $data);
 	}
 

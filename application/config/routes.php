@@ -65,6 +65,7 @@ $route['callback_reset_validation/(:any)'] = 'users_front/callback_reset_passwor
 $route['create_new_pass'] = 'users_front/create_new_pass';
 $route['mis-eventos'] = 'users_front/mis_eventos';
 $route['mis-coincidencias'] = 'users_front/mis_coincidencias';
+$route['detalle-coincidencias/(:num)'] = 'users_front/detalle_coincidencias';
 $route['mis-contactos'] = 'users_front/mis_contactos';
 $route['solicitar_asistencia_evento/(:num)'] = 'users_front/solicitar_asistencia_evento/$';
 

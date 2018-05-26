@@ -89,6 +89,17 @@ class Usuarios_evento extends CI_Model{
 	}
 
 
+	public function get_asistencias_comfirmadas_by_user($user_id)
+	{
+			$this->db->select('evento_id')
+					->from('usuarios_eventos')
+					->where('usuario_id', $user_id);
+			//$this->db->join("eventos_tipos", "eventos_tipos.id = eventos.tipo_evento",'left');
+			//$this->db->order_by('eventos.id','ASC');
+			return $this->db->get()->result_array();
+	}
+
+
 
 	//detail
 	public function get_record($id){
