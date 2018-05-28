@@ -7,9 +7,9 @@
       <?php
       if(strlen($this->avatar_usuario) > 6)
       {
-        echo '<img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="images-usuarios/'.$this->avatar_usuario.'" alt="Image Description">';
+        echo '<img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="/images-usuarios/'.$this->avatar_usuario.'" alt="'.$this->avatar_usuario.'">';
       }else{
-        echo '<img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="'.base_url('public_folder/frontend/no-image-available.jpg').'" alt="Image Description">';
+        echo '<img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="'.base_url('public_folder/frontend/no-image-available.jpg').'" alt="'.$this->avatar_usuario.'">';
       }
       ?>
     </figure>

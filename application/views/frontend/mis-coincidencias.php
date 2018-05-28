@@ -33,6 +33,7 @@
 
 <div class="row">
 	<?php $datos_user =$this->session->userdata();
+	
     ?>
 </div>
 <?php if($eventos_usuario){ ?>

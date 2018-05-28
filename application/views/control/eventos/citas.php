@@ -25,10 +25,10 @@
 $clasificacion = $this->cita->check_clasificacion($evento_id, $usuario['usuario_id'], $cita['user_id']);
 
 switch ($clasificacion) {
-  case 0:
+  case 1:
     $clasificacion_nombre = "Me gusto - cambiar";
     break;
-  case 1:
+  case 2:
     $clasificacion_nombre = "masomenso - cambiar";
     break;
 

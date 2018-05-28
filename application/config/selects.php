@@ -20,9 +20,9 @@ $config['niveles_estudio_list'] = array(
     );
 
 $config['clasificaciones_citas'] = array(
-    '0' => 'Me gusto [cambiar]',
-    '1' => 'masomeno[cambiar] ',
-    '2' => 'no me agrada [cambiar]',
+    '1' => 'Me gusto [cambiar]',
+    '2' => 'masomeno[cambiar] ',
+    '3' => 'no me agrada [cambiar]',
     );
 
 $config['relaciones_tipo'] = array(

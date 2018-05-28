@@ -33,17 +33,18 @@
 
 <div class="row">
 	<?php $datos_user =$this->session->userdata();
+
     ?>
 </div>
-<?php if($eventos_usuario){ ?>
+<?php if($citas){ ?>
 <table class="table table-bordered u-table--v2">
                     <thead class="text-uppercase g-letter-spacing-1">
                       <tr>
-                        <th class="g-font-weight-300 g-color-black">Lugar</th>
-                        <th class="g-font-weight-300 g-color-black g-min-width-200">Dia</th>
-                        <th class="g-font-weight-300 g-color-black g-min-width-130">Hora</th>
-                        <th class="g-font-weight-300 g-color-black">Tipo evento</th>
-                        <th class="g-font-weight-300 g-color-black ">Ver</th>
+                        <th class="g-font-weight-300 g-color-black">Cita</th>
+                        <th class="g-font-weight-300 g-color-black g-min-width-200">Marque</th>
+                        <th class="g-font-weight-300 g-color-black g-min-width-130">Me marcaron</th>
+                        <th class="g-font-weight-300 g-color-black">Estado</th>
+                        <th class="g-font-weight-300 g-color-black ">Contacto</th>
                       </tr>
                     </thead>
 
@@ -52,25 +53,41 @@
 											<?php
 
 //evento_direccion, logo_lugar, fecha, hora,categoria_nombre
-		foreach ($eventos_usuario as $evento) {
+#var_dump($citas).die();
+		foreach ($citas as $cita) {
+			$datos_contacto = "";
+			if(isset($cita['contacto']['tel_cita'])){
+				$datos_contacto = "Tel: ".$cita['contacto']['tel_cita'];
+				if(isset($cita['contacto']['email_cita'])){
+					$datos_contacto .= "Email: ".$cita['contacto']['email_cita'];
+				}
+			}
 
-			$imagen_logo = (strlen($evento->logo_lugar) > 0) ? '<img class="g-brd-around g-brd-gray-light-v4 g-pa-2 g-width-50 g-height-50 rounded-circle" src="'.base_url('images-lugares/'.$evento->logo_lugar).'" data-toggle="tooltip" data-placement="top" data-original-title="'.$evento->evento_direccion.'" alt="'.$evento->evento_direccion.'">' : "[no-image]";
+			if(strlen($cita['info_cita']['cita_avatar']) > 6)
+			{
+				$cita_avatar = '<img width="100" src="images-usuarios/'.$cita['info_cita']['cita_avatar'].'" alt="User image">';
+			}else{
+				$cita_avatar = '<img width="100" src="'.base_url('public_folder/frontend/no-image-available.jpg').'" alt="User Image">';
+			}
+
+
 
 			echo '<tr>
 				<td class="align-middle text-nowrap text-center">
-					'.$imagen_logo.'
-				</td>
-				<td class="align-middle">'.$evento->fecha.'</td>
-				<td class="align-middle">
-					'.$evento->hora.'
+					'.$cita_avatar.'
+					'.$cita['info_cita']['cita_nickname'].'
 				</td>
 				<td class="align-middle">
-					'.$evento->categoria_nombre.'
+					<img src="'.base_url('public_folder/frontend/assets/iconos_clasificaciones_citas/'.$cita['yo_marque'].'.png').'" alt="-" />
 				</td>
 				<td class="align-middle">
-					<div class="align-self-center">
-							<a class="btn u-btn-orange g-rounded-50" href="'.base_url('detalle-coincidencias/'.$evento->id).'">VER</a>
-					</div>
+				 <img src="'.base_url('public_folder/frontend/assets/iconos_clasificaciones_citas/'.$cita['me_marcaron'].'.png').'" alt="-" />
+				</td>
+				<td class="align-middle">
+					'.$cita['estado'].'
+				</td>
+				<td class="align-middle">
+					'.$datos_contacto.'
 				</td>
 			</tr>';
 		}
@@ -81,7 +98,7 @@
                     </tbody>
                   </table>
 
-<?php }else{ echo 'No hay eventos a los que hayas asistido aún.';} ?>
+<?php }else{ echo 'Sin información.';} ?>
 
 
         </div>

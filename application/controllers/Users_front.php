@@ -849,6 +849,7 @@ class Users_Front extends CI_Controller
       }
       $data['eventos_usuario'] = $eventos_usuario;
       $data['query'] = $this->usuario->get_record($this->session->userdata('user_id'));
+      
       $data['content'] = 'frontend/mis-coincidencias';
       $this->load->view('frontend_main', $data);
     }
@@ -860,12 +861,51 @@ class Users_Front extends CI_Controller
           $this->session->set_flashdata('error', 'Necesitas ingresar con tu email y contraseña.');
           redirect('ingreso');
       }
-      $data['citas'] = $this->cita->citas_by_evento($this->uri->segment(2), $this->session->userdata('user_id'));
+      $citas = $this->cita->citas_by_evento($this->uri->segment(2), $this->session->userdata('user_id'));
 
-var_dump($data['citas']);
+      $listado_citas = [];
+      foreach ($citas as $cita) {
+        $mi_cita = $this->usuario->get_record($cita->cita_id);
+
+        $yo_marque = $this->cita->check_clasificacion($this->uri->segment(2), $this->session->userdata('user_id'),$cita->cita_id);
+        $me_marcaron = $this->cita->check_clasificacion($this->uri->segment(2), $cita->cita_id, $this->session->userdata('user_id'));
+
+        $datos_cita = "";
+        if($yo_marque == 1 AND $me_marcaron ==  1){
+          $estado = "Flechazo";
+          $datos_cita = ['tel_cita' => $mi_cita->telcontacto, 'email_cita' => $mi_cita->email ];
+        }elseif ($yo_marque == 1 AND $me_marcaron == 2) {
+          $estado = "Amistad";
+          $datos_cita = ['tel_cita' => $mi_cita->telcontacto, 'email_cita' => $mi_cita->email ];
+        }elseif ($me_marcaron == 1 AND $yo_marque == 2) {
+          $estado = "Amistad";
+          $datos_cita = ['tel_cita' => $mi_cita->telcontacto, 'email_cita' => $mi_cita->email ];
+        }elseif ($me_marcaron == 2 AND $yo_marque == 2) {
+        $estado = "Amistad";
+        $datos_cita = ['tel_cita' => $mi_cita->telcontacto, 'email_cita' => $mi_cita->email ];
+        }else{
+          $estado = "Sin afinidad";
+        }
+
+        $cita_avatar = $this->imagenes_usuario->usuario_avatar($cita->cita_id);
+        $perfil_cita = ["cita_nickname" => $mi_cita->nickname, 'cita_avatar' => $cita_avatar];
+
+        //array_pasado la front
+        $cita_detalle = ['info_cita' =>  $perfil_cita,
+                'yo_marque' => $yo_marque,
+                'me_marcaron' => $me_marcaron,
+                'estado' => $estado,
+                'contacto' => $datos_cita,
+              ];
+              $listado_citas[] = $cita_detalle;
+      }
+
+      $data['query'] = $this->usuario->get_record($this->session->userdata('user_id'));
+      $data['citas'] = $listado_citas;
       $data['content'] = 'frontend/detalle-coincidencias';
       $this->load->view('frontend_main', $data);
     }
+
 
     public function mis_contactos()
     {
