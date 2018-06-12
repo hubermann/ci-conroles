@@ -32,8 +32,7 @@
 				<h3>Mis eventos</h3>
 
 <div class="row">
-	<?php $datos_user =$this->session->userdata();
-    ?>
+	<?php $datos_user =$this->session->userdata(); ?>
 </div>
 
 <?php
