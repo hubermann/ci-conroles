@@ -11,7 +11,7 @@ class Users_Front extends CI_Controller
         $this->load->helper('form');
         $this->load->library('session');
         $this->load->library('form_validation');
-        $this->load->model(['usuario', 'evento','cita','categoria_evento', 'usuario_eventos_preferido','usuario_tipo_relacion','imagenes_usuario','usuarios_evento']);
+        $this->load->model(['usuario', 'evento','cita','categoria_evento','usuario_eventos_preferido','usuario_tipo_relacion','imagenes_usuario','usuarios_evento','usuarios_contactos']);
 
         $this->usuario_logueado = $this->session->userdata('user_id');
         $this->avatar_usuario = $this->imagenes_usuario->usuario_avatar($this->usuario_logueado);
@@ -849,7 +849,7 @@ class Users_Front extends CI_Controller
       }
       $data['eventos_usuario'] = $eventos_usuario;
       $data['query'] = $this->usuario->get_record($this->session->userdata('user_id'));
-      
+
       $data['content'] = 'frontend/mis-coincidencias';
       $this->load->view('frontend_main', $data);
     }
@@ -914,7 +914,7 @@ class Users_Front extends CI_Controller
           redirect('ingreso');
       }
       $data['query'] = $this->usuario->get_record($this->session->userdata('user_id'));
-      $data['usuario_contactos'] = [];
+      $data['contactos_usuario'] = $this->usuarios_contactos->get_contactos($this->session->userdata('user_id'));;
       $data['content'] = 'frontend/mis-contactos';
       $this->load->view('frontend_main', $data);
     }
