@@ -7,6 +7,7 @@ class Usuarios extends CI_Controller{
 
 		parent::__construct();
 		$this->load->model('usuario');
+		$this->load->model('permiso');
 		$this->load->model('imagenes_usuario');
 		$this->load->helper('url');
 		$this->load->library('session');
@@ -27,6 +28,7 @@ class Usuarios extends CI_Controller{
 }
 
 public function index(){
+	$this->permiso->verify_access( 'usuarios', 'index');
 	//Pagination
 	$per_page = 10;
 	$page = $this->uri->segment(3);
@@ -91,7 +93,6 @@ public function form_new(){
 
 //create
 public function create(){
-
 	$this->load->helper('form');
 	$this->load->library('form_validation');
 	$this->form_validation->set_rules('nickname', 'Nickname', 'required');
@@ -125,7 +126,7 @@ public function create(){
 	$this->form_validation->set_rules('contextura_fisica', 'Contextura_fisica', 'required');
 	$this->form_validation->set_rules('color_pelo', 'Color_pelo', 'required');
 	$this->form_validation->set_rules('color_ojos', 'Color_ojos', 'required');
-	$this->form_validation->set_rules('tipo_busuqeda', 'Tipo_busuqeda', 'required');
+	#$this->form_validation->set_rules('tipo_busuqeda', 'Tipo_busuqeda', 'required');
 
 	if ($this->form_validation->run() === FALSE){
 
@@ -279,7 +280,6 @@ public function editar(){
 				$this->load->helper('url');
 				$slug = url_title($this->input->post('titulo'), 'dash', TRUE);
 			}
-
 
 			$editedusuario = array(
 				'nickname' => $this->input->post('nickname'),

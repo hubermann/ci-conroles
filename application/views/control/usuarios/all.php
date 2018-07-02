@@ -12,11 +12,11 @@
 					<a class="btn btn-primary btn-block btn-rounded waves-effect waves-light" href="<?php echo base_url('control/usuarios/form_new'); ?>">Agregar +</a>
 				</div>
 			</h3>
-			<?php 
+			<?php
 			if(count($query)){
 				foreach ($query as $row):
 
-			
+
 
 			$header = '<div class="row border-abajo">
 			<div class="row">
@@ -27,12 +27,12 @@
 									<td>
 										<a data-toggle="collapse" href="#info-user'.$row->id.'" aria-expanded="false" aria-controls="info-user'.$row->id.'">'.$row->nombre.' '.$row->apellido.' ('.$row->nickname.')</a>
 									</td>
-									<td class="text-right">'.$row->sexo.' ('.$row->edad.')</td>
+									<td class="text-right"> (Edad:'.$row->edad.')</td>
 									<td class="text-right">'.$row->email.'</td>
 									<td class="text-right">
 										<div class="btn-group">
 											<a class="btn btn-small" href="'.base_url('control/usuarios/delete_comfirm/'.$row->id.'').'"><i class="fa fa-trash-o"></i></a>
-											<a class="btn btn-small" href="'.base_url('control/usuarios/editar/'.$row->id.'').'"><i class="fa fa-edit"></i></a><a class="btn btn-small" href="'.base_url('control/usuarios/imagenes/'.$row->id.'').'"><i class="fa fa-camera-retro"></i></a>		
+											<a class="btn btn-small" href="'.base_url('control/usuarios/editar/'.$row->id.'').'"><i class="fa fa-edit"></i></a><a class="btn btn-small" href="'.base_url('control/usuarios/imagenes/'.$row->id.'').'"><i class="fa fa-camera-retro"></i></a>
 											<!--<a class="btn btn-small" href="'.base_url('control/usuarios/detail/'.$row->id.'').'"><i class="fa fa-chain"></i></a>-->
 										</div>
 									</td>
@@ -43,7 +43,7 @@
 			</div>';
 
 			print($header);
-				
+
 
 			$body = '<!-- elhide -->
 				<div class="row">
@@ -155,7 +155,7 @@
 
 			</div> <!-- /border abajo -->';
 			print($body);
-			endforeach; 
+			endforeach;
 		}else{
 			echo 'No hay resultados.';
 		}
@@ -170,7 +170,3 @@
 		</div>
 	</div>
 </div>
-
-
-
-

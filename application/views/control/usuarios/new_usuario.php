@@ -191,7 +191,7 @@ echo form_hidden('usuario[id]');
 
 <!-- Text input-->
 <div class="control-group">
-	<label class="control-label">Nacimiento</label>
+	<label class="control-label">Nacimiento - YYYY-MM-DD</label>
 	<div class="controls">
 		<input value="<?php echo set_value('nacimiento'); ?>" class="form-control" type="text" name="nacimiento" />
 		<?php echo form_error('nacimiento','<p class="error">', '</p>'); ?>
@@ -301,12 +301,14 @@ echo form_hidden('usuario[id]');
 		?>
 	</div>
 </div>
+
 <!-- Text input-->
 <div class="control-group">
-	<label class="control-label">Busco</label>
+	<label class="control-label">Tipo busqueda</label>
 	<div class="controls">
-		<input value="<?php echo set_value('busco'); ?>" class="form-control" type="text" name="busco" />
-		<?php echo form_error('busco','<p class="error">', '</p>'); ?>
+		<?php
+		echo form_dropdown('busco', $this->config->item('options_busco'),[set_value('busco')]);
+		?>
 	</div>
 </div>
 <!-- Text input-->
@@ -582,35 +584,36 @@ echo form_hidden('usuario[id]');
 
 
 <!-- Text input-->
-<div class="control-group">
+<!-- <div class="control-group">
 	<label class="control-label">Tipo_busuqeda</label>
 	<div class="controls">
 		<input value="<?php echo set_value('tipo_busuqeda'); ?>" class="form-control" type="text" name="tipo_busuqeda" />
 		<?php echo form_error('tipo_busuqeda','<p class="error">', '</p>'); ?>
 	</div>
-</div>
+</div> -->
 <!-- Text input-->
-<div class="control-group">
+<!-- <div class="control-group">
 	<label class="control-label">Completa_signin</label>
 	<div class="controls">
 		<input value="<?php echo set_value('completa_signin'); ?>" class="form-control" type="text" name="completa_signin" />
 		<?php echo form_error('completa_signin','<p class="error">', '</p>'); ?>
 	</div>
-</div>
+</div> -->
 <!-- Text input-->
-<div class="control-group">
+<!-- <div class="control-group">
 	<label class="control-label">Claves_erroneas</label>
 	<div class="controls">
 		<input value="<?php echo set_value('claves_erroneas'); ?>" class="form-control" type="text" name="claves_erroneas" />
 		<?php echo form_error('claves_erroneas','<p class="error">', '</p>'); ?>
 	</div>
-</div>
+</div> -->
 <!-- Text input-->
 <div class="control-group">
-	<label class="control-label">Id_paises</label>
+	<label class="control-label">Pais</label>
 	<div class="controls">
-		<input value="<?php echo set_value('id_paises'); ?>" class="form-control" type="text" name="id_paises" />
-		<?php echo form_error('id_paises','<p class="error">', '</p>'); ?>
+		<?php
+		echo form_dropdown('id_paises', $this->config->item('paises_list'),[set_value('id_paises')]);
+		?>
 	</div>
 </div>
 <!-- Text input-->

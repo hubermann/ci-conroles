@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Notas extends CI_Controller{
 
@@ -24,7 +24,7 @@ class Notas extends CI_Controller{
 			setlocale(LC_TIME, 'es_AR');
 		}
 
-	$this->data['thumbnail_sizes'] = array(); //thumbnails sizes 
+	$this->data['thumbnail_sizes'] = array(); //thumbnails sizes
 
 }
 
@@ -36,15 +36,15 @@ public function index(){
 	$data['pagination_links'] = "";
 	$total_pages = ceil($this->nota->count_rows() / $per_page);
 
-	if ($total_pages > 1){ 
-		for ($i=1;$i<=$total_pages;$i++){ 
-			if ($page == $i) 
-				//si muestro el índice de la página actual, no coloco enlace 
-				$data['pagination_links'] .=  '<li class="active"><a>'.$i.'</a></li>'; 
-			else 
-				//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa pagina 
-				$data['pagination_links']  .= '<li><a href="'.base_url().'control/notas/'.$i.'" > '. $i .'</a></li>'; 
-		} 
+	if ($total_pages > 1){
+		for ($i=1;$i<=$total_pages;$i++){
+			if ($page == $i)
+				//si muestro el índice de la página actual, no coloco enlace
+				$data['pagination_links'] .=  '<li class="active"><a>'.$i.'</a></li>';
+			else
+				//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa pagina
+				$data['pagination_links']  .= '<li><a href="'.base_url().'control/notas/'.$i.'" > '. $i .'</a></li>';
+		}
 	}
 	//End Pagination
 
@@ -84,7 +84,7 @@ public function create(){
 	$this->load->library('form_validation');
 	$this->form_validation->set_rules('titulo', 'Titulo', 'required');
 	$this->form_validation->set_rules('descripcion', 'Descripcion', 'required');
-	
+
 	if ($this->form_validation->run() === FALSE){
 
 		$this->load->helper('form');
@@ -94,7 +94,7 @@ public function create(){
 		$this->load->view('control/pixel-admin/control_layout', $data);
 
 	}else{
-		
+
 		if($this->input->post('slug')){
 			$this->load->helper('url');
 			$slug = url_title($this->input->post('titulo'), 'dash', TRUE);
@@ -106,19 +106,19 @@ public function create(){
 		// list($dia,$mes,$ano) = explode("-", $this->input->post('fecha_hasta'));
 		// $fecha_hasta = $ano."-".$mes."-".$dia;
 
-		$fecha_desde = $this->input->post('ano_fecha_desde').'-'.$this->input->post('mes_fecha_desde').'-'.$this->input->post('dia_fecha_desde'); 
-		$fecha_hasta = $this->input->post('ano_fecha_hasta').'-'.$this->input->post('mes_fecha_hasta').'-'.$this->input->post('dia_fecha_hasta'); 
+		$fecha_desde = $this->input->post('ano_fecha_desde').'-'.$this->input->post('mes_fecha_desde').'-'.$this->input->post('dia_fecha_desde');
+		$fecha_hasta = $this->input->post('ano_fecha_hasta').'-'.$this->input->post('mes_fecha_hasta').'-'.$this->input->post('dia_fecha_hasta');
 
-		$newnota = array( 
+		$newnota = array(
 			'categoria_id' => $this->input->post('categoria_id'),
-			'titulo' => $this->input->post('titulo'), 
-			'descripcion' => $this->input->post('descripcion'), 
-			'fecha_desde' => $fecha_desde, 
-			'fecha_hasta' => $fecha_hasta, 
+			'titulo' => $this->input->post('titulo'),
+			'descripcion' => $this->input->post('descripcion'),
+			'fecha_desde' => $fecha_desde,
+			'fecha_hasta' => $fecha_hasta,
 			);
 		#save
 		$this->nota->add_record($newnota);
-		$this->session->set_flashdata('success', 'nota creado. <a href="notas/detail/'.$this->db->insert_id().'">Ver</a>');
+		$this->session->set_flashdata('success', 'Nota creada. <a href="notas/detail/'.$this->db->insert_id().'">Ver</a>');
 		redirect('control/notas', 'refresh');
 
 	}
@@ -128,7 +128,7 @@ public function create(){
 //edit
 public function editar(){
 	$this->load->helper('form');
-	$data['title']= 'Editar nota';	
+	$data['title']= 'Editar nota';
 	$data['content'] = 'control/notas/edit_nota';
 	$data['menu'] = 'control/notas/menu_nota';
 	$data['query'] = $this->nota->get_record($this->uri->segment(4));
@@ -138,7 +138,7 @@ public function editar(){
 //update
 public function update(){
 	$this->load->helper('form');
-	$this->load->library('form_validation'); 
+	$this->load->library('form_validation');
 	$this->form_validation->set_rules('titulo', 'Titulo', 'required');
 	$this->form_validation->set_rules('descripcion', 'Descripcion', 'required');
 	$this->form_validation->set_message('required','El campo %s es requerido.');
@@ -151,7 +151,7 @@ public function update(){
 		$data['menu'] = 'control/notas/menu_nota';
 		$data['query'] = $this->nota->get_record($this->input->post('id'));
 		$this->load->view('control/pixel-admin/control_layout', $data);
-	}else{		
+	}else{
 		$id=  $this->input->post('id');
 
 		if($this->input->post('slug')){
@@ -159,10 +159,10 @@ public function update(){
 			$slug = url_title($this->input->post('titulo'), 'dash', TRUE);
 		}
 
-		$fecha_desde = $this->input->post('ano_fecha_desde').'-'.$this->input->post('mes_fecha_desde').'-'.$this->input->post('dia_fecha_desde'); 
-		$fecha_hasta = $this->input->post('ano_fecha_hasta').'-'.$this->input->post('mes_fecha_hasta').'-'.$this->input->post('dia_fecha_hasta'); 
+		$fecha_desde = $this->input->post('ano_fecha_desde').'-'.$this->input->post('mes_fecha_desde').'-'.$this->input->post('dia_fecha_desde');
+		$fecha_hasta = $this->input->post('ano_fecha_hasta').'-'.$this->input->post('mes_fecha_hasta').'-'.$this->input->post('dia_fecha_hasta');
 
-		$editednota = array(  
+		$editednota = array(
 			'categoria_id' => $this->input->post('categoria_id'),
 			'titulo' => $this->input->post('titulo'),
 			'descripcion' => $this->input->post('descripcion'),
@@ -170,7 +170,7 @@ public function update(){
 			'fecha_hasta' => $fecha_hasta,
 			);
 		#save
-		$this->session->set_flashdata('success', 'nota Actualizado!');
+		$this->session->set_flashdata('success', 'Nota actualizada.');
 		$this->nota->update_record($id, $editednota);
 		if($this->input->post('id')!=""){
 			redirect('control/notas', 'refresh');
@@ -198,7 +198,7 @@ public function update(){
 		}else{
 			$this->session->set_flashdata('warning', 'Error al eliminar!');
 		}
-		
+
 		redirect('control/notas', 'refresh');
 	}
 
@@ -222,30 +222,30 @@ public function add_imagen(){
 
 		if ( $file['status'] != 0 ){
 			//guardo
-			$nueva_imagen = array(  
+			$nueva_imagen = array(
 				'nota_id' => $this->input->post('id'),
 				'filename' => $file['filename'],
 				);
 			#save
 			$this->session->set_flashdata('success', 'Imagen cargada!');
-			$this->imagenes_nota->add_record($nueva_imagen);	
+			$this->imagenes_nota->add_record($nueva_imagen);
 			redirect('control/notas/imagenes/'.$this->input->post('id'));
 		}
 
 		$this->session->set_flashdata('error', $file['msg']);
 	}
-	
+
 	redirect('control/notas/imagenes/'.$this->input->post('id'));
 }
 
 public function delete_imagen(){
-	$id_imagen = $this->uri->segment(4); 
+	$id_imagen = $this->uri->segment(4);
 
 	$imagen = $this->imagenes_nota->get_record($id_imagen);
 	$path = 'images-notas/'.$imagen->filename;
 	unlink($path);
-	
-	$this->imagenes_nota->delete_record($id_imagen);	
+
+	$this->imagenes_nota->delete_record($id_imagen);
 	#echo "Eliminada : ".$imagen->filename;
 }
 
@@ -253,10 +253,10 @@ public function delete_imagen(){
 
 /*******  FILE ADJUNTO  ********/
 public function upload_file(){
-	
+
 	//1 = OK - 0 = Failure
 	$file = array('status' => '', 'filename' => '', 'msg' => '' );
-	
+
 	array('image/jpeg','image/pjpeg', 'image/jpg', 'image/png', 'image/gif','image/bmp');
 	//check extencion
 	/*
@@ -265,14 +265,14 @@ public function upload_file(){
 	*/
 	$file_extensions_allowed = array('image/jpeg','image/pjpeg', 'image/jpg', 'image/png', 'image/gif','image/bmp');
 	$exts_humano = array('JPG', 'JPEG', 'PNG', 'GIF');
-	
-	
+
+
 	$exts_humano = implode(', ',$exts_humano);
 	$ext = $_FILES['adjunto']['type'];
 	#$ext = strtolower($ext);
 	if(!in_array($ext, $file_extensions_allowed)){
 		$exts = implode(', ',$file_extensions_allowed);
-		
+
 		$file['msg'] .="<p>".$_FILES['adjunto']['name']." <br />Puede subir archivos que tengan alguna de estas extenciones: ".$exts_humano."</p>";
 		$file['status'] = 0 ;
 	}else{
@@ -288,11 +288,11 @@ public function upload_file(){
 		$imagname=''.$random.'_'.$name_whitout_whitespaces;
 		#$thumbname='tn_'.$imagname;
 		$yukle->set_file_name($imagname);
-		
+
 
 		$yukle->start_copy();
-		
-		
+
+
 
 		if($yukle->is_ok()){
 
@@ -316,13 +316,13 @@ public function upload_file(){
 		}
 
 
-		
+
 		//clean
 		$yukle->set_tmp_name('');
 		$yukle->set_file_size('');
 		$yukle->set_file_type('');
 		$imagname='';
-	}//fin if(extencion)	
+	}//fin if(extencion)
 
 
 	return $file;
