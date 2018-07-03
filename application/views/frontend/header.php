@@ -14,8 +14,8 @@
 				<!-- End Responsive Toggle Button -->
 
 				<!-- Logo -->
-				<a href="../../index.html" class="navbar-brand">
-					<img src="../../assets/img/logo/logo-1.png" alt="Image Description">
+				<a href="/" class="navbar-brand">
+					<img src="<?= base_url('public_folder/pixeladmin-lite/plugins/images/pixeladmin-text.png'); ?>" alt="Image Description">
 				</a>
 				<!-- End Logo -->
 

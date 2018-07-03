@@ -2,6 +2,7 @@
 <style>
 	.border-abajo{border-bottom: 1px solid #f2f2f2;}
 	.infobg{background: #f1f1f1;}
+	.column25{width: 240px; float: left; }
 </style>
 <!--row -->
 <div class="row">
@@ -24,11 +25,11 @@
 						<table class="table ">
 							<tbody>
 								<tr>
-									<td>
-										<a data-toggle="collapse" href="#info-user'.$row->id.'" aria-expanded="false" aria-controls="info-user'.$row->id.'">'.$row->nombre.' '.$row->apellido.' ('.$row->nickname.')</a>
+									<td class="column25">
+										<a data-toggle="collapse" href="#info-user'.$row->id.'" aria-expanded="false" aria-controls="info-user'.$row->id.'">'.$row->nombre.' '.$row->apellido.' </a>
 									</td>
-									<td class="text-right"> (Edad:'.$row->edad.')</td>
-									<td class="text-right">'.$row->email.'</td>
+									<td class=" column25"> '.$row->nickname.' - Edad:'.$row->edad.'</td>
+									<td class=" column25">'.$row->email.'</td>
 									<td class="text-right">
 										<div class="btn-group">
 											<a class="btn btn-small" href="'.base_url('control/usuarios/delete_comfirm/'.$row->id.'').'"><i class="fa fa-trash-o"></i></a>

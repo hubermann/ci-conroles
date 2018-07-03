@@ -28,7 +28,7 @@ class Usuarios extends CI_Controller{
 }
 
 public function index(){
-	$this->permiso->verify_access( 'usuarios', 'index');
+	#$this->permiso->verify_access( 'usuarios', 'index');
 	//Pagination
 	$per_page = 10;
 	$page = $this->uri->segment(3);
