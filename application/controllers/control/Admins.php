@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class admins extends CI_Controller{
 
@@ -22,7 +22,7 @@ public function __construct(){
 	    setlocale(LC_TIME, 'es_AR');
 	}
 
-	$this->data['thumbnail_sizes'] = array(); //thumbnails sizes 
+	$this->data['thumbnail_sizes'] = array(); //thumbnails sizes
 
 }
 
@@ -34,15 +34,15 @@ public function index(){
 		$data['pagination_links'] = "";
 		$total_pages = ceil($this->useradmins_m->count_rows() / $per_page);
 
-		if ($total_pages > 1){ 
-			for ($i=1;$i<=$total_pages;$i++){ 
-			if ($page == $i) 
-				//si muestro el índice de la página actual, no coloco enlace 
-				$data['pagination_links'] .=  '<li class="active"><a>'.$i.'</a></li>'; 
-			else 
-				//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa pagina 
-				$data['pagination_links']  .= '<li><a href="'.base_url().'control/admins/'.$i.'" > '. $i .'</a></li>'; 
-		} 
+		if ($total_pages > 1){
+			for ($i=1;$i<=$total_pages;$i++){
+			if ($page == $i)
+				//si muestro el índice de la página actual, no coloco enlace
+				$data['pagination_links'] .=  '<li class="active"><a>'.$i.'</a></li>';
+			else
+				//si el índice no corresponde con la página mostrada actualmente, coloco el enlace para ir a esa pagina
+				$data['pagination_links']  .= '<li><a href="'.base_url().'control/admins/'.$i.'" > '. $i .'</a></li>';
+		}
 	}
 	//End Pagination
 
@@ -81,16 +81,12 @@ public function create(){
 	$this->load->helper('form');
 	$this->load->library('form_validation');
 
+	$this->form_validation->set_rules('password', 'Password', 'required');
+	#$this->form_validation->set_rules('salt', 'Salt', 'required');
+	$this->form_validation->set_rules('email', 'Email', 'required');
+	$this->form_validation->set_rules('role_id', 'Role', 'required');
 
-$this->form_validation->set_rules('password', 'Password', 'required');
 
-$this->form_validation->set_rules('salt', 'Salt', 'required');
-
-$this->form_validation->set_rules('email', 'Email', 'required');
-
-$this->form_validation->set_rules('role_id', 'Role', 'required');
-
-	
 	if ($this->form_validation->run() === FALSE){
 
 		$this->load->helper('form');
@@ -100,19 +96,19 @@ $this->form_validation->set_rules('role_id', 'Role', 'required');
 		$this->load->view('control/pixel-admin/control_layout', $data);
 
 	}else{
-		
+
 		if($this->input->post('slug')){
 			$this->load->helper('url');
 			$slug = url_title($this->input->post('titulo'), 'dash', TRUE);
 		}
 
-		
-		 $newusuario = array( 
-		 'role_id' => $this->input->post('role_id'), 
-		 'password' => $this->input->post('password'), 
-		 'salt' => $this->input->post('salt'), 
-		 'email' => $this->input->post('email'), 
-		 
+
+		 $newusuario = array(
+		 'role_id' => $this->input->post('role_id'),
+		 'password' => $this->input->post('password'),
+		 'salt' => "loremipsum",
+		 'email' => $this->input->post('email'),
+
 		);
 		#save
 		$this->useradmins_m->add_record($newusuario);
@@ -128,7 +124,7 @@ $this->form_validation->set_rules('role_id', 'Role', 'required');
 //edit
 public function editar(){
 	$this->load->helper('form');
-	$data['title']= 'Editar usuario';	
+	$data['title']= 'Editar usuario';
 	$data['content'] = 'control/admins/edit_admin';
 	$data['menu'] = 'control/admins/menu_admin';
 	$data['query'] = $this->useradmins_m->get_record($this->uri->segment(4));
@@ -139,7 +135,7 @@ public function editar(){
 //update
 public function update(){
 	$this->load->helper('form');
-	$this->load->library('form_validation'); 
+	$this->load->library('form_validation');
 	$this->form_validation->set_rules('role_id', 'Role', 'required');
 	$this->form_validation->set_rules('password', 'Password', 'required');
 	$this->form_validation->set_rules('email', 'Email', 'required');
@@ -153,14 +149,14 @@ public function update(){
 		$data['menu'] = 'control/admins/menu_admin';
 		$data['query'] = $this->useradmins_m->get_record($this->input->post('id'));
 		$this->load->view('control/pixel-admin/control_layout', $data);
-	}else{		
+	}else{
 		$id=  $this->input->post('id');
 
-		$editedusuario = array(  
-			'role_id' => $this->input->post('role_id'), 
-			 'password' => $this->input->post('password'), 
-			 'salt' => $this->input->post('salt'), 
-			 'email' => $this->input->post('email'), 
+		$editedusuario = array(
+			'role_id' => $this->input->post('role_id'),
+			 'password' => $this->input->post('password'),
+			 'salt' => $this->input->post('salt'),
+			 'email' => $this->input->post('email'),
 		);
 
 		#save
@@ -181,7 +177,7 @@ public function update(){
 }
 
 
-//delete comfirm		
+//delete comfirm
 public function delete_comfirm(){
 	$this->load->helper('form');
 	$data['content'] = 'control/admins/comfirm_delete';
@@ -192,6 +188,25 @@ public function delete_comfirm(){
 
 
 }
+
+
+public function destroy()
+{
+	if($this->uri->segment(4)){
+		$this->session->set_flashdata('success', 'Lugar eliminado!');
+
+		$prod = $this->useradmins_m->get_record($this->uri->segment(4));
+
+
+		$this->useradmins_m->delete_record($this->uri->segment(4));
+	}else{
+		$this->session->set_flashdata('warning', 'Error al eliminar!');
+	}
+
+	redirect('control/admins', 'refresh');
+}
+
+
 
 //delete
 public function delete(){
@@ -223,11 +238,11 @@ public function delete(){
 			}
 
 		$id_item = $this->uri->segment(4);
-		
+
 
 		$this->useradmins_m->delete_record($id_item);
 		redirect('control/admins', 'refresh');
-		
+
 
 	}
 }

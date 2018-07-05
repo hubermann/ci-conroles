@@ -11,20 +11,20 @@
 						<option>June 2016</option>
 						<option>July 2016</option>
 					</select> -->
-					
+
 				</div>
 			</h3>
 			<div class="table-responsive">
 				<table class="table ">
-					
-					<?php 
-					#$this->output->enable_profiler(true);
+
+					<?php
+					$this->output->enable_profiler(true);
 					function boolean_status($value)
 					{
 						return ($value == 1 ) ? TRUE : FALSE;
 					}
 
-						if(count($query)){ 
+						if(count($query)){
 
 
 							$head = '<thead>
@@ -39,7 +39,7 @@
 											</thead>';
 							print($head);
 							$body = "<tbody>";
-							
+
 							foreach ($query as $row):
 
 								$body .= '<tr><form method="post" action="update">
@@ -50,7 +50,7 @@
 								$body .= '<td class="txt-oflo"> '.form_checkbox("build", 'accept', boolean_status($row->build)).'</td>';
 								$body .= '<td class="txt-oflo"> '.form_checkbox("modify", 'accept', boolean_status($row->modify)).'</td>';
 								$body .= '<td class="txt-oflo"> '.form_checkbox("destroy", 'accept', boolean_status($row->destroy)).'</td>';
-								$body .= '<td> 
+								$body .= '<td>
 														<div class="btn-group pull-right">
 														<button type="submit"> Modificar</button>
 														</form>
@@ -58,7 +58,7 @@
 													</td>';
 								$body .= '</tr>';
 
-								endforeach; 
+								endforeach;
 
 								$body .= '</tbody>';
 								print($body);
@@ -68,7 +68,7 @@
 						}
 					?>
 
-				</table> 
+				</table>
 			</div>
 
 		</div>
@@ -76,9 +76,3 @@
 	</div>
 </div>
 <!-- /.row -->
-
-
-
-
-
-

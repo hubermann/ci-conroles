@@ -132,13 +132,13 @@
 
 					<!--<li>
 						<a href="<?=base_url('control/permisos');?>" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"></i><span class="hide-menu">Permisos</span></a>
-					</li>
+					</li> -->
 					<li>
 						<a href="<?=base_url('control/roles');?>" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"></i><span class="hide-menu">Roles</span></a>
 					</li>
 					<li>
 						<a href="<?=base_url('control/admins');?>" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"></i><span class="hide-menu">Admins</span></a>
-					</li>-->
+					</li>
 
 					<!-- <li>
 						<a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i><span class="hide-menu">Blank Page</span></a>

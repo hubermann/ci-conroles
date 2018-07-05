@@ -16,9 +16,9 @@
 			</h3>
 			<div class="table-responsive">
 				<table class="table ">
-					
-					<?php 
-						if(count($query)){ 
+
+					<?php
+						if(count($query)){
 							$head = '<thead>
 												<tr>
 													<th>Nombre</th>
@@ -27,21 +27,21 @@
 											</thead>';
 							print($head);
 							$body = "<tbody>";
-							
+
 							foreach ($query as $row):
 
 								$body .= '<tr>';
 								$body .= '<td class="txt-oflo"> '.$row->nombre.' </td>';
-								$body .= '<td> 
+								$body .= '<td>
 														<div class="btn-group pull-right">
 														<a class="btn btn-small" href="'.base_url('control/permisos/'.$row->id.'').'"><i class="fa fa-chain"></i></a>';
 
-															
+
 								$body .=  '</div>
 													</td>';
 								$body .= '</tr>';
 
-								endforeach; 
+								endforeach;
 
 								$body .= '</tbody>';
 								print($body);
@@ -51,7 +51,7 @@
 						}
 					?>
 
-				</table> 
+				</table>
 			</div>
 
 				<div class="table-responsive">

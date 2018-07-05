@@ -18,9 +18,8 @@
 			</h3>
 			<div class="table-responsive">
 				<table class="table ">
-					<?php 
-					if(count($query)){ 
-
+					<?php
+					if(count($query)){
 
 						$head = '<thead>
 						<tr>
@@ -36,18 +35,18 @@
 
 					$body .= '<tr>';
 					$body .= '<td class="txt-oflo">'.$row->nombre.' </td>';
-					$body .= '<td class="txt-oflo"> '.$row->email.' </td>';
+					$body .= '<td class="txt-oflo"> '.$row->admin_email.' </td>';
 
-					$body .= '<td> 
+					$body .= '<td>
 					<div class="btn-group pull-right">
-						<a class="btn btn-small" href="'.base_url('control/admins/editar/'.$row->id.'').'"><i class="fa fa-edit"></i></a>		
-						<a href="'.base_url('control/admins/destroy/'.$row->id.'').'" class="delete btn btn-small" data-confirm="Are you sure to delete this item?"><i class="fa fa-trash-o"></i></a>
+						<a class="btn btn-small" href="'.base_url('control/admins/editar/'.$row->admin_id.'').'"><i class="fa fa-edit"></i></a>
+						<a href="'.base_url('control/admins/destroy/'.$row->admin_id.'').'" class="delete btn btn-small" data-confirm="Are you sure to delete this item?"><i class="fa fa-trash-o"></i></a>
 
 					</div>
 				</td>';
 				$body .= '</tr>';
 
-				endforeach; 
+				endforeach;
 
 				$body .= '</tbody>';
 				print($body);
@@ -57,7 +56,7 @@
 			}
 			?>
 
-		</table> 
+		</table>
 	</div>
 
 	<div class="table-responsive">

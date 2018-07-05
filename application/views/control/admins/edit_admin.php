@@ -1,40 +1,37 @@
-<?php  
+<?php
 $attributes = array('class' => 'form-horizontal', 'id' => 'edit_admin');
 echo form_open_multipart(base_url('control/admins/update/'),$attributes);
 
 
-echo form_hidden('id', $query->id); 
+echo form_hidden('id', $query->id);
 ?>
-<legend><?php echo $title ?></legend>
+<legend><?php echo $title;?></legend>
 <div class="well well-large well-transparent">
 
- 
 
+      <!-- Text input-->
 
-<!-- Text input-->
+      <div class="control-group">
+      <label class="control-label">role id</label>
+      	<div class="controls">
+      	<select name="role_id" id="role_id">
+      		<?php
 
-<div class="control-group">
-<label class="control-label">role id</label>
-	<div class="controls">
-	<select name="role_id" id="role_id">
-		<?php 
-		
-		$roles = $this->role->get_records_menu();
-		var_dump($roles);
-		if($roles){
+      		$roles = $this->role->get_records_menu();
+      		if($roles){
 
-			foreach ($roles as $value) {
-				if($query->role_id == $value->id){$sel= "selected";}else{$sel="";}
-				echo '<option value="'.$value->id.'" '.$sel.'>'.$value->nombre.'</option>';
-			}
-		}
-		
-		?>
-		</select>
-		
-		<?php echo form_error('role_id','<p class="error">', '</p>'); ?>
-	</div>
-</div>
+      			foreach ($roles as $value) {
+      				if($query->role_id == $value->id){$sel= "selected";}else{$sel="";}
+      				echo '<option value="'.$value->id.'" '.$sel.'>'.$value->nombre.'</option>';
+      			}
+      		}
+
+      		?>
+      		</select>
+
+      		<?php echo form_error('role_id','<p class="error">', '</p>'); ?>
+      	</div>
+      </div>
 
 
 			<!-- Text input-->
@@ -53,7 +50,7 @@ echo form_hidden('id', $query->id);
 			<?php echo form_error('email','<p class="error">', '</p>'); ?>
 			</div>
 			</div>
-			
+
 
 <div class="control-group">
 <label class="control-label"></label>

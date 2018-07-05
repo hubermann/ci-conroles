@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Permisos extends CI_Controller{
 
@@ -42,7 +42,7 @@ class Permisos extends CI_Controller{
 		}else{
 			redirect('control/', 'refresh');
 		}
-		
+
 	}
 
 
@@ -52,7 +52,7 @@ class Permisos extends CI_Controller{
 
 		if($this->input->post('role_id') && $this->input->post('modulo_id'))
 		{
-			$editedpermiso = array( 
+			$editedpermiso = array(
 				'view' => cambiar_valor($this->input->post('view')),
 				'build' => cambiar_valor($this->input->post('build')),
 				'modify' => cambiar_valor($this->input->post('modify')),
@@ -63,8 +63,8 @@ class Permisos extends CI_Controller{
 			$this->session->set_flashdata('success', 'permiso Actualizado!');
 			$this->permiso->update_record($this->input->post('modulo_id'), $editedpermiso);
 		}
-		
-		
+
+
 
 		redirect('control/permisos/'.$this->input->post('role_id'), 'refresh');
 
