@@ -2,31 +2,8 @@
 <div class="control-group">
 	<label class="control-label">Provincia</label>
 	<div class="controls">
-		<?php $options_provincia = [ 1 => 'Buenos Aires',
-		2 => 'Capital Federal', 
-		3 =>'Catamarca',
-		4 =>'Chaco',
-		5 =>'Chubut',
-		6 =>'Córdoba',
-		7 =>'Corrientes',
-		8 =>'Entre Ríos',
-		9 =>'Formosa',
-		10 =>'Jujuy',
-		11 =>'La Pampa',
-		12 =>'La Rioja',
-		13 =>'Mendoza',
-		14 =>'Misiones',
-		15 =>'Neuquén',
-		16 =>'Río Negro',
-		17 =>'Salta',
-		18 =>'San Juan',
-		19 =>'San Luis',
-		20 =>'Santa Cruz',
-		21 =>'Santa Fe',
-		22 =>'Santiago del Estero',
-		23=>'Tierra del Fuego',
-		24 =>'Tucumán'];
-		echo form_dropdown('provincia', $options_provincia);
+		<?php
+		echo form_dropdown('provincia', $this->config->item('provincias_list'), $query->provincia);
 		?>
 	</div>
 </div>
@@ -42,8 +19,8 @@
 <div class="control-group">
 	<label class="control-label">Zodiaco</label>
 	<div class="controls">
-		<?php $options_zodiaco = ["Aries","Tauro","Géminis","Cáncer","Leo","Virgo","Libra","Escorpio","Sagitario","Capricornio","Acuario","Piscis"]; 
-		echo form_dropdown('zodiaco', $options_zodiaco,$query->zodiaco);
+		<?php
+			echo form_dropdown('zodiaco', $this->config->item('options_zodiaco'),$query->zodiaco);
 		?>
 	</div>
 </div>
@@ -67,8 +44,7 @@
 <div class="control-group">
 	<label class="control-label">Contextura_fisica</label>
 	<div class="controls">
-		<input value="<?php echo $query->contextura_fisica; ?>" type="text" class="form-control" name="contextura_fisica" />
-		<?php echo form_error('contextura_fisica','<p class="error">', '</p>'); ?>
+		<?php echo form_dropdown('contextura_fisica', $this->config->item('contextura_fisica'),$query->contextura_fisica); ?>
 	</div>
 </div>
 <!-- Text input-->
@@ -107,7 +83,7 @@
 <div class="control-group">
 	<label class="control-label">Fuma</label>
 	<div class="controls">
-		<?php $options_fuma = [0=> "No", 1=>"Si"]; 
+		<?php $options_fuma = [0=> "No", 1=>"Si"];
 		echo  form_dropdown('fuma', $options_fuma, $query->fuma);
 		?>
 	</div>
@@ -116,7 +92,7 @@
 <div class="control-group">
 	<label class="control-label">Toma</label>
 	<div class="controls">
-		<?php $options_toma = [0=> "No", 1=>"Si"]; 
+		<?php $options_toma = [0=> "No", 1=>"Si"];
 		echo form_dropdown('toma', $options_toma, $query->toma);
 		?>
 	</div>

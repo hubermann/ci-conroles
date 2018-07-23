@@ -31,9 +31,9 @@
 							<a href="<?= base_url('como-funciona');?>" class=" g-py-7 g-px-0">Cómo funciona</a>
 						</li>
 
-						<li class="nav-item link-header g-mx-10--lg g-mx-15--xl">
-							<a href="../../index.html" class=" g-py-7 g-px-0">Eventos</a>
-						</li>
+						<!-- <li class="nav-item link-header g-mx-10--lg g-mx-15--xl">
+							<a href="<?= base_url('eventos');?>" class=" g-py-7 g-px-0">Eventos</a>
+						</li> -->
 
 						<li class="nav-item link-header g-mx-10--lg g-mx-15--xl">
 							<a href="<?= base_url('quienes-somos');?>" class=" g-py-7 g-px-0">Quíenes somos</a>

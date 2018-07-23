@@ -818,6 +818,16 @@ class Users_Front extends CI_Controller
     	return $file;
     }
 
+    #eventos generales front
+    public function eventos()
+    {
+
+      $data['eventos_disponibles'] = $this->evento->get_records();
+      $data['content'] = 'frontend/mis-eventos';
+      $this->load->view('frontend_main', $data);
+    }
+
+    #eventos del user
     public function mis_eventos()
     {
       if (!$this->session->userdata('user_id')) {
