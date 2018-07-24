@@ -491,8 +491,6 @@ class Users_Front extends CI_Controller
         //     $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         // }
 
-
-
         // para evitar que de error de que el nickanme no es unique
         if ($this->input->post('nickname') != $original_nick = $info_user->nickname) {
             $this->form_validation->set_rules('nickname', 'Nickname', 'required|is_unique[usuarios.nickname]|min_length[3]|max_length[20]');
@@ -822,8 +820,8 @@ class Users_Front extends CI_Controller
     public function eventos()
     {
 
-      $data['eventos_disponibles'] = $this->evento->get_records();
-      $data['content'] = 'frontend/mis-eventos';
+      $data['eventos_disponibles'] = $this->evento->get_lasts(3);
+      $data['content'] = 'frontend/eventos';
       $this->load->view('frontend_main', $data);
     }
 

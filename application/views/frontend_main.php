@@ -28,7 +28,8 @@
 	<link rel="stylesheet" href="<?php echo base_url('public_folder/frontend/assets/vendor/hamburgers/hamburgers.min.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('public_folder/frontend/assets/vendor/slick-carousel/slick/slick.css'); ?>">
 
-
+	<link rel="stylesheet" href="<?php echo base_url('public_folder/frontend/assets/vendor/icon-hs/style.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('public_folder/frontend/assets/vendor/fancybox/jquery.fancybox.min.css'); ?>">
 
 	<link rel="stylesheet" href="<?php echo base_url('public_folder/frontend/font-awesome/fontawesome-all.min.css'); ?>">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -69,7 +70,7 @@
 	<div class="u-outer-spaces-helper"></div>
 
 	<!-- JS Global Compulsory -->
-	<script  src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+
 	<script type="text/javascript" src="<?= base_url('public_folder/frontend/assets/vendor/jquery/jquery-3.2.1.js');?>"></script>
 	<script src="<?php echo base_url('public_folder/frontend/assets/vendor/jquery-migrate/jquery-migrate.min.js') ?>"></script>
 	<script src="<?php echo base_url('public_folder/frontend/assets/vendor/jquery.easing/js/jquery.easing.js') ?>"></script>
@@ -92,7 +93,7 @@
 
 
 	<!-- JS Global Compulsory -->
-	    <script src="<?php echo base_url('public_folder/frontend/assets/vendor/jquery/jquery.min.js') ?>"></script>
+
 	    <script src="<?php echo base_url('public_folder/frontend/assets/vendor/jquery-migrate/jquery-migrate.min.js') ?>"></script>
 	    <script src="<?php echo base_url('public_folder/frontend/assets/vendor/jquery.easing/js/jquery.easing.js') ?>"></script>
 	    <script src="<?php echo base_url('public_folder/frontend/assets/vendor/popper.min.js') ?>"></script>
@@ -110,7 +111,6 @@
 	    <!-- JS Unify -->
 	    <script src="<?php echo base_url('public_folder/frontend/assets/js/hs.core.js') ?>"></script>
 	    <script src="<?php echo base_url('public_folder/frontend/assets/js/components/hs.header.js') ?>"></script>
-	    <script src="<?php echo base_url('public_folder/frontend/assets/js/helpers/hs.hamburgers.js') ?>"></script>
 	    <script src="<?php echo base_url('public_folder/frontend/assets/js/components/hs.scroll-nav.js') ?>"></script>
 	    <script src="<?php echo base_url('public_folder/frontend/assets/js/components/hs.tabs.js') ?>"></script>
 	    <script src="<?php echo base_url('public_folder/frontend/assets/js/components/hs.countdown.js') ?>"></script>
@@ -118,10 +118,23 @@
 	    <script src="<?php echo base_url('public_folder/frontend/assets/js/components/gmap/hs.map.js') ?>"></script>
 	    <script src="<?php echo base_url('public_folder/frontend/assets/js/components/hs.go-to.js') ?>"></script>
 
+			<!-- JS Unify -->
+			<script  src="<?= base_url('/public_folder/frontend/assets/js/components/hs.popup.js'); ?>"></script>
 
 
-	<!-- JS Customization -->
-	<script src="<?php echo base_url('public_folder/frontend/assets/js/custom.js') ?>"></script>
+			<!-- JS Customization -->
+			<script src="<?php echo base_url('public_folder/frontend/assets/js/custom.js') ?>"></script>
+
+
+
+
+
+
+
+
+
+
+
 
 	<!-- JS Plugins Init. -->
 	<script>
@@ -264,6 +277,11 @@
           $.HSCore.components.HSTabs.init('[role="tablist"]');
         }, 200);
       });
+
+			$(document).on('ready', function () {
+				// initialization of popups
+				$.HSCore.components.HSPopup.init('.js-fancybox');
+			});
     </script>
 
 

@@ -19,6 +19,17 @@ class Evento extends CI_Model{
 		return $this->db->get()->result();
 	}
 
+	public function get_lasts($num=1)
+	{
+		$this->db->select("eventos.*,eventos.id as evento_id,categoria_eventos.id as categoria_id,categoria_eventos.nombre as categoria_nombre, lugares.direccion as evento_direccion, lugares.filename as logo_lugar,lugares.nombre as nombre_lugar, eventos_tipos.id, eventos_tipos.nombre as evento_tipo");
+	  $this->db->from("eventos");
+	  $this->db->join("categoria_eventos", "categoria_eventos.id = eventos.categoria_id",'left');
+		$this->db->join("lugares", "lugares.id = eventos.lugar",'left');
+		$this->db->join("eventos_tipos", "eventos_tipos.id = eventos.tipo_evento",'left');
+		$this->db->order_by('eventos.id','ASC')->limit($num);
+		return $this->db->get()->result();
+	}
+
 
 	public function get_records_menu()
 	{

@@ -9,6 +9,7 @@ class Welcome extends CI_Controller
         parent::__construct();
         $this->load->model('usuario');
         $this->load->model('imagenes_usuario');
+        $this->load->model('nota');
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->library('session');
@@ -17,7 +18,8 @@ class Welcome extends CI_Controller
 
     public function index()
     {
-        $this->load->view('frontend_main');
+        $data['notas'] = $this->nota->traer_home();
+        $this->load->view('frontend_main', $data);
     }
 
     public function register()
@@ -120,5 +122,4 @@ class Welcome extends CI_Controller
             redirect('/', 'refresh');
         }
     }
-
 }
