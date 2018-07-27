@@ -139,28 +139,37 @@
     </div>
   </div>
 
+  <style media="screen">
+    .error{color: red; text-align: center;}
+  </style>
+
   <div class="row justify-content-center">
     <div class="col-lg-9">
-      <form>
+      <form action="contacto_preguntas_frecuentes" method="post">
         <div class="row">
           <div class="col-md-6 form-group g-mb-20">
-            <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--hover rounded-3 g-py-13 g-px-15" type="text" placeholder="Name">
+            <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--hover rounded-3 g-py-13 g-px-15" type="text" placeholder="Nombre" name="nombre" value="<?php echo set_value('nombre'); ?>">
+            <?php echo form_error('nombre','<p class="error">', '</p>'); ?>
+          </div>
+          <input type="hidden" name="origen" value="preguntas-frecuentes">
+          <div class="col-md-6 form-group g-mb-20">
+            <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--hover rounded-3 g-py-13 g-px-15" type="email" placeholder="Email" name="email" value="<?php echo set_value('email'); ?>">
+            <?php echo form_error('email','<p class="error">', '</p>'); ?>
           </div>
 
           <div class="col-md-6 form-group g-mb-20">
-            <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--hover rounded-3 g-py-13 g-px-15" type="email" placeholder="Email">
+            <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--hover rounded-3 g-py-13 g-px-15" type="text" placeholder="Asunto" name="asunto" value="<?php echo set_value('asunto'); ?>">
           </div>
 
           <div class="col-md-6 form-group g-mb-20">
-            <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--hover rounded-3 g-py-13 g-px-15" type="text" placeholder="Subject">
-          </div>
-
-          <div class="col-md-6 form-group g-mb-20">
-            <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--hover rounded-3 g-py-13 g-px-15" type="tel" placeholder="Phone">
+            <input class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--hover rounded-3 g-py-13 g-px-15" type="tel" placeholder="Telefono" name="telefono" value="<?php echo set_value('telefono'); ?>">
           </div>
 
           <div class="col-md-12 form-group g-mb-40">
-            <textarea class="form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--hover g-resize-none rounded-3 g-py-13 g-px-15" rows="7" placeholder="Message"></textarea>
+
+            <?php
+            echo form_textarea( array('class' => 'form-control g-color-black g-bg-white g-bg-white--focus g-brd-gray-light-v3 g-brd-primary--hover g-resize-none rounded-3 g-py-13 g-px-15', 'name' => 'mensaje'), set_value('mensaje') );
+            echo form_error('mensaje','<p class="error">', '</p>'); ?>
           </div>
         </div>
 

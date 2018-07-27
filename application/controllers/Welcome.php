@@ -9,6 +9,7 @@ class Welcome extends CI_Controller
         parent::__construct();
         $this->load->model('usuario');
         $this->load->model('imagenes_usuario');
+        $this->load->model('evento');
         $this->load->model('nota');
         $this->load->helper('url');
         $this->load->helper('form');
@@ -19,6 +20,7 @@ class Welcome extends CI_Controller
     public function index()
     {
         $data['notas'] = $this->nota->traer_home();
+        $data['eventos'] = $this->evento->get_lasts($num=3);
         $this->load->view('frontend_main', $data);
     }
 
@@ -122,4 +124,9 @@ class Welcome extends CI_Controller
             redirect('/', 'refresh');
         }
     }
+
+
+
+
+
 }

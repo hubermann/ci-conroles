@@ -70,6 +70,11 @@ $route['detalle-coincidencias/(:num)'] = 'users_front/detalle_coincidencias';
 $route['mis-contactos'] = 'users_front/mis_contactos';
 $route['solicitar_asistencia_evento/(:num)'] = 'users_front/solicitar_asistencia_evento/$';
 
+$route['contacto_quienes_somos'] = 'MailerController/process_quienes_somos';
+$route['contacto_como_funciona'] = 'MailerController/process_como_funciona';
+$route['contacto_preguntas_frecuentes'] = 'MailerController/process_preguntas_frecuentes';
+$route['process_email'] = 'MailerController/process_mail';
+
 
 $route['como-funciona'] = 'users_front/como_funciona';
 $route['preguntas-frecuentes'] = 'users_front/preguntas_frecuentes';
