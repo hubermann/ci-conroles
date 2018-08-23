@@ -12,111 +12,57 @@
 </section>
 
 
-<!-- preguntas frecuentes -->
-<section class="g-bg-gray-gradient-opacity-v1">
-  <div class="container g-py-100">
-    <div class="row justify-content-center">
-      <div class="col-lg-9">
-        <!-- Heading -->
-        <div class="text-center g-mb-60">
-          <h2 class="mb-2">Quienes somos</h2>
-          <div class="d-inline-block g-width-35 g-height-1 g-bg-gray-dark-v5 mb-2"></div>
-          <p>We aim high at being focused on building relationships with our clients and community.</p>
+<style media="screen">
+
+  .boxlight{background-color: #ccc;}
+  .boxgray{background-color: #333; color: #fff;}
+  .boxblack{background-color: #000; color: #ccc}
+</style>
+
+
+<section id="about">
+  <div class="container-fluid">
+    <div class="row text-center text-md-left">
+      <div class="col-sm-6 col-lg-4 boxgray px-0">
+        <img class="img-fluid w-100" src="<?= base_url('public_folder/frontend/assets/img-temp/1000x645/img1.png'); ?>" alt="Image description">
+
+        <div class="g-py-50 g-px-15 g-pa-50--md">
+          <h3 class="text-uppercase g-font-weight-800 g-font-size-default g-color-white g-mb-15">MAS DE 10 AÑOS</h3>
+          <p class="mb-0">Etiam mollis iaculis dolor nec molestie. Fusce fringilla ipsum nec accumsan auctor. Sed eget justo est. Sed pellentesque velit ante, in porttitor lorem gravida non. Ut in eros ac lectus viverra vestibulum. Quisque sodales velit ac odio iaculis accumsan. In sit amet lorem id velit tincidunt mollis. Nullam vel turpis sagittis, viverra urna et, facilisis quam. Donec at mi nec lorem accumsan.</p>
         </div>
-        <!-- End Heading -->
+      </div>
 
-        <div id="accordion" class="u-accordion u-accordion-color-primary" role="tablist" aria-multiselectable="true">
-          <!-- Card -->
-          <div class="card g-brd-none rounded g-mb-20">
-            <div id="accordion-heading-01" class="u-accordion__header g-pa-0" role="tab">
-              <h5 class="mb-0">
-                  <a class="d-flex justify-content-between u-shadow-v19 g-color-main g-text-underline--none--hover rounded g-px-30 g-py-20 collapsed" href="#accordion-body-01" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="accordion-body-01">
-                    Guarantee?
-                    <span class="u-accordion__control-icon g-color-primary">
-                      <i class="fa fa-angle-down"></i>
-                      <i class="fa fa-angle-up"></i>
-                    </span>
-                  </a>
-                </h5>
-            </div>
-            <div id="accordion-body-01" class="collapse" role="tabpanel" aria-labelledby="accordion-heading-01" style="">
-              <div class="u-accordion__body g-color-gray-dark-v4 g-pa-30">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-                on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-                raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-              </div>
-            </div>
-          </div>
-          <!-- End Card -->
+      <div class="col-sm-6 col-lg-4 g-flex-centered boxlight px-0">
+        <div class="g-py-50 g-px-15 g-pa-50--md">
+          <h2 class="text-uppercase g-line-height-1 g-font-weight-800 g-font-size-30 g-color-primary g-mb-30">EQUIPO DE 10EN8</h2>
+          <p class="g-mb-30">Aliquam mattis neque justo, non maximus dui ornare nec. Praesent efficitur velit nisl, sed tincidunt mi imperdiet at. Cras urna libero, fringilla vitae luctus eu, egestas eget metus. Nam et massa eros.</p>
+          <p class="g-mb-30">Maecenas sit amet lacinia lectus. Maecenas ut mauris risus. Quisque mi urna, mattis id varius nec, convallis eu odio. Integer eu malesuada leo, placerat semper neque. Nullam id volutpat dui, quis luctus magna. Suspendisse rutrum ipsum in quam semper laoreet. Praesent dictum nulla id viverra vehicula.</p>
+          <p class="g-mb-30">Praesent blandit hendrerit justo sed egestas. Proin tincidunt purus in tortor cursus fermentum. Proin laoreet erat vitae dui blandit, vitae faucibus lacus auctor. Proin ornare sit amet arcu at aliquam. Vivamus eu enim sit amet lacus dapibus pharetra. Duis a tellus pharetra, pellentesque mauris id, lacinia felis. Nunc metus libero, eleifend auctor interdum vitae, egestas non velit.</p>
+          <p>Aliquam mattis neque justo, non maximus dui ornare nec. Praesent efficitur velit nisl, sed tincidunt mi imperdiet at. Cras urna libero, fringilla vitae luctus eu, egestas eget metus. Nam et massa eros.</p>
+        </div>
+      </div>
 
-          <!-- Card -->
-          <div class="card g-brd-none rounded g-mb-20">
-            <div id="accordion-heading-02" class="u-accordion__header g-pa-0" role="tab">
-              <h5 class="mb-0">
-                  <a class="d-flex justify-content-between u-shadow-v19 g-color-main g-text-underline--none--hover rounded g-px-30 g-py-20 collapsed" href="#accordion-body-02" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="accordion-body-02">
-                    Do you have any built-in caching?
-                    <span class="u-accordion__control-icon g-color-primary">
-                      <i class="fa fa-angle-down"></i>
-                      <i class="fa fa-angle-up"></i>
-                    </span>
-                  </a>
-                </h5>
-            </div>
-            <div id="accordion-body-02" class="collapse" role="tabpanel" aria-labelledby="accordion-heading-02" style="">
-              <div class="u-accordion__body g-color-gray-dark-v4 g-pa-30">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-                on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-                raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-              </div>
-            </div>
+      <div class="col-lg-4 g-theme-bg-gray-dark-v1 px-0">
+        <div class="d-flex align-content-stretch flex-wrap h-100">
+          <div class="g-theme-bg-gray-dark-v4--hover g-brd-bottom boxgray g-py-50 g-px-15 g-pa-50--md g-transition-0_2 g-transition--ease-in">
+            <h3 class="text-uppercase g-font-weight-800 g-font-size-default g-color-white g-mb-15">Professional staff</h3>
+            <p class="mb-0">Cras sit amet varius velit. Maecenas porta condimentum tortor at sagittis. Cum sociis natoque penatibus et magnis disvarius velit. Class aptent taciti sociosqu ad litor.</p>
           </div>
-          <!-- End Card -->
 
-          <!-- Card -->
-          <div class="card g-brd-none rounded g-mb-20">
-            <div id="accordion-heading-03" class="u-accordion__header g-pa-0" role="tab">
-              <h5 class="mb-0">
-                  <a class="collapsed d-flex justify-content-between u-shadow-v19 g-color-main g-text-underline--none--hover rounded g-px-30 g-py-20" href="#accordion-body-03" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="accordion-body-03">
-                    Can I add/upgrade my plan at any time?
-                    <span class="u-accordion__control-icon g-color-primary">
-                      <i class="fa fa-angle-down"></i>
-                      <i class="fa fa-angle-up"></i>
-                    </span>
-                  </a>
-                </h5>
-            </div>
-            <div id="accordion-body-03" class="collapse" role="tabpanel" aria-labelledby="accordion-heading-03">
-              <div class="u-accordion__body g-color-gray-dark-v4 g-pa-30">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-                on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-                raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-              </div>
-            </div>
+          <div class="g-theme-bg-gray-dark-v4--hover g-brd-bottom boxgray g-py-50 g-px-15 g-pa-50--md g-transition-0_2 g-transition--ease-in">
+            <h3 class="text-uppercase g-font-weight-800 g-font-size-default g-color-white g-mb-15">Quality solutions</h3>
+            <p class="mb-0">Cras ultricies nisl a leo tempus rhoncus. Nam mauris tellus, molestie quis purus sed, maximus vulputate lorem. Proin augue neque, mattis vel leo ac, porttitor laoreet felis.</p>
           </div>
-          <!-- End Card -->
 
-          <!-- Card -->
-          <div class="card g-brd-none rounded g-mb-20">
-            <div id="accordion-heading-04" class="u-accordion__header g-pa-0" role="tab">
-              <h5 class="mb-0">
-                  <a class="collapsed d-flex justify-content-between u-shadow-v19 g-color-main g-text-underline--none--hover rounded g-px-30 g-py-20" href="#accordion-body-04" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="accordion-body-04">
-                    What access comes with my hosting plan?
-                    <span class="u-accordion__control-icon g-color-primary">
-                      <i class="fa fa-angle-down"></i>
-                      <i class="fa fa-angle-up"></i>
-                    </span>
-                  </a>
-                </h5>
-            </div>
-            <div id="accordion-body-04" class="collapse" role="tabpanel" aria-labelledby="accordion-heading-04">
-              <div class="u-accordion__body g-color-gray-dark-v4 g-pa-30">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-                on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-                raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-              </div>
-            </div>
+          <div class="g-theme-bg-gray-dark-v4--hover g-brd-bottom boxblack g-py-50 g-px-15 g-pa-50--md g-transition-0_2 g-transition--ease-in">
+            <h3 class="text-uppercase g-font-weight-800 g-font-size-default g-color-white g-mb-15">Quick response</h3>
+            <p class="mb-0">Morbi gravida magna vel odio accumsan, eu auctor diam sollicitudin. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lacinia consequat.</p>
           </div>
-          <!-- End Card -->
+
+          <div class="g-theme-bg-gray-dark-v4--hover g-py-50 g-px-15 g-pa-50--md boxblack g-transition-0_2 g-transition--ease-in">
+            <h3 class="text-uppercase g-font-weight-800 g-font-size-default g-color-white g-mb-15">Quick response</h3>
+            <p class="mb-0">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas ac nulla vehicula risus pulvinar feugiat ullamcorper sit amet mi.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -124,20 +70,10 @@
 </section>
 
 
-<!-- formulario -->
 
-<section class="container g-py-100">
-  <div class="row justify-content-center g-mb-70">
-    <div class="col-lg-7">
-      <!-- Heading -->
-      <div class="text-center">
-        <h2 class="h2 g-color-black g-font-weight-700 mb-4">Tienes dudas?.</h2>
-        <div class="d-inline-block g-width-70 g-height-2 g-bg-black mb-4"></div>
-        <p class="g-font-size-18 mb-0">We are a creative studio focusing on culture, luxury, editorial &amp; art. Somewhere between sophistication and simplicity.</p>
-      </div>
-      <!-- End Heading -->
-    </div>
-  </div>
+
+
+
 
 <style media="screen">
   .error{color: red; text-align: center;}
