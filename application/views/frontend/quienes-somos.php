@@ -17,7 +17,22 @@
   .boxlight{background-color: #ccc;}
   .boxgray{background-color: #333; color: #fff;}
   .boxblack{background-color: #000; color: #ccc}
+  #quienes_somos{margin-top: 3em;}
 </style>
+
+<div id="quienes_somos">
+<div class="container-fluid">
+  <div class="container text-center u-bg-overlay__inner g-max-width-770 g-mb-30 g-mb-70--md">
+      <div class="text-uppercase u-heading-v2-4--bottom g-brd-primary g-mb-30">
+        <h3 class="g-font-weight-600 g-font-size-12 g-color-primary g-mb-20">10 en 8</h3>
+        <h2 class="u-heading-v2__title g-line-height-1 g-letter-spacing-2 g-font-weight-700 g-font-size-30 g-font-size-40--md mb-0">Quienes sómos</h2>
+      </div>
+
+      <p class="">Praesent eu nibh malesuada, condimentum nibh hendrerit, viverra sem. Nulla porttitor eget ante ullamcorper convallis. Integer dictum lorem arcu, eget tempus nulla accumsan id.</p>
+    </div>
+</div>
+
+</div>
 
 
 <section id="about">
@@ -77,9 +92,10 @@
 
 <style media="screen">
   .error{color: red; text-align: center;}
+  #contactform{margin-top: 2.5em; margin-bottom: 2em;}
 </style>
 
-  <div class="row justify-content-center">
+  <div class="row justify-content-center" id="contactform">
     <div class="col-lg-9">
       <form action="contacto_quienes_somos" method="post">
         <div class="row">
